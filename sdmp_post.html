@@ -1,0 +1,2340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SMDP Masterclass - 170 Master Quiz Assessment</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: #f1f1f1;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body class="bg-slate-900 text-slate-100 font-sans min-h-screen flex flex-col">
+
+  <!-- Top Sticky Header -->
+  <header class="sticky top-0 z-50 bg-slate-800/95 backdrop-blur border-b border-slate-700 shadow-lg">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex flex-wrap items-center justify-between gap-4">
+      <div class="flex items-center space-x-3">
+        <div class="bg-blue-600 text-white font-black px-3 py-1.5 rounded-lg text-lg tracking-wider">
+          SMDP
+        </div>
+        <div>
+          <h1 class="text-lg font-bold text-white leading-tight">Masterclass Knowledge Assessment</h1>
+          <p class="text-xs text-slate-400">170 Verified Questions Across 7 Logistics & Governance Modules</p>
+        </div>
+      </div>
+
+      <!-- Score & Progress Stats -->
+      <div class="flex items-center space-x-6 text-sm">
+        <div class="text-center">
+          <span class="block text-xs text-slate-400">Progress</span>
+          <span id="stat-progress" class="font-bold text-blue-400">0 / 170</span>
+        </div>
+        <div class="text-center">
+          <span class="block text-xs text-slate-400">Score</span>
+          <span id="stat-score" class="font-bold text-emerald-400">0%</span>
+        </div>
+        <button onclick="resetQuiz()" class="bg-slate-700 hover:bg-slate-600 text-slate-200 text-xs px-3 py-1.5 rounded border border-slate-600 transition">
+          Reset All
+        </button>
+      </div>
+    </div>
+
+    <!-- Progress Bar -->
+    <div class="w-full bg-slate-700 h-1.5">
+      <div id="progress-bar" class="bg-blue-500 h-1.5 w-0 transition-all duration-300"></div>
+    </div>
+  </header>
+
+  <!-- Main Content Container -->
+  <main class="flex-1 max-w-7xl w-full mx-auto px-4 py-6 grid grid-cols-1 lg:grid-cols-4 gap-6">
+
+    <!-- Sidebar: Module Selection & Filter -->
+    <aside class="lg:col-span-1 space-y-4">
+      <div class="bg-slate-800 p-4 rounded-xl border border-slate-700">
+        <h2 class="text-sm font-semibold text-slate-300 uppercase tracking-wider mb-3">Filter by Category</h2>
+        <div id="module-filters" class="space-y-1.5">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+
+      <!-- Quick Summary Box -->
+      <div class="bg-slate-800/60 p-4 rounded-xl border border-slate-700/60 text-xs text-slate-400 space-y-2">
+        <div class="font-semibold text-slate-300 text-sm mb-1">Assessment Guidance</div>
+        <p>• All 50 questions from the Pre/Post Test documents have been audited for factual correctness.</p>
+        <p>• Correct answers reflect updated standards (e.g., PerBPOM No. 6/2024, ISO 6346, IMO 2023 Strategy).</p>
+        <p>• Use the <strong>Post Test Assessments</strong> filter to focus specifically on official exam items.</p>
+      </div>
+    </aside>
+
+    <!-- Main Quiz Area -->
+    <section class="lg:col-span-3 space-y-6">
+      
+      <!-- Module Header Info -->
+      <div class="bg-slate-800 p-4 rounded-xl border border-slate-700 flex justify-between items-center">
+        <div>
+          <span id="current-module-title" class="text-lg font-bold text-blue-400">All Modules</span>
+          <p id="current-module-desc" class="text-xs text-slate-400">Displaying all 170 questions across the SMDP curriculum.</p>
+        </div>
+        <span id="questions-count-badge" class="bg-slate-700 text-slate-300 text-xs px-3 py-1 rounded-full font-medium">
+          170 Items
+        </span>
+      </div>
+
+      <!-- Question Cards Container -->
+      <div id="questions-container" class="space-y-6">
+        <!-- Rendered by JS -->
+      </div>
+
+      <!-- Final Submit/Summary Card -->
+      <div id="final-summary" class="hidden bg-slate-800 border-2 border-blue-500/50 p-6 rounded-xl text-center space-y-4">
+        <h3 class="text-2xl font-bold text-white">Assessment Completed! 🎉</h3>
+        <p class="text-slate-300">You have completed all questions in this view.</p>
+        <div class="text-4xl font-extrabold text-emerald-400" id="final-score-text">0 / 170</div>
+        <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="bg-blue-600 hover:bg-blue-500 text-white font-semibold px-6 py-2.5 rounded-lg shadow-lg transition">
+          Review Answers
+        </button>
+      </div>
+
+    </section>
+  </main>
+
+  <!-- JavaScript Engine -->
+  <script>
+    // -------------------------------------------------------------
+    // QUIZ DATA: 170 VERIFIED QUESTIONS (120 Core + 50 Official Tests)
+    // -------------------------------------------------------------
+    const quizData = [
+      // =========================================================
+      // MODULE 1: Supply Chain & Logistics Foundations & 5.0 (1-20)
+      // =========================================================
+      {
+        id: 1,
+        module: 1,
+        moduleName: "Supply Chain & Logistics 5.0",
+        type: "mcq",
+        question: "Which of the following represents the core 'Three Flows' in a supply chain?",
+        options: ["Material, Information, Financial", "Production, Storage, Delivery", "Inbound, Outbound, Reverse", "Procurement, Manufacturing, Retail"],
+        answer: 0,
+        explanation: "The three primary flows in supply chain management are Material Flow (goods), Information Flow (orders/data), and Financial Flow (money/payments)."
+      },
+      {
+        id: 2,
+        module: 1,
+        moduleName: "Supply Chain & Logistics 5.0",
+        type: "mcq",
+        question: "What is the key functional distinction between Supply Chain Management and Logistics?",
+        options: [
+          "Supply Chain is tactical; Logistics is strategic",
+          "Supply Chain covers the entire network ecosystem; Logistics focuses on moving & storing goods within it",
+          "Logistics manages raw materials while Supply Chain manages finished goods only",
+          "There is no difference; the terms are 100% interchangeable"
+        ],
+        answer: 1,
+        explanation: "Supply Chain Management covers the broad, end-to-end network of processes and partners, whereas Logistics is the specific operational mechanism for executing storage and transportation."
+      },
+      {
+        id: 3,
+        module: 1,
+        moduleName: "Supply Chain & Logistics 5.0",
+        type: "tf",
+        question: "True or False: Logistics is a subset of the broader Supply Chain ecosystem.",
+        options: ["True", "False"],
+        answer: 0,
+        explanation: "True. Logistics operations (warehousing, fleet management, fulfillment) form a functional subset of the total supply chain network."
+      },
+      {
+        id: 4,
+        module: 1,
+        moduleName: "Supply Chain & Logistics 5.0",
+        type: "short",
+        question: "What industry rule framework defines the ultimate operational goal of logistics (delivering right product, quantity, condition, place, time, customer, price)?",
+        answer: "7 Rs",
+        altAnswers: ["7Rs", "7 R", "7 R's", "The 7 Rs", "Seven Rs"],
+        explanation: "The 7 Rs of Logistics: Right Product, Right Quantity, Right Condition, Right Place, Right Time, Right Customer, Right Price."
+      },
+      {
+        id: 5,
+        module: 1,
+        moduleName: "Supply Chain & Logistics 5.0",
+        type: "mcq",
+        question: "Which logistics service provider model (xPL) is characterized by digital end-to-end supply chain optimization across entire networks?",
+        options: ["3PL", "4PL", "5PL", "2PL"],
+        answer: 2,
+        explanation: "5PL focuses on digital supply chain optimization, integrating e-commerce networks, automation, and multi-party logistics coordination."
+      },
+      {
+        id: 6,
+        module: 1,
+        moduleName: "Supply Chain & Logistics 5.0",
+        type: "mcq",
+        question: "In global freight forwarding, what is the practice of combining multiple smaller shipments (LCL) into one full container (FCL)?",
+        options: ["Cross-docking", "Freight Consolidation", "Customs Clearance", "Intermodal Transfer"],
+        answer: 1,
+        explanation: "Freight Consolidation combines smaller Less-than-Container Load (LCL) shipments into a single Full Container Load (FCL) to drastically optimize ocean shipping costs."
+      },
+      {
+        id: 7,
+        module: 1,
+        moduleName: "Supply Chain & Logistics 5.0",
+        type: "mcq",
+        question: "Which international transport document acts as a receipt of goods, contract of carriage, AND a document of title?",
+        options: ["Commercial Invoice", "Packing List", "Ocean Bill of Lading (B/L)", "Certificate of Origin"],
+        answer: 2,
+        explanation: "An original Bill of Lading (B/L) is a legal document of title required by the recipient to claim cargo ownership upon arrival."
+      },
+      {
+        id: 8,
+        module: 1,
+        moduleName: "Supply Chain & Logistics 5.0",
+        type: "tf",
+        question: "True or False: An Air Waybill (AWB) serves as a negotiable document of title in the exact same manner as a marine Bill of Lading.",
+        options: ["True", "False"],
+        answer: 1,
+        explanation: "False. An Air Waybill (AWB) is a receipt and contract of carriage, but unlike an ocean B/L, it is non-negotiable and NOT a document of title."
+      },
+      {
+        id: 9,
+        module: 1,
+        moduleName: "Supply Chain & Logistics 5.0",
+        type: "mcq",
+        question: "Under standard Incoterms, which rule places maximum responsibility, risk, and cost on the seller—including import customs clearance and local taxes?",
+        options: ["EXW", "FOB", "CIF", "DDP"],
+        answer: 3,
+        explanation: "DDP (Delivered Duty Paid) requires the seller to handle all costs, freight, insurance, risks, and destination import duties/taxes."
+      },
+      {
+        id: 10,
+        module: 1,
+        moduleName: "Supply Chain & Logistics 5.0",
+        type: "mcq",
+        question: "Under the FOB (Free On Board) Incoterm, at what exact point does risk transfer from the seller to the buyer?",
+        options: [
+          "When goods leave the seller's factory gate",
+          "When goods are loaded on board the vessel at the named port of shipment",
+          "When the vessel arrives at destination port",
+          "When import customs duty is paid"
+        ],
+        answer: 1,
+        explanation: "Under FOB, risk transfers from seller to buyer as soon as the cargo is safely loaded on board the vessel at the port of origin."
+      },
+      {
+        id: 11,
+        module: 1,
+        moduleName: "Supply Chain & Logistics 5.0",
+        type: "short",
+        question: "What 11 standard international commercial trade rules are published and updated by the International Chamber of Commerce (ICC)?",
+        answer: "Incoterms",
+        altAnswers: ["Incoterm", "Incoterms 2020"],
+        explanation: "Incoterms (International Commercial Terms) establish buyer/seller responsibility for costs, risks, and transport execution worldwide."
+      },
+      {
+        id: 12,
+        module: 1,
+        moduleName: "Supply Chain & Logistics 5.0",
+        type: "mcq",
+        question: "What is the primary conceptual shift from Freight Forwarding 4.0 to Freight Forwarding 5.0?",
+        options: [
+          "Replacing all humans with complete robotic automation",
+          "Balancing efficiency and speed with sustainability, human welfare, and supply chain resilience",
+          "Focusing exclusively on lowest-cost sea transport",
+          "Eliminating paper documentation in favor of email"
+        ],
+        answer: 1,
+        explanation: "While 4.0 prioritized maximum speed and automation, Logistics 5.0 balances technological efficiency with human-centricity, ESG sustainability, and adaptive resilience."
+      },
+      {
+        id: 13,
+        module: 1,
+        moduleName: "Supply Chain & Logistics 5.0",
+        type: "tf",
+        question: "True or False: In Logistics 5.0, environmental tracking is considered a secondary afterthought.",
+        options: ["True", "False"],
+        answer: 1,
+        explanation: "False. Environmental tracking (carbon metrics, green routing) is a core driver and mandatory metric in Logistics 5.0."
+      },
+      {
+        id: 14,
+        module: 1,
+        moduleName: "Supply Chain & Logistics 5.0",
+        type: "mcq",
+        question: "Which operation falls directly under Inbound Logistics?",
+        options: [
+          "Shipping finished goods to retail stores",
+          "Receiving, inspecting, and storing raw materials from global suppliers",
+          "Processing consumer returns and refunds",
+          "Last-mile home delivery"
+        ],
+        answer: 1,
+        explanation: "Inbound Logistics manages the flow, transportation, and storage of raw materials or components into a facility from suppliers."
+      },
+      {
+        id: 15,
+        module: 1,
+        moduleName: "Supply Chain & Logistics 5.0",
+        type: "mcq",
+        question: "Which component of logistics management handles product returns, repairs, recycling, and safe disposal?",
+        options: ["Inbound Logistics", "Outbound Logistics", "Reverse Logistics", "Third-Party Logistics"],
+        answer: 2,
+        explanation: "Reverse Logistics governs the backward movement of materials from end consumers back to the business facility."
+      },
+      {
+        id: 16,
+        module: 1,
+        moduleName: "Supply Chain & Logistics 5.0",
+        type: "mcq",
+        question: "What is the correct chronological sequence of the 5-Step International Shipping Process?",
+        options: [
+          "Transit -> Booking -> Export -> Import -> Delivery",
+          "Booking -> Export Clearance -> Main Transit -> Import Clearance -> Delivery",
+          "Export Clearance -> Booking -> Import Clearance -> Transit -> Delivery",
+          "Booking -> Import Clearance -> Transit -> Export Clearance -> Delivery"
+        ],
+        answer: 1,
+        explanation: "The standard sequence is 1. Booking, 2. Export Haulage/Clearance, 3. Main Transit Carriage, 4. Import Clearance, 5. Last-Mile Delivery."
+      },
+      {
+        id: 17,
+        module: 1,
+        moduleName: "Supply Chain & Logistics 5.0",
+        type: "tf",
+        question: "True or False: Modern Logistics 5.0 replaces rigid Just-in-Time (JIT) systems with adaptive Just-in-Case (JIC) resilience capabilities.",
+        options: ["True", "False"],
+        answer: 0,
+        explanation: "True. To combat global disruptions, Logistics 5.0 incorporates resilient 'Just-in-Case' buffer strategies alongside lean JIT practices."
+      },
+      {
+        id: 18,
+        module: 1,
+        moduleName: "Supply Chain & Logistics 5.0",
+        type: "mcq",
+        question: "The global freight forwarding market is projected to reach approximately what value by 2034?",
+        options: ["$150.0 billion", "$336.6 billion", "$536.5 billion", "$1.2 trillion"],
+        answer: 2,
+        explanation: "Industry projections forecast the freight forwarding market to grow from $336.6 billion in 2026 to $536.5 billion by 2034."
+      },
+      {
+        id: 19,
+        module: 1,
+        moduleName: "Supply Chain & Logistics 5.0",
+        type: "short",
+        question: "What term describes standard freight transport using standardized containers across trucks, trains, and ships without repacking cargo?",
+        answer: "Intermodal",
+        altAnswers: ["Multimodal", "Containerization", "Intermodal transport"],
+        explanation: "Intermodal freight transport allows the exact same standard box to ride trucks, rail, and ships seamlessly."
+      },
+      {
+        id: 20,
+        module: 1,
+        moduleName: "Supply Chain & Logistics 5.0",
+        type: "mcq",
+        question: "Which document specifically proves the manufacturing country of cargo to satisfy trade agreement preferences and duty rates?",
+        options: ["Packing List", "Commercial Invoice", "Certificate of Origin (COO)", "Dangerous Goods Declaration"],
+        answer: 2,
+        explanation: "The Certificate of Origin (COO) verifies where the product was manufactured for customs tariff and trade policy evaluation."
+      },
+
+      // =========================================================
+      // MODULE 2: Corporate Identity & ESG Frameworks (21-40)
+      // =========================================================
+      {
+        id: 21,
+        module: 2,
+        moduleName: "Corporate Identity & ESG",
+        type: "mcq",
+        question: "According to Samudera Indonesia's Corporate Identity rules, where must employees source official corporate logos and presentation assets?",
+        options: [
+          "Google Image Search",
+          "Official Corporate Communications channels (e.g., media.samudera.id)",
+          "Third-party design repositories",
+          "Screenshots from old PDF files"
+        ],
+        answer: 1,
+        explanation: "Downloading corporate logos from search engines or taking screenshots is strictly prohibited; assets must come from Corporate Communications referred sources."
+      },
+      {
+        id: 22,
+        module: 2,
+        moduleName: "Corporate Identity & ESG",
+        type: "tf",
+        question: "True or False: Business units are permitted to modify or create local logo variations without Corporate Communications approval.",
+        options: ["True", "False"],
+        answer: 1,
+        explanation: "False. Modifying corporate logos, creating standalone unit logos, or altering proportions is strictly prohibited in the Don'ts guidelines."
+      },
+      {
+        id: 23,
+        module: 2,
+        moduleName: "Corporate Identity & ESG",
+        type: "mcq",
+        question: "Which article in Samudera's Code of Conduct governs personal social media usage when wearing company attributes or displaying logos?",
+        options: ["Pasal 5", "Pasal 10", "Pasal 15", "Pasal 22"],
+        answer: 2,
+        explanation: "Pasal 15 of the Code of Conduct explicitly outlines guidelines for personal social media use, brand protection, and HSSE visibility."
+      },
+      {
+        id: 24,
+        module: 2,
+        moduleName: "Corporate Identity & ESG",
+        type: "mcq",
+        question: "The term 'ESG' (Environmental, Social, & Governance) was first introduced by the UN in 2004 through which landmark report?",
+        options: ["Brundtland Report", "Who Cares Wins", "Paris Climate Accord", "GRI Standard 101"],
+        answer: 1,
+        explanation: "ESG was introduced globally in the 2004 United Nations report titled 'Who Cares Wins'."
+      },
+      {
+        id: 25,
+        module: 2,
+        moduleName: "Corporate Identity & ESG",
+        type: "mcq",
+        question: "Sustainable development in modern frameworks encompasses the '5Ps'. What are the 5Ps?",
+        options: [
+          "Product, Price, Place, Promotion, People",
+          "People, Planet, Prosperity, Peace, Partnership",
+          "Policy, Process, Platform, Performance, Profit",
+          "Power, Pollution, Plant, Preservation, Protection"
+        ],
+        answer: 1,
+        explanation: "The 5Ps of Sustainability under UN SDGs are: People, Planet, Prosperity, Peace, and Partnership."
+      },
+      {
+        id: 26,
+        module: 2,
+        moduleName: "Corporate Identity & ESG",
+        type: "short",
+        question: "What visual economic framework developed by Kate Raworth balances human social foundations with ecological planetary boundaries?",
+        answer: "Doughnut Economics",
+        altAnswers: ["Doughnut Model", "Donut Economics", "Doughnut"],
+        explanation: "Doughnut Economics combines human social rights (inner ring) with planetary boundaries (outer ring) to ensure sustainable living space."
+      },
+      {
+        id: 27,
+        module: 2,
+        moduleName: "Corporate Identity & ESG",
+        type: "mcq",
+        question: "The global climate benchmark target set under the Paris Agreement (COP21) aims to limit global warming to well below 2°C, pursuing limits of:",
+        options: ["0.5°C above pre-industrial levels", "1.5°C above pre-industrial levels", "2.5°C above pre-industrial levels", "3.0°C above pre-industrial levels"],
+        answer: 1,
+        explanation: "The global benchmark aims to limit global warming to 1.5°C above pre-industrial levels to prevent catastrophic climate risks."
+      },
+      {
+        id: 28,
+        module: 2,
+        moduleName: "Corporate Identity & ESG",
+        type: "mcq",
+        question: "Under the IMO 2023 GHG Strategy, what is the indicative checkpoint target for total annual shipping GHG reductions by 2030 (compared to 2008)?",
+        options: [
+          "At least 5%, striving for 10%",
+          "At least 20%, striving for 30%",
+          "At least 70%, striving for 80%",
+          "100% Net Zero"
+        ],
+        answer: 1,
+        explanation: "The 2030 IMO indicative checkpoint calls for reducing total annual GHG emissions from international shipping by at least 20%, striving for 30%."
+      },
+      {
+        id: 29,
+        module: 2,
+        moduleName: "Corporate Identity & ESG",
+        type: "tf",
+        question: "True or False: The melting of floating sea ice/icebergs in the Arctic is the primary driver of global sea level rise.",
+        options: ["True", "False"],
+        answer: 1,
+        explanation: "False. Floating ice displaced volume already. The primary drivers of sea level rise are land-based ice sheet melting (glaciers) and thermal expansion of seawater."
+      },
+      {
+        id: 30,
+        module: 2,
+        moduleName: "Corporate Identity & ESG",
+        type: "mcq",
+        question: "What concept in ESG materiality mapping evaluates both internal financial risk to the company AND external impact on society and environment?",
+        options: ["Single Materiality", "Double Materiality", "Financial Accounting Standard", "GRI Scope Audit"],
+        answer: 1,
+        explanation: "Double Materiality evaluates two axes: Financial Materiality (inward impact on enterprise value) and Impact Materiality (outward impact on society/environment)."
+      },
+      {
+        id: 31,
+        module: 2,
+        moduleName: "Corporate Identity & ESG",
+        type: "mcq",
+        question: "In the Global Reporting Initiative (GRI) Standards, which specific code governs Occupational Health & Safety disclosures?",
+        options: ["GRI 205", "GRI 302", "GRI 305", "GRI 403"],
+        answer: 3,
+        explanation: "GRI 403 is the standard topic code for Occupational Health and Safety."
+      },
+      {
+        id: 32,
+        module: 2,
+        moduleName: "Corporate Identity & ESG",
+        type: "mcq",
+        question: "What was PT Samudera Indonesia Tbk's Morningstar Sustainalytics ESG Risk Rating category score in 2025?",
+        options: ["Severe Risk (45.0)", "High Risk (35.5)", "Medium Risk (20.5)", "Negligible Risk (5.0)"],
+        answer: 2,
+        explanation: "Samudera Indonesia maintained a 'Medium Risk' rating with a consistently improving score of 20.5 in 2025."
+      },
+      {
+        id: 33,
+        module: 2,
+        moduleName: "Corporate Identity & ESG",
+        type: "short",
+        question: "Which ISO certification standard governs Anti-Bribery Management Systems implemented in corporate governance?",
+        answer: "ISO 37001",
+        altAnswers: ["37001", "ISO37001"],
+        explanation: "ISO 37001 specifies requirements for establishing, implementing, and maintaining an Anti-Bribery Management System."
+      },
+      {
+        id: 34,
+        module: 2,
+        moduleName: "Corporate Identity & ESG",
+        type: "mcq",
+        question: "Which ISO standard certifies Information Security Management Systems (ISMS) across digitalized supply chain operations?",
+        options: ["ISO 9001", "ISO 14001", "ISO 27001", "ISO 45001"],
+        answer: 2,
+        explanation: "ISO 27001 is the international standard for information security management and data protection."
+      },
+      {
+        id: 35,
+        module: 2,
+        moduleName: "Corporate Identity & ESG",
+        type: "mcq",
+        question: "In greenhouse gas accounting, which scope covers indirect emissions occurring across a company's upstream and downstream value chain?",
+        options: ["Scope 1", "Scope 2", "Scope 3", "Scope 4"],
+        answer: 2,
+        explanation: "Scope 3 covers all indirect emissions generated in the company's broader value chain (supply chain, subcontractor fleets, business travel)."
+      },
+      {
+        id: 36,
+        module: 2,
+        moduleName: "Corporate Identity & ESG",
+        type: "tf",
+        question: "True or False: Corporate Social Responsibility (CSR) focuses outside-in on financial risks, while ESG focuses inside-out on community philanthropy.",
+        options: ["True", "False"],
+        answer: 1,
+        explanation: "False. CSR is 'Inside-Out' (company responsibility/philanthropy to society), whereas ESG is 'Outside-In' (how external environmental & social risks impact long-term business strategy)."
+      },
+      {
+        id: 37,
+        module: 2,
+        moduleName: "Corporate Identity & ESG",
+        type: "mcq",
+        question: "Which technological upgrade implemented on the vessel 'Sinar Toraja' reduced operational emissions by up to 59%?",
+        options: ["Solar sails installation", "Dual-fuel LPG technology", "Nuclear propulsion", "Hydrogen fuel cells"],
+        answer: 1,
+        explanation: "Sinar Toraja utilized dual-fuel LPG technology, successfully reducing emissions by up to 59%."
+      },
+      {
+        id: 38,
+        module: 2,
+        moduleName: "Corporate Identity & ESG",
+        type: "mcq",
+        question: "Which European Union directive enforces mandatory sustainability disclosures, replacing the older Non-Financial Reporting Directive (NFRD)?",
+        options: ["GDPR", "CSRD (Corporate Sustainability Reporting Directive)", "CBAM", "Taxonomy 2.0"],
+        answer: 1,
+        explanation: "The EU CSRD mandates comprehensive ESG reporting across companies operating or trading in European markets."
+      },
+      {
+        id: 39,
+        module: 2,
+        moduleName: "Corporate Identity & ESG",
+        type: "mcq",
+        question: "At the 'Integrated' level of ESG maturity, executive compensation is directly tied to ESG metrics, and reports receive which audit level?",
+        options: ["No Assurance", "Limited Assurance", "Reasonable Assurance", "Self-Declaration"],
+        answer: 2,
+        explanation: "Integrated ESG maturity features executive compensation tied to ESG targets and financial-grade 'Reasonable Assurance' external audits."
+      },
+      {
+        id: 40,
+        module: 2,
+        moduleName: "Corporate Identity & ESG",
+        type: "short",
+        question: "What global reporting initiative standard framework provides standard topic codes like GRI 302 for Energy and GRI 305 for Emissions?",
+        answer: "GRI",
+        altAnswers: ["Global Reporting Initiative"],
+        explanation: "The Global Reporting Initiative (GRI) provides the world's most widely used modular standards for sustainability reporting."
+      },
+
+      // =========================================================
+      // MODULE 3: Container Depot Business & Operations (41-60)
+      // =========================================================
+      {
+        id: 41,
+        module: 3,
+        moduleName: "Container Depot Business",
+        type: "mcq",
+        question: "Who is widely recognized as the 'Father of Containerization' for modernizing standardized shipping boxes in 1956?",
+        options: ["Henry Ford", "Malcolm McLean", "Kate Raworth", "Arthur Savage"],
+        answer: 1,
+        explanation: "Malcolm McLean developed the modern intermodal shipping container system, revolutionizing global trade."
+      },
+      {
+        id: 42,
+        module: 3,
+        moduleName: "Container Depot Business",
+        type: "mcq",
+        question: "Standard shipping containers are constructed from weathering steel engineered for corrosion resistance and high tensile strength, known as:",
+        options: ["Corten Steel", "Stainless Steel 316", "Galvanized Iron", "Titanium Alloy"],
+        answer: 0,
+        explanation: "Shipping containers are built from Corten steel (CORrosion resistance + TENsile strength)."
+      },
+      {
+        id: 43,
+        module: 3,
+        moduleName: "Container Depot Business",
+        type: "mcq",
+        question: "What is the internal volume capacity of a standard 40-foot High Cube (40' HC) container?",
+        options: ["33.2 cubic meters", "67.7 cubic meters", "76.3 cubic meters", "86.0 cubic meters"],
+        answer: 2,
+        explanation: "A 40' HC container holds approximately 76.3 cubic meters of cargo space."
+      },
+      {
+        id: 44,
+        module: 3,
+        moduleName: "Container Depot Business",
+        type: "tf",
+        question: "True or False: Under ISO 6346 container markings, a category letter identifier 'U' indicates a detachable trailer chassis.",
+        options: ["True", "False"],
+        answer: 1,
+        explanation: "False. In ISO 6346, 'U' = freight container, 'J' = detachable equipment, and 'Z' = trailer/chassis."
+      },
+      {
+        id: 45,
+        module: 3,
+        moduleName: "Container Depot Business",
+        type: "mcq",
+        question: "Under the ISO 6346 Check Digit algorithm, what substitute numerical value is assigned to the letter 'S'?",
+        options: ["19", "21", "30", "32"],
+        answer: 2,
+        explanation: "In the ISO 6346 letter-to-number table, S = 30 (A=10, B=12 ... S=30, U=32)."
+      },
+      {
+        id: 46,
+        module: 3,
+        moduleName: "Container Depot Business",
+        type: "short",
+        question: "What is the check digit calculated for container prefix and serial number 'SIKU 123456'?",
+        answer: "0",
+        altAnswers: ["Check digit 0"],
+        explanation: "Weighted sum calculation equals 5,544. Division by 11 yields 504 with a remainder of 0. Thus, the check digit is 0."
+      },
+      {
+        id: 47,
+        module: 3,
+        moduleName: "Container Depot Business",
+        type: "mcq",
+        question: "Which heavy equipment used in container depots has a lifting capacity of 35-45 tons and stacks containers up to 4 tiers high?",
+        options: ["Side Loader", "Reach Stacker", "Top Loader", "Forklift 10T"],
+        answer: 1,
+        explanation: "Reach Stackers handle heavy laden/empty containers with 35-45 ton capacities up to 4 tiers."
+      },
+      {
+        id: 48,
+        module: 3,
+        moduleName: "Container Depot Business",
+        type: "mcq",
+        question: "Which depot equipment specializes in empty container handling, achieving high stacking efficiency up to 7 tiers high?",
+        options: ["Reach Stacker", "Side Loader", "Crawler Crane", "Gantry Crane"],
+        answer: 1,
+        explanation: "Side Loaders (and specialized empty handlers) lift 9-10 tons and can stack empty containers up to 7 tiers high."
+      },
+      {
+        id: 49,
+        module: 3,
+        moduleName: "Container Depot Business",
+        type: "mcq",
+        question: "What represents the largest single revenue stream for container depot operations (~72% contribution)?",
+        options: ["Reefer Plugging", "Container Repairs", "Yard Operation (Storage & Handling)", "CFS Stuffing"],
+        answer: 2,
+        explanation: "Yard operations (Lift On/Off, storage fees) contribute ~72% of standard depot revenue."
+      },
+      {
+        id: 50,
+        module: 3,
+        moduleName: "Container Depot Business",
+        type: "mcq",
+        question: "What specialized procedure is conducted on refrigerated containers before release to verify cooling unit operation?",
+        options: ["EOR Audit", "Pre-Trip Inspection (PTI)", "ISO 6346 Validation", "Customs Seal Audit"],
+        answer: 1,
+        explanation: "PTI (Pre-Trip Inspection) tests the electrical and refrigeration machinery of a reefer container prior to loading."
+      },
+      {
+        id: 51,
+        module: 3,
+        moduleName: "Container Depot Business",
+        type: "tf",
+        question: "True or False: Lift On fees for export container pickups at a depot are typically billed to the Shipping Line account.",
+        options: ["True", "False"],
+        answer: 1,
+        explanation: "False. Export Lift On is billed to the Shipper Account, whereas storage and empty repositioning are billed to the Shipping Line."
+      },
+      {
+        id: 52,
+        module: 3,
+        moduleName: "Container Depot Business",
+        type: "mcq",
+        question: "Which digital tool in Samudera's MTKI depot allows trucking drivers to print repair estimates immediately upon gate inspection?",
+        options: ["IDMS", "Autogate System", "Self-Print EOR Kiosk", "STMS App"],
+        answer: 2,
+        explanation: "The Self-Print EOR (Estimate of Repair) kiosk allows immediate printing of damage/repair estimates."
+      },
+      {
+        id: 53,
+        module: 3,
+        moduleName: "Container Depot Business",
+        type: "mcq",
+        question: "Which service is categorized as a Non-Depot Service?",
+        options: ["Empty Container Storage", "Container Washing & Steam Cleaning", "Container Freight Station (CFS) Stuffing & Stripping", "Pre-Trip Inspection"],
+        answer: 2,
+        explanation: "CFS operations (stuffing/stripping cargo inside laden boxes), porta camp rentals, and laden storage are Non-Depot value-added services."
+      },
+      {
+        id: 54,
+        module: 3,
+        moduleName: "Container Depot Business",
+        type: "mcq",
+        question: "Which international organization manages and registers container owner prefix codes globally?",
+        options: ["IMO", "BIC (International Container Bureau)", "ICAO", "WCO"],
+        answer: 1,
+        explanation: "BIC (Bureau International des Containers) oversees container prefix registration under ISO 6346."
+      },
+      {
+        id: 55,
+        module: 3,
+        moduleName: "Container Depot Business",
+        type: "mcq",
+        question: "What is the energy share target for zero or near-zero GHG technology uptake by 2030 in international shipping?",
+        options: ["At least 5%, striving for 10%", "At least 25%", "50%", "100%"],
+        answer: 0,
+        explanation: "The IMO strategy targets zero/near-zero GHG fuels to represent at least 5%, striving for 10%, of energy used by shipping by 2030."
+      },
+      {
+        id: 56,
+        module: 3,
+        moduleName: "Container Depot Business",
+        type: "short",
+        question: "What 4-letter category identifier in ISO 6346 designates a container chassis trailer?",
+        answer: "Z",
+        altAnswers: ["Letter Z", "Category Z"],
+        explanation: "Category Z designates trailers and chassis equipment."
+      },
+      {
+        id: 57,
+        module: 3,
+        moduleName: "Container Depot Business",
+        type: "mcq",
+        question: "Which specialized container type is built inside a structural frame to transport liquid chemicals and food oils?",
+        options: ["Flat Rack Container", "Open Top Container", "Tank Container (ISO Tank)", "General Purpose Container"],
+        answer: 2,
+        explanation: "Tank Containers (ISO Tanks) are designed specifically for liquid bulk and hazardous chemicals."
+      },
+      {
+        id: 58,
+        module: 3,
+        moduleName: "Container Depot Business",
+        type: "tf",
+        question: "True or False: Corten steel gets its name from 'CORrosion resistance' and 'TENsile strength'.",
+        options: ["True", "False"],
+        answer: 0,
+        explanation: "True. COR-TEN stands for Corrosion resistance and Tensile strength."
+      },
+      {
+        id: 59,
+        module: 3,
+        moduleName: "Container Depot Business",
+        type: "mcq",
+        question: "What digital system is used in Samudera depots for 24-hour online FIFO-driven yard management?",
+        options: ["COINS / IDMS", "SAP S/4HANA", "Oracle NetSuite", "WMS Logistics Pro"],
+        answer: 0,
+        explanation: "IDMS / COINS is the Integrated Depot Management System used for yard automation."
+      },
+      {
+        id: 60,
+        module: 3,
+        moduleName: "Container Depot Business",
+        type: "mcq",
+        question: "Under standard depot cost structures, which item represents a Variable Cost?",
+        options: ["Land lease payment", "Handling equipment depreciation", "Material and labor for container repairs", "Yard security salaries"],
+        answer: 2,
+        explanation: "Repair materials and labor vary directly with container damage volume, making them variable operational costs."
+      },
+
+      // =========================================================
+      // MODULE 4: Project Logistics & Heavy Haulage (61-80)
+      // =========================================================
+      {
+        id: 61,
+        module: 4,
+        moduleName: "Project Logistics & Heavy Haulage",
+        type: "mcq",
+        question: "How does Project Logistics fundamentally differ from Retail Logistics?",
+        options: [
+          "Project Logistics handles uniform small parcels on fixed schedules",
+          "Project Logistics involves multi-location, variable timelines, multimodal execution, and abnormal/varied cargo",
+          "Project Logistics only uses single-mode road transport",
+          "Project Logistics does not require customs documentation"
+        ],
+        answer: 1,
+        explanation: "Project Logistics handles high-value, oversized (abnormal) cargo across custom routes and variable timelines using multimodal solutions."
+      },
+      {
+        id: 62,
+        module: 4,
+        moduleName: "Project Logistics & Heavy Haulage",
+        type: "mcq",
+        question: "In heavy industrial project structures, what does 'EPC Contractor' stand for?",
+        options: [
+          "Export Purchasing & Custom Contractor",
+          "Engineering, Procurement, and Construction Contractor",
+          "Electrical Power & Control Contractor",
+          "Equipment Packaging & Delivery Company"
+        ],
+        answer: 1,
+        explanation: "EPC stands for Engineering, Procurement, and Construction—the prime entity building industrial plants."
+      },
+      {
+        id: 63,
+        module: 4,
+        moduleName: "Project Logistics & Heavy Haulage",
+        type: "mcq",
+        question: "Heavy un-containerized cargo items like turbines, generators, transformers, or steel pipes are categorized as:",
+        options: ["Liquid Bulk", "Dry Bulk", "Break-Bulk / General Cargo", "Containerized FMCG"],
+        answer: 2,
+        explanation: "Oversized machinery and individual non-containerized units are classified as Break-Bulk cargo."
+      },
+      {
+        id: 64,
+        module: 4,
+        moduleName: "Project Logistics & Heavy Haulage",
+        type: "tf",
+        question: "True or False: Crawler Cranes can be driven economically over public highways between long-distance job sites without disassembly.",
+        options: ["True", "False"],
+        answer: 1,
+        explanation: "False. Crawler cranes require heavy transport trucks to relocate between job sites due to track travel restrictions on public roads."
+      },
+      {
+        id: 65,
+        module: 4,
+        moduleName: "Project Logistics & Heavy Haulage",
+        type: "mcq",
+        question: "What self-propelled modular transporter equipment features multi-directional hydraulic steering and 180-ton capacity per module?",
+        options: ["Prime Mover MAN", "SPMT (Self-Propelled Modular Transporter)", "Wing Box Truck", "Flatbed Trailer"],
+        answer: 1,
+        explanation: "SPMTs are self-propelled heavy-drive hydraulic platforms designed for moving massive industrial modules."
+      },
+      {
+        id: 66,
+        module: 4,
+        moduleName: "Project Logistics & Heavy Haulage",
+        type: "short",
+        question: "What is the standard payload capacity per axle line for Goldhofer THP-SL modular trailers?",
+        answer: "25 Ton",
+        altAnswers: ["25 Tons", "25 ton", "25T"],
+        explanation: "Goldhofer THP-SL heavy modules feature a rated capacity of 25 Tons per axle line."
+      },
+      {
+        id: 67,
+        module: 4,
+        moduleName: "Project Logistics & Heavy Haulage",
+        type: "mcq",
+        question: "Which shallow-draft vessel type features a bow ramp for landing heavy vehicles directly onto riverbanks or beaching points?",
+        options: ["Container Vessel", "LCT (Landing Craft Tank)", "Oil Tanker", "Capesize Bulk Carrier"],
+        answer: 1,
+        explanation: "Landing Craft Tank (LCT) vessels deploy bow ramps to land heavy equipment directly on unprepared beaching points."
+      },
+      {
+        id: 68,
+        module: 4,
+        moduleName: "Project Logistics & Heavy Haulage",
+        type: "mcq",
+        question: "What digital tool was developed by PT Masaji Prayasa Cargo (Samudera) to standardize project cost estimations and transport simulations?",
+        options: ["SPLS (Samudera Project Logistics System)", "AutoCAD 3D", "NetSuite Project", "Easy-Load Mobile"],
+        answer: 0,
+        explanation: "SPLS is Samudera's proprietary web-based platform for project feasibility, cost estimation, and transport calculations."
+      },
+      {
+        id: 69,
+        module: 4,
+        moduleName: "Project Logistics & Heavy Haulage",
+        type: "mcq",
+        question: "Which Prime Mover truck model in Samudera's heavy fleet features a 6x6 drive axle configuration generating 480 HP?",
+        options: ["Hino 500", "MAN TGS 40.480", "Isuzu Giga", "Mercedes Axor"],
+        answer: 1,
+        explanation: "The MAN TGS 40.480 6x6 is a heavy-duty prime mover capable of pulling multi-axle trailer trains."
+      },
+      {
+        id: 70,
+        module: 4,
+        moduleName: "Project Logistics & Heavy Haulage",
+        type: "tf",
+        question: "True or False: For a heavy haulage route to be verified as safe, Pulling Forces Supply (PFS) must exceed Pulling Forces Demand (PFD).",
+        options: ["True", "False"],
+        answer: 0,
+        explanation: "True. PFS > PFD ensures prime movers have sufficient tractive force to overcome grade and rolling resistance."
+      },
+      {
+        id: 71,
+        module: 4,
+        moduleName: "Project Logistics & Heavy Haulage",
+        type: "mcq",
+        question: "During heavy trailer maneuverability analysis, what turning parameters are evaluated to prevent road obstruction?",
+        options: ["Inner Radius, Outer Radius, and Ring Area", "Engine RPM and tire pressure only", "GPS latitude and longitude", "Barge draft depth"],
+        answer: 0,
+        explanation: "Trailer swept paths require analyzing Inner Radius, Outer Radius, and Ring Area swept during sharp turns."
+      },
+      {
+        id: 72,
+        module: 4,
+        moduleName: "Project Logistics & Heavy Haulage",
+        type: "short",
+        question: "A standard deck barge measuring approximately 70.1 meters in length and 18.3 meters in breadth is commonly referred to in feet as a:",
+        answer: "230 FT",
+        altAnswers: ["230FT", "230 Feet", "230 ft"],
+        explanation: "A 230 FT deck barge measures 70.1m x 18.3m with a cargo capacity of ~2,500 m3 / 4,000 tons."
+      },
+      {
+        id: 73,
+        module: 4,
+        moduleName: "Project Logistics & Heavy Haulage",
+        type: "mcq",
+        question: "Why are pontoon ballast systems used during Ship-to-Barge (STS) heavy cargo transfers?",
+        options: [
+          "To speed up ocean sailing velocity",
+          "To compensate for weight shifts and maintain barge stability and deck level",
+          "To clean container hulls",
+          "To reduce fuel consumption"
+        ],
+        answer: 1,
+        explanation: "Ballast pumps shift water between pontoon tanks to keep the barge deck level as heavy cargo is transferred."
+      },
+      {
+        id: 74,
+        module: 4,
+        moduleName: "Project Logistics & Heavy Haulage",
+        type: "mcq",
+        question: "In lashing and securing engineering, what coefficient of friction (\u03bc) is standard for steel cargo resting on rubber friction mats?",
+        options: ["0.1", "0.3", "0.7", "1.0"],
+        answer: 1,
+        explanation: "A friction coefficient of \u03bc = 0.3 is standard for steel-on-rubber interfaces during lashing calculations."
+      },
+      {
+        id: 75,
+        module: 4,
+        moduleName: "Project Logistics & Heavy Haulage",
+        type: "tf",
+        question: "True or False: Multi-axle hydraulic suspension allows equal weight distribution across all axle lines even when traversing uneven roads.",
+        options: ["True", "False"],
+        answer: 0,
+        explanation: "True. Hydraulic axle compensation maintains balanced ground pressure across all wheel sets."
+      },
+      {
+        id: 76,
+        module: 4,
+        moduleName: "Project Logistics & Heavy Haulage",
+        type: "mcq",
+        question: "Which software tool is utilized to analyze trailer axle loads and verify that cargo bending moments remain within safe structural limits?",
+        options: ["easyLOAD", "WMS Pro", "STMS Mobile", "ORACLE NetSuite"],
+        answer: 0,
+        explanation: "easyLOAD is specialized software by Goldhofer for trailer load distribution and structural bending verification."
+      },
+      {
+        id: 77,
+        module: 4,
+        moduleName: "Project Logistics & Heavy Haulage",
+        type: "mcq",
+        question: "In Indonesia's National Strategic Projects (PSN) masterplan, which infrastructure sector contains the highest number of individual projects?",
+        options: ["Ports (10)", "Roads / Highway Bridges (74)", "Airports (6)", "Dams (54)"],
+        answer: 1,
+        explanation: "Road infrastructure accounts for 74 projects in the national strategic list."
+      },
+      {
+        id: 78,
+        module: 4,
+        moduleName: "Project Logistics & Heavy Haulage",
+        type: "short",
+        question: "What term describes coupling two multi-axle trailers side-by-side to double the platform width for ultra-heavy loads?",
+        answer: "Full Parallel",
+        altAnswers: ["Parallel", "Parallel Configuration"],
+        explanation: "Full Parallel configuration connects modular trailers side-by-side to increase width and load capacity."
+      },
+      {
+        id: 79,
+        module: 4,
+        moduleName: "Project Logistics & Heavy Haulage",
+        type: "mcq",
+        question: "What is the purpose of constructing a temporary Beaching Point during heavy project operations?",
+        options: [
+          "To park crew transport buses",
+          "To discharge heavy cargo from LCTs/barges in remote coastal areas lacking port jetties",
+          "To store empty container inventory",
+          "To perform engine oil changes"
+        ],
+        answer: 1,
+        explanation: "Beaching points serve as temporary engineered shorelines to roll off heavy machinery from LCTs in remote sites."
+      },
+      {
+        id: 80,
+        module: 4,
+        moduleName: "Project Logistics & Heavy Haulage",
+        type: "mcq",
+        question: "In project logistics contracts, who is responsible for final handover acceptance upon successful plant installation?",
+        options: ["Project Owner", "Local Forwarder", "Subcontractor Driver", "Customs Agent"],
+        answer: 0,
+        explanation: "The Project Owner evaluates and accepts the completed facility from EPC contractors."
+      },
+
+      // =========================================================
+      // MODULE 5: Inland Transport, HSSE & Regulatory Compliance (81-100)
+      // =========================================================
+      {
+        id: 81,
+        module: 5,
+        moduleName: "Inland Transport & Compliance",
+        type: "mcq",
+        question: "Which of the following forms one of the 4 Key Pillars of HSSE Road Transport Management?",
+        options: [
+          "Journey Management",
+          "Marketing Management",
+          "Tax Depreciation Management",
+          "Customs Tariff Mapping"
+        ],
+        answer: 0,
+        explanation: "The 4 HSSE Trucking Pillars are: 1. HSSE Mgmt, 2. Vehicle Mgmt, 3. Driver Mgmt, and 4. Journey Mgmt."
+      },
+      {
+        id: 82,
+        module: 5,
+        moduleName: "Inland Transport & Compliance",
+        type: "mcq",
+        question: "In Indonesia, commercial drivers operating heavy truck combinations with GVW over 3,500 kg must possess which driving license category?",
+        options: ["SIM A", "SIM B1 Umum", "SIM BII Umum", "SIM C"],
+        answer: 2,
+        explanation: "SIM BII Umum is mandatory for heavy articulated trucks and tractor-trailers over 3,500 kg."
+      },
+      {
+        id: 83,
+        module: 5,
+        moduleName: "Inland Transport & Compliance",
+        type: "mcq",
+        question: "Under Indonesian Law UU No. 32/2009 (Art. 102), what is the penal sanction for managing or transporting Dangerous Goods/B3 without required environmental permits?",
+        options: [
+          "Oral warning only",
+          "Imprisonment for 1 to 3 years and fines ranging from IDR 1 Billion to 3 Billion",
+          "A fixed fine of IDR 10 Million",
+          "Vehicle confiscation without fines"
+        ],
+        answer: 1,
+        explanation: "UU 32/2009 Article 102 imposes 1-3 years imprisonment and IDR 1B to 3B fines for unauthorized B3 transport."
+      },
+      {
+        id: 84,
+        module: 5,
+        moduleName: "Inland Transport & Compliance",
+        type: "tf",
+        question: "True or False: Indonesian Government Regulation PP No. 74/2001 serves as the foundational regulation for Hazardous Material (B3) Management.",
+        options: ["True", "False"],
+        answer: 0,
+        explanation: "True. PP No. 74/2001 strictly governs registration, notification, and safety handling of B3 dangerous goods."
+      },
+      {
+        id: 85,
+        module: 5,
+        moduleName: "Inland Transport & Compliance",
+        type: "mcq",
+        question: "What is the global regulatory code published by the IMO governing maritime transport of dangerous goods in packaged form?",
+        options: ["GHS Code", "IMDG Code (International Maritime Dangerous Goods Code)", "ADR Regulation", "ICAO TI"],
+        answer: 1,
+        explanation: "The IMDG Code standardizes classification, packaging, and stowage for dangerous cargo transported at sea."
+      },
+      {
+        id: 86,
+        module: 5,
+        moduleName: "Inland Transport & Compliance",
+        type: "short",
+        question: "What Indonesian law mandates that all products circulating in Indonesia—including logistics and distribution services—must maintain Halal assurance?",
+        answer: "UU No. 33 Tahun 2014",
+        altAnswers: ["UU 33/2014", "UU No 33 Tahun 2014", "UU 33 2014", "Law No 33 2014"],
+        explanation: "UU No. 33 Tahun 2014 requires mandatory Halal certification for products and logistics supply chain services."
+      },
+      {
+        id: 87,
+        module: 5,
+        moduleName: "Inland Transport & Compliance",
+        type: "mcq",
+        question: "Under PP No. 42/2024, what operational rule is strictly required for Halal Logistics service providers?",
+        options: [
+          "Mixing non-halal and halal goods to optimize truck space",
+          "Physical segregation and barrier prevention against contamination during storage, transport, and delivery",
+          "Using non-refrigerated trucks only",
+          "Waiving customs inspection"
+        ],
+        answer: 1,
+        explanation: "Halal logistics mandates strict physical segregation during storage, loading, and transit to prevent cross-contamination."
+      },
+      {
+        id: 88,
+        module: 5,
+        moduleName: "Inland Transport & Compliance",
+        type: "mcq",
+        question: "Failure to maintain Halal product integrity after obtaining certification carries criminal penalties under Article 56 of UU 33/2014 up to:",
+        options: ["1 month jail", "1 year jail and IDR 100M fine", "5 years imprisonment and fine up to IDR 2 Billion", "No penalty"],
+        answer: 2,
+        explanation: "Intentionally breaching Halal product integrity after certification carries up to 5 years imprisonment and IDR 2B in fines."
+      },
+      {
+        id: 89,
+        module: 5,
+        moduleName: "Inland Transport & Compliance",
+        type: "mcq",
+        question: "In Indonesian trucking enforcement, what does the acronym 'ODOL' stand for?",
+        options: ["Over Dimension Over Load", "Off Duty On Highway Logistics", "Outer Delivery Ocean Line", "One Driver One License"],
+        answer: 0,
+        explanation: "ODOL stands for Over Dimension Over Load—a major traffic and road infrastructure risk targeted for zero enforcement."
+      },
+      {
+        id: 90,
+        module: 5,
+        moduleName: "Inland Transport & Compliance",
+        type: "tf",
+        question: "True or False: Under Article 316 of UU LAJ, operating an Over Dimension vehicle is legally classified as a criminal traffic offense.",
+        options: ["True", "False"],
+        answer: 0,
+        explanation: "True. Over Dimension is classified as a traffic crime (kejahatan lalu lintas) under Indonesian transport law."
+      },
+      {
+        id: 91,
+        module: 5,
+        moduleName: "Inland Transport & Compliance",
+        type: "mcq",
+        question: "What primary operational limitation currently hinders widespread electric truck adoption in heavy long-haul logistics?",
+        options: [
+          "Electric trucks cannot run in rain",
+          "Heavy battery weight limiting legal payload and long recharging durations",
+          "Lack of driver steering wheels",
+          "High fuel cost"
+        ],
+        answer: 1,
+        explanation: "Heavy battery packs decrease legal cargo payload capacity, and charging downtime limits long-haul utilization."
+      },
+      {
+        id: 92,
+        module: 5,
+        moduleName: "Inland Transport & Compliance",
+        type: "short",
+        question: "Which ISO standard certifies Occupational Health and Safety Management Systems across trucking fleet operations?",
+        answer: "ISO 45001",
+        altAnswers: ["45001", "ISO45001"],
+        explanation: "ISO 45001 specifies requirements for occupational health and safety (OH&S) management."
+      },
+      {
+        id: 93,
+        module: 5,
+        moduleName: "Inland Transport & Compliance",
+        type: "mcq",
+        question: "Which ISO standard certifies Environmental Management Systems for inland transportation pools?",
+        options: ["ISO 9001", "ISO 14001", "ISO 22000", "ISO 37001"],
+        answer: 1,
+        explanation: "ISO 14001 specifies environmental management system standards for reducing fleet emissions and operational waste."
+      },
+      {
+        id: 94,
+        module: 5,
+        moduleName: "Inland Transport & Compliance",
+        type: "mcq",
+        question: "Unseeable areas around a heavy tractor-trailer where smaller vehicles or pedestrians are hidden from the driver's mirrors are called:",
+        options: ["Safety Corridors", "Blind Spots", "Green Zones", "Buffer Bays"],
+        answer: 1,
+        explanation: "Blind spots are critical areas around heavy vehicles where driver visibility is obstructed."
+      },
+      {
+        id: 95,
+        module: 5,
+        moduleName: "Inland Transport & Compliance",
+        type: "tf",
+        question: "True or False: Halal certification for transport services covers trucking fleet facilities in addition to warehouse storage.",
+        options: ["True", "False"],
+        answer: 0,
+        explanation: "True. PT Perusahaan Angkutan Darat Samudera Perdana holds official BPJPH Halal distribution certificates across its fleet pools."
+      },
+      {
+        id: 96,
+        module: 5,
+        moduleName: "Inland Transport & Compliance",
+        type: "mcq",
+        question: "What real-time application software is utilized by Samudera Inland Transport drivers for order status and trip execution?",
+        options: ["STMS Driver App", "Uber Freight", "IDMS Depot", "SPLS Web"],
+        answer: 0,
+        explanation: "STMS (Samudera Transport Management System) Driver App manages real-time dispatch and driver tracking."
+      },
+      {
+        id: 97,
+        module: 5,
+        moduleName: "Inland Transport & Compliance",
+        type: "mcq",
+        question: "Road freight transport accounts for approximately what share of total transportation sector greenhouse gas emissions?",
+        options: ["10%", "30%", "50%", "Over 90%"],
+        answer: 3,
+        explanation: "Inland road transport accounts for over 90% of total transport sector GHG emissions."
+      },
+      {
+        id: 98,
+        module: 5,
+        moduleName: "Inland Transport & Compliance",
+        type: "mcq",
+        question: "Which safety check item is mandatory during daily pre-dispatch vehicle inspections?",
+        options: ["Tire tread & inflation pressure", "Brake responsiveness and fluid levels", "Windshield wipers and emergency APAR extinguisher", "All of the above"],
+        answer: 3,
+        explanation: "All listed vehicle safety equipment must pass inspection prior to dispatch."
+      },
+      {
+        id: 99,
+        module: 5,
+        moduleName: "Inland Transport & Compliance",
+        type: "short",
+        question: "What government body under the Ministry of Religious Affairs issues official Halal Certificates in Indonesia?",
+        answer: "BPJPH",
+        altAnswers: ["Badan Penyelenggara Jaminan Produk Halal"],
+        explanation: "BPJPH (Badan Penyelenggara Jaminan Produk Halal) is the official government authority issuing Halal certificates."
+      },
+      {
+        id: 100,
+        module: 5,
+        moduleName: "Inland Transport & Compliance",
+        type: "mcq",
+        question: "What is the primary objective of Defensive Driving training for commercial truck drivers?",
+        options: [
+          "To complete trips at maximum possible speed",
+          "To anticipate potential road hazards, prevent accidents, and optimize fuel efficiency",
+          "To bypass weigh station checks",
+          "To eliminate engine maintenance"
+        ],
+        answer: 1,
+        explanation: "Defensive driving trains drivers to anticipate hazards, drive cautiously, save lives, and lower fleet wear/fuel burn."
+      },
+
+      // =========================================================
+      // MODULE 6: Warehousing, Distribution & Cold Chain (101-120)
+      // =========================================================
+      {
+        id: 101,
+        module: 6,
+        moduleName: "Warehousing & Cold Chain",
+        type: "mcq",
+        question: "What document/data verification starts the warehouse inbound receiving process prior to truck arrival?",
+        options: ["ASN (Advanced Shipping Notice)", "Customs Tax Invoice", "Bill of Lading Title", "Driver SIM Card"],
+        answer: 0,
+        explanation: "Inbound receiving starts with verifying the Advanced Shipping Notice (ASN) to schedule bay dock assignment."
+      },
+      {
+        id: 102,
+        module: 6,
+        moduleName: "Warehousing & Cold Chain",
+        type: "mcq",
+        question: "Which warehouse picking technology uses visual LED displays on storage racks to direct pickers to exact bin locations?",
+        options: ["Pick-to-Light", "Pick-by-Voice", "Barcode Tunnel", "ASRS Crane"],
+        answer: 0,
+        explanation: "Pick-to-Light systems illuminate LED lights on shelf locations with exact picking quantities."
+      },
+      {
+        id: 103,
+        module: 6,
+        moduleName: "Warehousing & Cold Chain",
+        type: "mcq",
+        question: "What automated storage technology uses computer-controlled vertical cranes to retrieve pallets without human forklift operators?",
+        options: ["Autonomous Mobile Robot (AMR)", "ASRS (Automated Storage and Retrieval System)", "Conveyor System", "Mother-Child Shuttle"],
+        answer: 1,
+        explanation: "ASRS uses automated cranes and high-density racking to store and retrieve pallets automatically."
+      },
+      {
+        id: 104,
+        module: 6,
+        moduleName: "Warehousing & Cold Chain",
+        type: "tf",
+        question: "True or False: Autonomous Mobile Robots (AMRs) require physical magnetic floor strips to navigate warehouse aisles.",
+        options: ["True", "False"],
+        answer: 1,
+        explanation: "False. AGVs historically required floor tracks, whereas modern AMRs use onboard LiDAR sensors and SLAM mapping to navigate dynamically."
+      },
+      {
+        id: 105,
+        module: 6,
+        moduleName: "Warehousing & Cold Chain",
+        type: "mcq",
+        question: "Which stock rotation rule is strictly mandatory when managing pharmaceutical and food perishable inventory?",
+        options: ["LIFO (Last In, First Out)", "FEFO (First Expired, First Out)", "FIFO (First In, First Out)", "Random Batch Selection"],
+        answer: 1,
+        explanation: "FEFO (First Expired, First Out) ensures items closest to expiration are picked and dispatched first."
+      },
+      {
+        id: 106,
+        module: 6,
+        moduleName: "Warehousing & Cold Chain",
+        type: "short",
+        question: "Which BPOM regulation mandates periodic temperature mapping for pharmaceutical cold storage facilities and reefer vehicles?",
+        answer: "Peraturan BPOM No. 6 Tahun 2024",
+        altAnswers: ["BPOM No 6 Tahun 2024", "BPOM No. 6/2024", "PerBPOM No 6 2024", "BPOM No 6 2024"],
+        explanation: "Peraturan BPOM No. 6 Tahun 2024 mandates temperature mapping qualifications for all drug cold rooms and reefer fleets."
+      },
+      {
+        id: 107,
+        module: 6,
+        moduleName: "Warehousing & Cold Chain",
+        type: "mcq",
+        question: "Which WHO global technical report series standard governs thermal mapping of storage areas?",
+        options: ["WHO TRS No. 961, Annex 9", "WHO ISO 9001", "WHO GDP 101", "WHO HACCP 2020"],
+        answer: 0,
+        explanation: "WHO TRS No. 961, Annex 9 / Supplement 8 standardizes temperature mapping across healthcare cold storage."
+      },
+      {
+        id: 108,
+        module: 6,
+        moduleName: "Warehousing & Cold Chain",
+        type: "mcq",
+        question: "In Cold Chain Facility Management, what is covered under Pillar 1 (Sustainable Temperature Control)?",
+        options: [
+          "Dual refrigeration systems, high thermal insulation, 24/7 automated monitoring, and periodic thermal mapping",
+          "Driver licensing renewals",
+          "Social media publishing",
+          "Barge pontoon ballasting"
+        ],
+        answer: 0,
+        explanation: "Pillar 1 focuses on infrastructure resilience: dual cooling units, thermal insulation, automated sensors, and mapping."
+      },
+      {
+        id: 109,
+        module: 6,
+        moduleName: "Warehousing & Cold Chain",
+        type: "mcq",
+        question: "Which mandatory certification governs Good Manufacturing Practices for Cosmetic product storage and packaging facilities in Indonesia?",
+        options: ["CPAKB", "CPKB", "SMKPO", "ISO 27001"],
+        answer: 1,
+        explanation: "CPKB (Cara Pembuatan Kosmetik yang Baik) is required for cosmetic manufacturing and packaging logistics."
+      },
+      {
+        id: 110,
+        module: 6,
+        moduleName: "Warehousing & Cold Chain",
+        type: "tf",
+        question: "True or False: CPAKB certification specifically applies to Good Distribution Practices for Medical Devices.",
+        options: ["True", "False"],
+        answer: 0,
+        explanation: "True. CPAKB (Cara Penyaluran Alat Kesehatan yang Baik) certifies medical device storage and distribution."
+      },
+      {
+        id: 111,
+        module: 6,
+        moduleName: "Warehousing & Cold Chain",
+        type: "mcq",
+        question: "What BPOM food safety certification evaluates processed food security systems in warehouse distribution facilities?",
+        options: ["SMKPO", "CPKB", "CPAKB", "GRI 305"],
+        answer: 0,
+        explanation: "SMKPO (Sistem Manajemen Keamanan Pangan Olahan) certifies processed food safety management in distribution."
+      },
+      {
+        id: 112,
+        module: 6,
+        moduleName: "Warehousing & Cold Chain",
+        type: "short",
+        question: "What digital system monitors truck turn-around, container gate checks, and dock loading dock performance in real time?",
+        answer: "YMS",
+        altAnswers: ["Yard Management System"],
+        explanation: "YMS (Yard Management System) dashboards track trailer traffic, dock scheduling, and gate turn-around times."
+      },
+      {
+        id: 113,
+        module: 6,
+        moduleName: "Warehousing & Cold Chain",
+        type: "mcq",
+        question: "Which enterprise software platform powers warehouse inventory management across Samudera Logistics Services facilities?",
+        options: ["Infor WMS", "Excel Spreadsheet", "AutoCAD 2026", "IDMS Depot"],
+        answer: 0,
+        explanation: "Infor WMS is the enterprise Warehouse Management System managing inventory, put-away, and picking waves."
+      },
+      {
+        id: 114,
+        module: 6,
+        moduleName: "Warehousing & Cold Chain",
+        type: "mcq",
+        question: "In 4PL Warehouse Operations (such as SLS managing Bayer or HM Sampoerna sites), what is the scope of the logistics provider?",
+        options: [
+          "Only sweeping the warehouse floor",
+          "Comprehensive end-to-end management including facility ops, transport, value-added services, systems integration, and compliance",
+          "Renting forklift equipment without operators",
+          "Subcontracting all responsibility without governance"
+        ],
+        answer: 1,
+        explanation: "In a 4PL model, the provider acts as the strategic Lead Logistics Partner managing facilities, technology, transport, and performance."
+      },
+      {
+        id: 115,
+        module: 6,
+        moduleName: "Warehousing & Cold Chain",
+        type: "mcq",
+        question: "In warehouse automation performance analytics, what does 'MTBF' measure?",
+        options: [
+          "Maximum Total Box Frequency",
+          "Mean Time Between Failures (equipment reliability metric)",
+          "Monthly Transport Budget Forecast",
+          "Material Temperature Buffer Factor"
+        ],
+        answer: 1,
+        explanation: "MTBF (Mean Time Between Failures) measures the average operational reliability time between system breakdowns."
+      },
+      {
+        id: 116,
+        module: 6,
+        moduleName: "Warehousing & Cold Chain",
+        type: "tf",
+        question: "True or False: Modern cold chain warehouses use IoT calibrated sensors with real-time automated dashboards and continuous audit trails.",
+        options: ["True", "False"],
+        answer: 0,
+        explanation: "True. Cold chain management relies on 24/7 IoT temperature sensors and digital audit logs to ensure quality compliance."
+      },
+      {
+        id: 117,
+        module: 6,
+        moduleName: "Warehousing & Cold Chain",
+        type: "mcq",
+        question: "What is the primary function of a warehouse Staging Area during inbound receiving?",
+        options: [
+          "Long-term dead stock storage",
+          "Temporary holding area for rapid temperature verification, ASN physical inspection, and barcode scanning before put-away",
+          "Employee cafeteria space",
+          "Truck oil maintenance"
+        ],
+        answer: 1,
+        explanation: "Staging areas receive incoming goods for rapid inspection, barcode scanning, and temperature checks prior to systematic put-away."
+      },
+      {
+        id: 118,
+        module: 6,
+        moduleName: "Warehousing & Cold Chain",
+        type: "mcq",
+        question: "A dedicated warehouse area physically segregated to prevent non-halal cross-contamination is designated as a:",
+        options: ["Free Trade Zone", "Halal Integrity Zone", "Hazardous Waste Pit", "Cross-Dock Bay"],
+        answer: 1,
+        explanation: "Halal Integrity Zones enforce strict physical separation, labeling, and contamination barriers."
+      },
+      {
+        id: 119,
+        module: 6,
+        moduleName: "Warehousing & Cold Chain",
+        type: "mcq",
+        question: "What is the approximate total pallet position capacity across PT Samudera Logistics Services warehouse network?",
+        options: ["10,000 pallet positions", "50,000 pallet positions", "120,000 pallet positions", "Over 250,000 pallet positions"],
+        answer: 3,
+        explanation: "Samudera Logistics Services operates a vast network totaling over 250,000 pallet positions across sites in Cikarang, Cimanggis, Karawang, Cileungsi, etc."
+      },
+      {
+        id: 120,
+        module: 6,
+        moduleName: "Warehousing & Cold Chain",
+        type: "short",
+        question: "What digital checklist process replaced paper logbooks for Material Handling Equipment (forklifts, reach trucks) inspection in Samudera facilities?",
+        answer: "MHE Checklist",
+        altAnswers: ["Digital MHE Checklist", "MHE Digital Checklist", "QR MHE Checklist"],
+        explanation: "Digitized mobile MHE checklists (scanned via QR code) ensure 100% equipment safety compliance and instant maintenance reporting."
+      },
+
+      // =========================================================
+      // MODULE 7: OFFICIAL PRE/POST TEST ASSESSMENTS (121-170)
+      // Extracts & Verified Corrections from Official Test Files
+      // =========================================================
+
+      // --- Container Depot Official Test (121-130) ---
+      {
+        id: 121,
+        module: 7,
+        moduleName: "Official Pre/Post Tests",
+        type: "mcq",
+        question: "[Depot Test] What primary material is standard intermodal shipping containers constructed from?",
+        options: [
+          "Stainless Steel 304",
+          "Corten Steel (Weathering Steel)",
+          "Aluminum Alloy 6061",
+          "Reinforced Structural Carbon Steel"
+        ],
+        answer: 1,
+        explanation: "Corrected Answer: Corten steel (weathering steel) is the universal ISO standard material for containers due to its high tensile strength and rust-passivating atmospheric corrosion resistance."
+      },
+      {
+        id: 122,
+        module: 7,
+        moduleName: "Official Pre/Post Tests",
+        type: "mcq",
+        question: "[Depot Test] Which international organization manages and registers container owner codes under Standard ISO 6346?",
+        options: [
+          "International Maritime Organization (IMO)",
+          "International Container Bureau (BIC)",
+          "World Shipping Council (WSC)",
+          "International Organization for Standardization (ISO)"
+        ],
+        answer: 1,
+        explanation: "Corrected Answer: BIC (Bureau International des Containers) is the global official body appointed to assign and register 3-letter owner prefix codes worldwide."
+      },
+      {
+        id: 123,
+        module: 7,
+        moduleName: "Official Pre/Post Tests",
+        type: "mcq",
+        question: "[Depot Test] In a standard container identification prefix (e.g., SIKU or KMTU), what does the 4th letter 'U' specify?",
+        options: [
+          "Universal freight container",
+          "Detachable container equipment",
+          "Freight container identifier",
+          "Trailer and chassis identifier"
+        ],
+        answer: 2,
+        explanation: "Corrected Answer: Under ISO 6346, the 4th capital letter designates category: 'U' = freight container, 'J' = detachable container equipment, and 'Z' = trailer/chassis."
+      },
+      {
+        id: 124,
+        module: 7,
+        moduleName: "Official Pre/Post Tests",
+        type: "mcq",
+        question: "[Depot Test] How many digits make up a container's unique serial number under ISO 6346?",
+        options: ["5 digits", "6 digits", "7 digits", "8 digits"],
+        answer: 1,
+        explanation: "Verified Correct: A standard container identifier consists of 4 letters (owner prefix + category U), 6 numerical serial digits, and 1 check digit."
+      },
+      {
+        id: 125,
+        module: 7,
+        moduleName: "Official Pre/Post Tests",
+        type: "mcq",
+        question: "[Depot Test] What is the specific role of the 1-digit Check Digit at the end of a container identification number?",
+        options: [
+          "To indicate maximum payload capacity",
+          "To verify the manufacturing year",
+          "To mathematically validate the number and catch typos or fraud",
+          "To encode origin port security clearance"
+        ],
+        answer: 2,
+        explanation: "Corrected Answer: The check digit uses a modulo-11 mathematical algorithm to validate the prefix and serial numbers during electronic data entry to eliminate typos."
+      },
+      {
+        id: 126,
+        module: 7,
+        moduleName: "Official Pre/Post Tests",
+        type: "mcq",
+        question: "[Depot Test] Which safety plate attached to containers acts as its mandatory identity and safety certificate?",
+        options: [
+          "ISO 9001 Compliance Tag",
+          "CSC (Convention for Safe Containers) Approval Plate",
+          "BIC Registration Certificate",
+          "IMO Hazardous Goods Badge"
+        ],
+        answer: 1,
+        explanation: "Corrected Answer: The CSC (International Convention for Safe Containers) Approval Plate is legally mandated on container doors showing structural strength, gross mass, and inspection status."
+      },
+      {
+        id: 127,
+        module: 7,
+        moduleName: "Official Pre/Post Tests",
+        type: "mcq",
+        question: "[Depot Test] Which set of industry analogies best describes the core operational functions of a container depot?",
+        options: [
+          "Bank + Customs + Warehouse",
+          "Hotel + Hospital + Car Wash",
+          "Factory + Repair Shop + Fuel Station",
+          "Terminal + Parking Lot + Assembly Line"
+        ],
+        answer: 1,
+        explanation: "Verified Correct: Depots store empty containers (Hotel), perform maintenance and structural repairs (Hospital), and execute chemical/steam cleaning (Car Wash)."
+      },
+      {
+        id: 128,
+        module: 7,
+        moduleName: "Official Pre/Post Tests",
+        type: "mcq",
+        question: "[Depot Test] During the survey at Gate-In, what does the condition grade 'AC' indicate?",
+        options: ["Needs Cleaning", "Needs Repair", "Available Clean", "Altered Cargo Status"],
+        answer: 2,
+        explanation: "Corrected Answer: Gate-in survey grades: AC = Available Clean (ready for immediate release), AU = Available Unclean (needs washing), DN = Damage (requires M&R)."
+      },
+      {
+        id: 129,
+        module: 7,
+        moduleName: "Official Pre/Post Tests",
+        type: "mcq",
+        question: "[Depot Test] Which physical document is issued and printed at the Gate-Out checkpoint upon container movement?",
+        options: [
+          "CRO (Container Release Order)",
+          "D/O (Delivery Order)",
+          "EIR (Equipment Interchange Receipt)",
+          "EOR (Estimate of Repair)"
+        ],
+        answer: 2,
+        explanation: "Verified Correct: The Equipment Interchange Receipt (EIR) is printed at gate-out/gate-in confirming container movement, driver details, and damage status."
+      },
+      {
+        id: 130,
+        module: 7,
+        moduleName: "Official Pre/Post Tests",
+        type: "mcq",
+        question: "[Depot Test] Who issues the original Delivery Order (D/O) that initiates the documentation track for releasing empty containers?",
+        options: ["The Container Depot", "The Shipping Line", "Customs Authority", "The Trucking Company"],
+        answer: 1,
+        explanation: "Verified Correct: The Shipping Line issues the original Delivery Order (D/O) to the cargo owner/consignee, authorizing depot release."
+      },
+
+      // --- ESG Official Test (131-140) ---
+      {
+        id: 131,
+        module: 7,
+        moduleName: "Official Pre/Post Tests",
+        type: "mcq",
+        question: "[ESG Test] Menurut laporan PBB Brundtland Report (1987), apa definisi resmi dari pembangunan berkelanjutan (sustainable development)?",
+        options: [
+          "Pembangunan ekonomi yang mengutamakan pemanfaatan teknologi digital terbarukan",
+          "Pembangunan untuk pemenuhan kebutuhan saat ini tanpa mengorbankan generasi mendatang",
+          "Pembangunan infrastruktur berbiaya rendah dengan efisiensi konsumsi bahan bakar",
+          "Pembangunan industri yang sepenuhnya menghentikan eksploitasi sumber daya alam"
+        ],
+        answer: 1,
+        explanation: "Verified Correct: The seminal Brundtland Report ('Our Common Future', 1987) defined sustainable development as meeting present needs without compromising the ability of future generations to meet theirs."
+      },
+      {
+        id: 132,
+        module: 7,
+        moduleName: "Official Pre/Post Tests",
+        type: "mcq",
+        question: "[ESG Test] Tiga krisis lingkungan global yang saling terkait dan dirangkum dalam konsep Triple Planetary Crisis meliputi:",
+        options: [
+          "Krisis energi fosil, kelangkaan pangan, dan overpopulasi perkotaan",
+          "Perubahan iklim, polusi, dan kehilangan keanekaragaman hayati",
+          "Kenaikan air laut, penipisan ozon, dan krisis moneter global",
+          "Deforestasi hutan, kelangkaan air bersih, dan perang geopolitik"
+        ],
+        answer: 1,
+        explanation: "Verified Correct: The UN Triple Planetary Crisis frameworks encompass 1. Climate Change, 2. Pollution, and 3. Biodiversity Loss."
+      },
+      {
+        id: 133,
+        module: 7,
+        moduleName: "Official Pre/Post Tests",
+        type: "mcq",
+        question: "[ESG Test] Dalam model Doughnut Economics karya ekonom Kate Raworth, batas bagian dalam lingkaran (inner ring) merepresentasikan:",
+        options: [
+          "Batasan ekologis daya dukung biosfer bumi",
+          "Ambang batas emisi karbon global yang diizinkan",
+          "Fondasi sosial pemenuhan kebutuhan dasar manusia",
+          "Kapasitas maksimal pertumbuhan ekonomi negara berkembang"
+        ],
+        answer: 2,
+        explanation: "Corrected Answer: In Doughnut Economics, the Inner Ring is the Social Foundation (human basic rights like health, education, equity), while the Outer Ring is the Ecological Ceiling."
+      },
+      {
+        id: 134,
+        module: 7,
+        moduleName: "Official Pre/Post Tests",
+        type: "mcq",
+        question: "[ESG Test] Mengapa mencairnya iceberg (gunung es yang sudah mengapung di lautan) tidak memicu kenaikan permukaan air laut secara signifikan?",
+        options: [
+          "Air lelehan es langsung menguap ke atmosfer bumi",
+          "Massa es apung hanya memindahkan volume air yang setara",
+          "Suhu air laut menyerap volume air lelehan tanpa ekspansi",
+          "Salinitas air laut menahan laju penambahan volume air tawar"
+        ],
+        answer: 1,
+        explanation: "Verified Correct: Archimedes' Principle dictates floating ice already displaces a fluid volume equal to its mass; thus melting floating sea ice does not change sea levels (land-based ice melt does)."
+      },
+      {
+        id: 135,
+        module: 7,
+        moduleName: "Official Pre/Post Tests",
+        type: "mcq",
+        question: "[ESG Test] Berapa perkiraan kontribusi sektor industri pelayaran (shipping industry) terhadap total emisi Gas Rumah Kaca (GRK) global saat ini?",
+        options: ["Sekitar 3 persen", "Sekitar 10 persen", "Sekitar 18 persen", "Sekitar 25 persen"],
+        answer: 0,
+        explanation: "Corrected Answer: Global international shipping accounts for approximately 2.89% (~3%) of overall anthropogenic GHG emissions according to IMO greenhouse gas studies."
+      },
+      {
+        id: 136,
+        module: 7,
+        moduleName: "Official Pre/Post Tests",
+        type: "mcq",
+        question: "[ESG Test] Dokumen resmi Perserikatan Bangsa-Bangsa (PBB) tahun 2004 yang pertama kali mempopulerkan akronim dan kerangka ESG adalah:",
+        options: ["Kyoto Protocol", "Who Cares Wins", "Paris Agreement", "Brundtland Report"],
+        answer: 1,
+        explanation: "Corrected Answer: The 2004 UN Global Compact report titled 'Who Cares Wins' first coined and integrated the term 'ESG' into capital markets."
+      },
+      {
+        id: 137,
+        module: 7,
+        moduleName: "Official Pre/Post Tests",
+        type: "mcq",
+        question: "[ESG Test] Perbedaan mendasar antara konsep Corporate Social Responsibility (CSR) konvensional dan Environmental, Social, Governance (ESG) terletak pada:",
+        options: [
+          "CSR berfokus pada audit finansial internal, sedangkan ESG berfokus pada donasi amal",
+          "CSR bersifat inside-out bagi publik, sedangkan ESG bersifat outside-in bagi strategi risiko bisnis",
+          "CSR dirancang untuk kepatuhan investor, sedangkan ESG dirancang khusus untuk divisi humas",
+          "CSR mengukur risiko non-finansial global, sedangkan ESG mengukur kegiatan filantropi lokal"
+        ],
+        answer: 1,
+        explanation: "Verified Correct: CSR represents an inside-out approach (philanthropic responsibility to society), whereas ESG represents an outside-in risk management framework assessing non-financial risks to enterprise financial performance."
+      },
+      {
+        id: 138,
+        module: 7,
+        moduleName: "Official Pre/Post Tests",
+        type: "mcq",
+        question: "[ESG Test] Batas kenaikan suhu rata-rata permukaan bumi yang disepakati sebagai acuan mitigasi global dalam Paris Agreement (UNFCCC 2015) adalah:",
+        options: [
+          "Maksimal 3,5 derajat Celcius di atas level pra-industri",
+          "Maksimal 2,0 derajat Celcius menuju 1,5 derajat Celcius di atas level pra-industri",
+          "Maksimal 0,5 derajat Celcius di atas level era modern",
+          "Penurunan suhu sebesar 1,0 derajat Celcius dari kondisi bumi saat ini"
+        ],
+        answer: 1,
+        explanation: "Corrected Answer: The Paris Agreement mandates keeping global warming well below 2.0°C and actively pursuing efforts to limit it to 1.5°C above pre-industrial levels."
+      },
+      {
+        id: 139,
+        module: 7,
+        moduleName: "Official Pre/Post Tests",
+        type: "mcq",
+        question: "[ESG Test] Berdasarkan Strategi GRK IMO 2023 (The IMO GHG Strategy), target pemangkasan intensitas karbon armada pelayaran internasional pada tahun 2030 adalah sebesar:",
+        options: ["Minimal 15 persen", "Minimal 25 persen", "Minimal 40 persen", "Minimal 70 persen"],
+        answer: 2,
+        explanation: "Verified Correct: The IMO 2023 GHG strategy mandates reducing carbon intensity per transport work by at least 40% by 2030 compared to 2008 baseline levels."
+      },
+      {
+        id: 140,
+        module: 7,
+        moduleName: "Official Pre/Post Tests",
+        type: "mcq",
+        question: "[ESG Test] Regulasi Otoritas Jasa Keuangan (OJK) yang mewajibkan penerapan prinsip keuangan berkelanjutan serta penyusunan Laporan Keberlanjutan bagi emiten di Indonesia adalah:",
+        options: [
+          "POJK Nomor 51/POJK.03/2017",
+          "POJK Nomor 12 Tahun 2019",
+          "SEOJK Nomor 04 Tahun 2020",
+          "POJK Nomor 28 Tahun 2022"
+        ],
+        answer: 0,
+        explanation: "Verified Correct: POJK No. 51/POJK.03/2017 governs mandatory implementation of Sustainable Finance and Sustainability Reporting for financial institutions and public companies in Indonesia."
+      },
+
+      // --- Project Logistics Official Test (141-150) ---
+      {
+        id: 141,
+        module: 7,
+        moduleName: "Official Pre/Post Tests",
+        type: "mcq",
+        question: "[Project Logistics Test] Apa saja yang menjadi tolak ukur utama dalam survey project logistics?",
+        options: [
+          "Lokasi, Timeline, Metode",
+          "Jenis Armada, Lokasi, Waktu",
+          "Stakeholder, Lokasi, Metode",
+          "Lokasi, Timeline, Sosial Issue"
+        ],
+        answer: 0,
+        explanation: "Verified Correct: Project logistics survey feasibility rests upon three primary pillars: Site Location, Execution Timeline, and Engineering Transport Method."
+      },
+      {
+        id: 142,
+        module: 7,
+        moduleName: "Official Pre/Post Tests",
+        type: "mcq",
+        question: "[Project Logistics Test] Siapakah yang berperan dalam mengeksekusi konstruksi proyek berikut dengan pembelanjaan logistiknya?",
+        options: ["Project Owner", "EPC Contractor", "Logistics Service Provider", "Forwarder"],
+        answer: 1,
+        explanation: "Verified Correct: The EPC (Engineering, Procurement, and Construction) Contractor executes design, procurement, and subcontracts heavy transport logistics."
+      },
+      {
+        id: 143,
+        module: 7,
+        moduleName: "Official Pre/Post Tests",
+        type: "mcq",
+        question: "[Project Logistics Test] Siapakah yang berperan sebagai pemilik proyek dalam suatu kegiatan proyek?",
+        options: ["Logistics Service Provider", "EPC Contractor", "Project Owner", "Project Owner dan Forwarder"],
+        answer: 2,
+        explanation: "Verified Correct: The Project Owner owns the capital facility asset and issues construction contracts."
+      },
+      {
+        id: 144,
+        module: 7,
+        moduleName: "Official Pre/Post Tests",
+        type: "mcq",
+        question: "[Project Logistics Test] Sebutkan alat angkutan darat khusus untuk muatan berat dan overdimensi?",
+        options: ["Multiaxles Trailer", "Flatbed Trailer", "Lowbed Trailer", "Fuso"],
+        answer: 0,
+        explanation: "Verified Correct: Multi-axle hydraulic trailers (e.g., Goldhofer THP-SL) are engineered specifically for heavy haulage over legal limits."
+      },
+      {
+        id: 145,
+        module: 7,
+        moduleName: "Official Pre/Post Tests",
+        type: "mcq",
+        question: "[Project Logistics Test] Sebutkan alat angkutan Laut khusus yang digunakan untuk cargo proyek?",
+        options: ["Kapal Selam", "Kapal Pesiar", "Barge / LCT", "Kapal Roro"],
+        answer: 2,
+        explanation: "Verified Correct: Deck Barges and Landing Craft Tanks (LCTs) are shallow-draft maritime vessels utilized to carry non-containerized heavy modules."
+      },
+      {
+        id: 146,
+        module: 7,
+        moduleName: "Official Pre/Post Tests",
+        type: "mcq",
+        question: "[Project Logistics Test] Sebutkan alat angkat (lifting equipment) khusus cargo overdimensi dan overweight?",
+        options: ["Crane", "Flatbed Trailer", "Barge", "Hydraulic Jack"],
+        answer: 0,
+        explanation: "Corrected Answer: Heavy Cranes (Crawler Cranes, Mobile Tyre Cranes, Floating Cranes) are the primary lifting machinery; trailers and barges are transport vehicles."
+      },
+      {
+        id: 147,
+        module: 7,
+        moduleName: "Official Pre/Post Tests",
+        type: "mcq",
+        question: "[Project Logistics Test] Apa saja parameter atau tolak ukur engineering dalam survey heavy transport?",
+        options: ["Maneuver", "Diagram kemiringan", "Daya Tarik", "Semua benar"],
+        answer: 3,
+        explanation: "Verified Correct: Technical route verification requires analyzing turning maneuvers (Inner/Outer radius), road slope/stability angles, and pulling force traction (PFS vs PFD)."
+      },
+      {
+        id: 148,
+        module: 7,
+        moduleName: "Official Pre/Post Tests",
+        type: "mcq",
+        question: "[Project Logistics Test] Alat/metode khusus yang digunakan untuk mengatasi obstacle atas (ketinggian) pada rute darat adalah?",
+        options: ["Girder Transport", "Turn table", "Fly Over Bridge", "Semua benar"],
+        answer: 0,
+        explanation: "Corrected Answer: Girder Transport suspension frames lower heavy cargo to within ~25 cm off the ground level to clear overhead bridges and power cables."
+      },
+      {
+        id: 149,
+        module: 7,
+        moduleName: "Official Pre/Post Tests",
+        type: "mcq",
+        question: "[Project Logistics Test] Tools software/database yang digunakan untuk market research proyek industri adalah?",
+        options: ["SPLS", "BCI", "Goldhofer Simulation", "Semua Benar"],
+        answer: 1,
+        explanation: "Corrected Answer: BCI Central is the primary market intelligence database used for tracking national project developments before bidding."
+      },
+      {
+        id: 150,
+        module: 7,
+        moduleName: "Official Pre/Post Tests",
+        type: "mcq",
+        question: "[Project Logistics Test] Tools proprietary Samudera yang digunakan untuk penyiapan proposal, estimasi cost, dan monitoring project berjalan adalah?",
+        options: ["SPLS", "BCI", "Goldhofer Simulation", "Semua Benar"],
+        answer: 0,
+        explanation: "Corrected Answer: SPLS (Samudera Project Logistics System) is Samudera's proprietary internal system for feasibility calculations, pricing proposals, and execution tracking."
+      },
+
+      // --- Warehouse & Distribution Official Test (151-160) ---
+      {
+        id: 151,
+        module: 7,
+        moduleName: "Official Pre/Post Tests",
+        type: "mcq",
+        question: "[Warehouse Test] Tahapan penerimaan barang yang melibatkan verifikasi fisik terhadap dokumen Advanced Shipping Notice dinamakan...",
+        options: ["Put-Away", "Inbound", "Dispatch", "Picking", "Cycle Counting"],
+        answer: 1,
+        explanation: "Verified Correct: Inbound receiving verifies physical goods arriving at the dock against digital Advanced Shipping Notices (ASN)."
+      },
+      {
+        id: 152,
+        module: 7,
+        moduleName: "Official Pre/Post Tests",
+        type: "mcq",
+        question: "[Warehouse Test] Proses penempatan barang yang baru diterima secara terarah menuju bin atau lokasi rak yang terencana secara sistematis disebut...",
+        options: ["Picking", "Staging", "Put-Away", "Cross Docking", "Dispatch"],
+        answer: 2,
+        explanation: "Corrected Answer: Put-Away moves verified receiving inventory from staging bays into specific WMS rack locations."
+      },
+      {
+        id: 153,
+        module: 7,
+        moduleName: "Official Pre/Post Tests",
+        type: "mcq",
+        question: "[Warehouse Test] Berikut ini yang BUKAN merupakan bagian dari kontrol waktu alur operasional logistik (Lead Time Control) dalam pergudangan adalah...",
+        options: [
+          "Supplier lead time",
+          "Administrative Order lead time",
+          "Transport lead time",
+          "Receiving lead time",
+          "Financial audit lead time"
+        ],
+        answer: 4,
+        explanation: "Verified Correct: Financial audit lead time is an accounting function, not an operational physical lead time component."
+      },
+      {
+        id: 154,
+        module: 7,
+        moduleName: "Official Pre/Post Tests",
+        type: "mcq",
+        question: "[Warehouse Test] Sistem rak konvensional dengan koridor (aisle) standard dan dapat diakses secara fleksibel menggunakan Reach Truck dinamakan...",
+        options: [
+          "Double Deep Racking",
+          "Very Narrow Aisle (VNA)",
+          "Single Deep Pallet Racking",
+          "Pallet Shuttle ASRS",
+          "Drive-In Racking"
+        ],
+        answer: 2,
+        explanation: "Corrected Answer: Single Deep (Selective) Pallet Racking provides 100% direct pallet accessibility using standard Reach Trucks."
+      },
+      {
+        id: 155,
+        module: 7,
+        moduleName: "Official Pre/Post Tests",
+        type: "mcq",
+        question: "[Warehouse Test] Dalam implementasi SMKPO BPOM dan Sertifikasi Halal pada gudang multi-tenant, manakah dari prosedur operasional berikut yang WAJIB diterapkan untuk mencegah Kontaminasi Silang?",
+        options: [
+          "Menyimpan produk pangan halal dan non-halal dalam satu palet yang sama asal diberi sekat kardus",
+          "Pemisahan fisik area penyimpanan (dedicated racking/zone), penggunaan MHE khusus, labeling Halal yang jelas, serta kontrol dokumen dan personal hygiene pekerja yang ketat",
+          "Menggabungkan pembersihan alat penanganan bahan bakar minyak dengan alat penanganan kemasan produk pangan",
+          "Mengizinkan semua personel luar masuk ke area penanganan produk tanpa melalui prosedur Access Control",
+          "Menggunakan kembali wadah/kemasan bekas produk non-halal untuk mengemas ulang produk pangan halal"
+        ],
+        answer: 1,
+        explanation: "Verified Correct: Halal Integrity Zones require strict physical segregation, dedicated material handling equipment, clear labeling, and worker sanitation controls."
+      },
+      {
+        id: 156,
+        module: 7,
+        moduleName: "Official Pre/Post Tests",
+        type: "mcq",
+        question: "[Warehouse Test] Keunggulan utama dari penerapan sistem Pallet Shuttle ASRS dibandingkan dengan sistem Drive-In konvensional adalah...",
+        options: [
+          "Membutuhkan lebih banyak pengemudi forklift di dalam rak",
+          "Satu lorong/bay dapat menyimpan produk berbeda pada tiap tingkatan (level)",
+          "Hanya cocok untuk penyimpanan karton kecil tanpa palet",
+          "Menghilangkan kebutuhan akan Warehouse Management System (WMS)",
+          "Tidak memerlukan pasokan energi listrik sama sekali"
+        ],
+        answer: 1,
+        explanation: "Verified Correct: Pallet Shuttle ASRS operates shuttles independently on each tier level, allowing high-density storage with different SKUs per channel level."
+      },
+      {
+        id: 157,
+        module: 7,
+        moduleName: "Official Pre/Post Tests",
+        type: "mcq",
+        question: "[Warehouse Test] Berdasarkan klasifikasi zona suhu penyimpanan cold chain, rentang suhu target untuk kategori Chilled (seperti produk vaksin) adalah...",
+        options: [
+          "-25°C hingga -40°C",
+          "-18°C hingga -20°C",
+          "+2°C hingga +8°C",
+          "+15°C hingga +25°C",
+          "+25°C hingga +30°C"
+        ],
+        answer: 2,
+        explanation: "Verified Correct: Cold Room / Chilled category target range for biological vaccines and pharmaceuticals is strictly +2°C to +8°C."
+      },
+      {
+        id: 158,
+        module: 7,
+        moduleName: "Official Pre/Post Tests",
+        type: "mcq",
+        question: "[Warehouse Test] Kategori fasilitas Controlled Room Temperature (CRT) (+15°C s.d. +25°C) digunakan untuk menyimpan komoditas seperti...",
+        options: [
+          "Daging beku dan unggas",
+          "Es krim dan plasma darah",
+          "Ikan tuna segar super-frozen",
+          "Obat-obatan umum dan kosmetik",
+          "Vaksin sensitif beku"
+        ],
+        answer: 3,
+        explanation: "Verified Correct: CRT (+15°C to +25°C) preserves stability for general pharmaceuticals, oral solid dosage drugs, and cosmetic items."
+      },
+      {
+        id: 159,
+        module: 7,
+        moduleName: "Official Pre/Post Tests",
+        type: "mcq",
+        question: "[Warehouse Test] Pengujian stabilitas suhu ruangan fasilitas pendingin saat keadaan kosong tanpa muatan barang dinamakan...",
+        options: [
+          "Uji Beban Penuh",
+          "Uji Ruang Kosong (Empty Room Test)",
+          "Identifikasi Hot Spot",
+          "Audit Kualifikasi FEFO",
+          "Kalibrasi MHE"
+        ],
+        answer: 1,
+        explanation: "Verified Correct: Thermal mapping qualification begins with Step 1: Empty Room Test (Uji Ruang Kosong) prior to loaded testing."
+      },
+      {
+        id: 160,
+        module: 7,
+        moduleName: "Official Pre/Post Tests",
+        type: "mcq",
+        question: "[Warehouse Test] Regulasi nasional Indonesia yang memuat kewajiban pemetaan suhu (Thermal Mapping) fasilitas penyimpanan obat sebelum digunakan adalah...",
+        options: [
+          "Peraturan BPOM No. 6 Tahun 2024",
+          "WHO TRS No. 961 Annex 9",
+          "Permendag No. 37 Tahun 2026",
+          "ISO 22000 Standar Pangan",
+          "UU K3 No. 1 Tahun 1970"
+        ],
+        answer: 0,
+        explanation: "Corrected Answer: Peraturan BPOM No. 6 Tahun 2024 mandates thermal mapping qualifications for drug cold rooms and reefer fleets across Indonesia."
+      },
+
+      // --- Inland Transport Official Test (161-170) ---
+      {
+        id: 161,
+        module: 7,
+        moduleName: "Official Pre/Post Tests",
+        type: "mcq",
+        question: "[Inland Transport Test] Memiliki berapa sumbu roda dan jumlah ban-kah truk tipe tronton?",
+        options: [
+          "2 sumbu roda, 4 ban",
+          "3 sumbu roda, 8 ban",
+          "3 sumbu roda, 10 ban",
+          "4 sumbu roda, 12 ban"
+        ],
+        answer: 2,
+        explanation: "Verified Correct: A standard Tronton heavy truck features 3 axle lines (1 steering axle + 2 rear tandem drive axles) equipped with 10 tires."
+      },
+      {
+        id: 162,
+        module: 7,
+        moduleName: "Official Pre/Post Tests",
+        type: "mcq",
+        question: "[Inland Transport Test] Manakah dari tipe truk dibawah yang masuk kategori articulated (terpisah antara kepala dan tempat muatan)?",
+        options: ["Engkel", "Trintin", "Tronton", "Tractor Head"],
+        answer: 3,
+        explanation: "Verified Correct: Tractor Heads are articulated vehicles connecting via fifth-wheel couplings to detachable trailers."
+      },
+      {
+        id: 163,
+        module: 7,
+        moduleName: "Official Pre/Post Tests",
+        type: "mcq",
+        question: "[Inland Transport Test] Sebutkan tipe karoseri yang masuk kategori truk box?",
+        options: ["Self Loader", "Wing Box", "Mixer", "Modular"],
+        answer: 1,
+        explanation: "Verified Correct: Wing Box is an enclosed box superstructure featuring side-gullwing opening panels."
+      },
+      {
+        id: 164,
+        module: 7,
+        moduleName: "Official Pre/Post Tests",
+        type: "mcq",
+        question: "[Inland Transport Test] Dari beberapa tipe karoseri trailer berikut yang dapat memuat cargo dengan ketinggian > 3m secara aman di bawah batas tinggi jalan?",
+        options: ["Low bed", "Skeleton", "Flatbed", "Tipper"],
+        answer: 0,
+        explanation: "Verified Correct: Low Bed trailers lower the deck height off the ground, allowing tall cargo (>3m height) to pass under highway bridges."
+      },
+      {
+        id: 165,
+        module: 7,
+        moduleName: "Official Pre/Post Tests",
+        type: "mcq",
+        question: "[Inland Transport Test] Sebutkan tipe karoseri truk box yang memiliki ruang muat kubikasi (CBM) paling sedikit?",
+        options: ["Engkel Box", "Full Box", "Wing Box", "Big Mama"],
+        answer: 0,
+        explanation: "Verified Correct: Engkel Box (2-axle light truck) has the smallest cargo volume capacity (~14-18 CBM) compared to multi-axle wing boxes."
+      },
+      {
+        id: 166,
+        module: 7,
+        moduleName: "Official Pre/Post Tests",
+        type: "mcq",
+        question: "[Inland Transport Test] Tipe karoseri apakah yang sering digunakan dalam transportasi Project Cargo overdimensi?",
+        options: ["Modular", "Box", "Tanker", "Carrier"],
+        answer: 0,
+        explanation: "Verified Correct: Modular multi-axle trailers are designed specifically for heavy and oversized industrial project cargo."
+      },
+      {
+        id: 167,
+        module: 7,
+        moduleName: "Official Pre/Post Tests",
+        type: "mcq",
+        question: "[Inland Transport Test] Berikut adalah tipe truk yang TIDAK pernah dimiliki oleh Samudera Inland Transport, KECUALI?",
+        options: ["Self Loader", "Dump Truck", "Big Mama", "Mixer"],
+        answer: 1,
+        explanation: "Verified Correct: Samudera Inland Transport fleet operating portfolio includes Dump Trucks for specialized bulk movement."
+      },
+      {
+        id: 168,
+        module: 7,
+        moduleName: "Official Pre/Post Tests",
+        type: "mcq",
+        question: "[Inland Transport Test] Tipe Karoseri apakah truk yang cocok memuat kargo CPO (Crude Palm Oil) curah?",
+        options: ["Dump Truck", "Self Loader", "Flatbed Trailer", "Lory / Tangki"],
+        answer: 3,
+        explanation: "Verified Correct: Liquid bulk items like CPO require food-grade liquid Tanker (Lory/Tangki) trailers."
+      },
+      {
+        id: 169,
+        module: 7,
+        moduleName: "Official Pre/Post Tests",
+        type: "mcq",
+        question: "[Inland Transport Test] Tipe Karoseri apakah truk yang cocok memuat kargo batubara curah?",
+        options: ["Dump Truck", "Self Loader", "Flatbed Trailer", "Lory"],
+        answer: 0,
+        explanation: "Verified Correct: Coal bulk is transported using Dump Trucks for efficient hydraulic tipping discharge."
+      },
+      {
+        id: 170,
+        module: 7,
+        moduleName: "Official Pre/Post Tests",
+        type: "mcq",
+        question: "[Inland Transport Test] Dokumen apakah yang TIDAK WAJIB dimiliki terkait aktivitas trucking umum non-B3?",
+        options: ["STNK", "KIR (Uji Berkala)", "Sertifikat B3", "SIM"],
+        answer: 2,
+        explanation: "Verified Correct: Sertifikat/Izin B3 (KLHK/Kemenhub) is only required when transporting hazardous dangerous goods, not standard general freight."
+      }
+    ];
+
+    // -------------------------------------------------------------
+    // APPLICATION STATE MANAGEMENT
+    // -------------------------------------------------------------
+    let currentModuleFilter = 'all'; 
+    let userAnswers = {}; // { questionId: { value, isCorrect } }
+
+    const modules = [
+      { id: 'all', name: 'All 170 Questions', desc: 'Complete masterclass curriculum + official exam question bank.' },
+      { id: 1, name: '1. Supply Chain & 5.0', desc: 'Foundations, 3 Flows, 7 Rs, 1PL-5PL, Incoterms, Logistics 5.0.' },
+      { id: 2, name: '2. ESG & Brand Guidelines', desc: 'Corporate Identity, Brundtland, Double Materiality, IMO strategy, GRI codes.' },
+      { id: 3, name: '3. Container Depot Ops', desc: 'Corten steel, ISO 6346, Check digit calculations, Yard ops, Equipment.' },
+      { id: 4, name: '4. Project Logistics', desc: 'Heavy haulage, SPMT, Goldhofer, Ballast systems, Feasibility analysis.' },
+      { id: 5, name: '5. Inland Transport & HSSE', desc: '4 HSSE Pillars, SIM rules, B3 Regulations, Halal Logistics, ODOL.' },
+      { id: 6, name: '6. Warehousing & Cold Chain', desc: 'Inbound to Dispatch, ASRS, BPOM Mapping, Halal Integrity, Certifications.' },
+      { id: 7, name: '7. Official Pre/Post Tests', desc: '50 Audited and Corrected questions directly from Samudera exam sheets.' }
+    ];
+
+    // -------------------------------------------------------------
+    // INITIALIZATION & RENDER FUNCTIONS
+    // -------------------------------------------------------------
+    document.addEventListener('DOMContentLoaded', () => {
+      renderModuleFilters();
+      renderQuestions();
+      updateStats();
+    });
+
+    function renderModuleFilters() {
+      const filterContainer = document.getElementById('module-filters');
+      filterContainer.innerHTML = modules.map(m => `
+        <button 
+          onclick="setModuleFilter('${m.id}')"
+          class="w-full text-left px-3 py-2 rounded-lg text-xs font-medium transition flex items-center justify-between ${
+            currentModuleFilter == m.id 
+              ? 'bg-blue-600 text-white font-bold shadow' 
+              : 'text-slate-300 hover:bg-slate-700/60'
+          }"
+        >
+          <span class="truncate">${m.name}</span>
+          <span class="text-[10px] opacity-75 ml-1 bg-slate-900/40 px-1.5 py-0.5 rounded font-mono">
+            ${m.id === 'all' ? quizData.length : quizData.filter(q => q.module == m.id).length}
+          </span>
+        </button>
+      `).join('');
+    }
+
+    function setModuleFilter(filterId) {
+      currentModuleFilter = filterId;
+      renderModuleFilters();
+
+      const moduleObj = modules.find(m => m.id == filterId);
+      document.getElementById('current-module-title').textContent = moduleObj.name;
+      document.getElementById('current-module-desc').textContent = moduleObj.desc;
+
+      renderQuestions();
+    }
+
+    function getFilteredQuestions() {
+      if (currentModuleFilter === 'all') return quizData;
+      return quizData.filter(q => q.module == currentModuleFilter);
+    }
+
+    function renderQuestions() {
+      const container = document.getElementById('questions-container');
+      const filtered = getFilteredQuestions();
+
+      document.getElementById('questions-count-badge').textContent = `${filtered.length} Items`;
+
+      if (filtered.length === 0) {
+        container.innerHTML = `<div class="p-8 text-center text-slate-400">No questions found for this filter.</div>`;
+        return;
+      }
+
+      container.innerHTML = filtered.map((q) => {
+        const answered = userAnswers[q.id];
+        const isCheckDisabled = answered !== undefined;
+
+        return `
+          <div id="card-q-${q.id}" class="bg-slate-800 p-5 rounded-xl border border-slate-700 space-y-4 shadow-sm transition">
+            
+            <!-- Header Badge -->
+            <div class="flex items-center justify-between text-xs text-slate-400">
+              <span class="bg-slate-700/80 px-2.5 py-1 rounded font-mono text-blue-300">Question ${q.id} of 170</span>
+              <span class="text-slate-400 font-medium">${q.moduleName}</span>
+            </div>
+
+            <!-- Question Text -->
+            <h3 class="text-base font-semibold text-white leading-relaxed">
+              ${q.question}
+            </h3>
+
+            <!-- Options / Inputs Area -->
+            <div class="space-y-2 pt-1">
+              ${renderQuestionInput(q, answered)}
+            </div>
+
+            <!-- Action Buttons & Feedback -->
+            <div class="pt-2 flex flex-wrap items-center justify-between gap-3 border-t border-slate-700/50">
+              <button 
+                id="btn-check-${q.id}"
+                onclick="checkAnswer(${q.id})"
+                ${isCheckDisabled ? 'disabled' : ''}
+                class="bg-blue-600 hover:bg-blue-500 disabled:opacity-50 disabled:cursor-not-allowed text-white text-xs font-semibold px-4 py-2 rounded-lg transition"
+              >
+                ${answered ? 'Submitted' : 'Check Answer'}
+              </button>
+
+              <div id="status-${q.id}" class="text-xs font-bold ${answered ? (answered.isCorrect ? 'text-emerald-400' : 'text-rose-400') : 'hidden'}">
+                ${answered ? (answered.isCorrect ? '✓ Correct' : '✗ Incorrect') : ''}
+              </div>
+            </div>
+
+            <!-- Explanation Box -->
+            <div id="exp-${q.id}" class="${answered ? '' : 'hidden'} bg-slate-900/80 p-3.5 rounded-lg border border-slate-700 text-xs space-y-1">
+              <span class="font-bold text-slate-300 block">Explanation & Operational Context:</span>
+              <p class="text-slate-300 leading-normal">${q.explanation}</p>
+            </div>
+
+          </div>
+        `;
+      }).join('');
+    }
+
+    function renderQuestionInput(q, answered) {
+      if (q.type === 'mcq' || q.type === 'tf') {
+        return q.options.map((opt, idx) => {
+          let optionStyle = 'bg-slate-700/40 hover:bg-slate-700 border-slate-600/60 text-slate-200';
+          
+          if (answered) {
+            if (idx === q.answer) {
+              optionStyle = 'bg-emerald-950/80 border-emerald-500 text-emerald-200 font-semibold'; // Correct
+            } else if (answered.value === idx && !answered.isCorrect) {
+              optionStyle = 'bg-rose-950/80 border-rose-500 text-rose-200'; // Wrong Pick
+            } else {
+              optionStyle = 'bg-slate-800/40 border-slate-700/40 text-slate-500 opacity-60';
+            }
+          }
+
+          return `
+            <label class="flex items-start space-x-3 p-3 rounded-lg border text-xs cursor-pointer transition ${optionStyle}">
+              <input 
+                type="radio" 
+                name="q_${q.id}" 
+                value="${idx}" 
+                ${answered && answered.value === idx ? 'checked' : ''} 
+                ${answered ? 'disabled' : ''}
+                class="mt-0.5 text-blue-600 focus:ring-0"
+              />
+              <span class="leading-relaxed flex-1">${opt}</span>
+            </label>
+          `;
+        }).join('');
+      } else if (q.type === 'short') {
+        const val = answered ? answered.value : '';
+        return `
+          <div class="space-y-1">
+            <input 
+              type="text" 
+              id="input_q_${q.id}"
+              value="${val}"
+              ${answered ? 'disabled' : ''}
+              placeholder="Type your answer here..."
+              class="w-full bg-slate-900 border border-slate-600 rounded-lg px-3 py-2 text-xs text-slate-100 focus:outline-none focus:border-blue-500 disabled:opacity-60"
+            />
+            ${answered && !answered.isCorrect ? `<div class="text-[11px] text-emerald-400 pt-1">Expected Answer: <span class="font-mono font-bold">${q.answer}</span></div>` : ''}
+          </div>
+        `;
+      }
+    }
+
+    // -------------------------------------------------------------
+    // LOGIC & GRADING ENGINE
+    // -------------------------------------------------------------
+    function checkAnswer(qId) {
+      const q = quizData.find(item => item.id === qId);
+      if (!q) return;
+
+      let isCorrect = false;
+      let userVal = null;
+
+      if (q.type === 'mcq' || q.type === 'tf') {
+        const selected = document.querySelector(`input[name="q_${qId}"]:checked`);
+        if (!selected) {
+          alert('Please select an option before checking.');
+          return;
+        }
+        userVal = parseInt(selected.value);
+        isCorrect = (userVal === q.answer);
+      } else if (q.type === 'short') {
+        const inputElem = document.getElementById(`input_q_${qId}`);
+        if (!inputElem || !inputElem.value.trim()) {
+          alert('Please enter your short answer.');
+          return;
+        }
+        userVal = inputElem.value.trim();
+        
+        const normalizedUser = userVal.toLowerCase().replace(/[^a-z0-9]/g, '');
+        const normalizedMain = q.answer.toLowerCase().replace(/[^a-z0-9]/g, '');
+        
+        isCorrect = (normalizedUser === normalizedMain);
+
+        if (!isCorrect && q.altAnswers) {
+          isCorrect = q.altAnswers.some(alt => alt.toLowerCase().replace(/[^a-z0-9]/g, '') === normalizedUser);
+        }
+      }
+
+      // Save state
+      userAnswers[qId] = { value: userVal, isCorrect: isCorrect };
+
+      // Update Card UI
+      renderQuestions();
+      updateStats();
+    }
+
+    function updateStats() {
+      const totalQuestions = quizData.length;
+      const answeredCount = Object.keys(userAnswers).length;
+      
+      let correctCount = 0;
+      Object.values(userAnswers).forEach(a => {
+        if (a.isCorrect) correctCount++;
+      });
+
+      const scorePercent = answeredCount > 0 ? Math.round((correctCount / answeredCount) * 100) : 0;
+
+      document.getElementById('stat-progress').textContent = `${answeredCount} / ${totalQuestions}`;
+      document.getElementById('stat-score').textContent = `${scorePercent}% (${correctCount} Correct)`;
+
+      const progressPercent = (answeredCount / totalQuestions) * 100;
+      document.getElementById('progress-bar').style.width = `${progressPercent}%`;
+
+      const summaryBox = document.getElementById('final-summary');
+      if (answeredCount === totalQuestions) {
+        summaryBox.classList.remove('hidden');
+        document.getElementById('final-score-text').textContent = `${correctCount} / ${totalQuestions} (${scorePercent}%)`;
+      } else {
+        summaryBox.classList.add('hidden');
+      }
+    }
+
+    function resetQuiz() {
+      if (confirm('Are you sure you want to reset all answers and progress?')) {
+        userAnswers = {};
+        renderQuestions();
+        updateStats();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    }
+  </script>
+</body>
+</html>
