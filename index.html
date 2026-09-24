@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SMDP Masterclass - 170 Master Quiz Assessment</title>
+  <title>SMDP Masterclass - 230 Technical Master Quiz Assessment</title>
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
@@ -30,7 +30,7 @@
         </div>
         <div>
           <h1 class="text-lg font-bold text-white leading-tight">Masterclass Knowledge Assessment</h1>
-          <p class="text-xs text-slate-400">170 Verified Questions Across 7 Logistics & Governance Modules</p>
+          <p class="text-xs text-slate-400">230 Verified Technical & Operational Questions Across 8 Modules</p>
         </div>
       </div>
 
@@ -38,7 +38,7 @@
       <div class="flex items-center space-x-6 text-sm">
         <div class="text-center">
           <span class="block text-xs text-slate-400">Progress</span>
-          <span id="stat-progress" class="font-bold text-blue-400">0 / 170</span>
+          <span id="stat-progress" class="font-bold text-blue-400">0 / 230</span>
         </div>
         <div class="text-center">
           <span class="block text-xs text-slate-400">Score</span>
@@ -70,10 +70,10 @@
 
       <!-- Quick Summary Box -->
       <div class="bg-slate-800/60 p-4 rounded-xl border border-slate-700/60 text-xs text-slate-400 space-y-2">
-        <div class="font-semibold text-slate-300 text-sm mb-1">Assessment Guidance</div>
-        <p>• All 50 questions from the Pre/Post Test documents have been audited for factual correctness.</p>
-        <p>• Correct answers reflect updated standards (e.g., PerBPOM No. 6/2024, ISO 6346, IMO 2023 Strategy).</p>
-        <p>• Use the <strong>Post Test Assessments</strong> filter to focus specifically on official exam items.</p>
+        <div class="font-semibold text-slate-300 text-sm mb-1">Assessment Structure</div>
+        <p>• <strong>Q1–Q120:</strong> Core SMDP Curriculum (Logistics 5.0, ESG, Depot, Project, Inland, Warehousing).</p>
+        <p>• <strong>Q121–Q170:</strong> Audited & Corrected Official Pre/Post Test Items.</p>
+        <p>• <strong>Q171–Q230:</strong> Technical Specifications, Truck/Karoseri Selection Use Cases, Container Types & MHE.</p>
       </div>
     </aside>
 
@@ -84,10 +84,10 @@
       <div class="bg-slate-800 p-4 rounded-xl border border-slate-700 flex justify-between items-center">
         <div>
           <span id="current-module-title" class="text-lg font-bold text-blue-400">All Modules</span>
-          <p id="current-module-desc" class="text-xs text-slate-400">Displaying all 170 questions across the SMDP curriculum.</p>
+          <p id="current-module-desc" class="text-xs text-slate-400">Displaying all 230 questions across the SMDP curriculum.</p>
         </div>
         <span id="questions-count-badge" class="bg-slate-700 text-slate-300 text-xs px-3 py-1 rounded-full font-medium">
-          170 Items
+          230 Items
         </span>
       </div>
 
@@ -100,7 +100,7 @@
       <div id="final-summary" class="hidden bg-slate-800 border-2 border-blue-500/50 p-6 rounded-xl text-center space-y-4">
         <h3 class="text-2xl font-bold text-white">Assessment Completed! 🎉</h3>
         <p class="text-slate-300">You have completed all questions in this view.</p>
-        <div class="text-4xl font-extrabold text-emerald-400" id="final-score-text">0 / 170</div>
+        <div class="text-4xl font-extrabold text-emerald-400" id="final-score-text">0 / 230</div>
         <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="bg-blue-600 hover:bg-blue-500 text-white font-semibold px-6 py-2.5 rounded-lg shadow-lg transition">
           Review Answers
         </button>
@@ -112,7 +112,7 @@
   <!-- JavaScript Engine -->
   <script>
     // -------------------------------------------------------------
-    // QUIZ DATA: 170 VERIFIED QUESTIONS (120 Core + 50 Official Tests)
+    // QUIZ DATA: 230 VERIFIED QUESTIONS (120 Core + 50 Tests + 60 Technical Specs)
     // -------------------------------------------------------------
     const quizData = [
       // =========================================================
@@ -1446,22 +1446,14 @@
 
       // =========================================================
       // MODULE 7: OFFICIAL PRE/POST TEST ASSESSMENTS (121-170)
-      // Extracts & Verified Corrections from Official Test Files
       // =========================================================
-
-      // --- Container Depot Official Test (121-130) ---
       {
         id: 121,
         module: 7,
         moduleName: "Official Pre/Post Tests",
         type: "mcq",
         question: "[Depot Test] What primary material is standard intermodal shipping containers constructed from?",
-        options: [
-          "Stainless Steel 304",
-          "Corten Steel (Weathering Steel)",
-          "Aluminum Alloy 6061",
-          "Reinforced Structural Carbon Steel"
-        ],
+        options: ["Stainless Steel 304", "Corten Steel (Weathering Steel)", "Aluminum Alloy 6061", "Reinforced Structural Carbon Steel"],
         answer: 1,
         explanation: "Corrected Answer: Corten steel (weathering steel) is the universal ISO standard material for containers due to its high tensile strength and rust-passivating atmospheric corrosion resistance."
       },
@@ -1471,12 +1463,7 @@
         moduleName: "Official Pre/Post Tests",
         type: "mcq",
         question: "[Depot Test] Which international organization manages and registers container owner codes under Standard ISO 6346?",
-        options: [
-          "International Maritime Organization (IMO)",
-          "International Container Bureau (BIC)",
-          "World Shipping Council (WSC)",
-          "International Organization for Standardization (ISO)"
-        ],
+        options: ["International Maritime Organization (IMO)", "International Container Bureau (BIC)", "World Shipping Council (WSC)", "International Organization for Standardization (ISO)"],
         answer: 1,
         explanation: "Corrected Answer: BIC (Bureau International des Containers) is the global official body appointed to assign and register 3-letter owner prefix codes worldwide."
       },
@@ -1486,12 +1473,7 @@
         moduleName: "Official Pre/Post Tests",
         type: "mcq",
         question: "[Depot Test] In a standard container identification prefix (e.g., SIKU or KMTU), what does the 4th letter 'U' specify?",
-        options: [
-          "Universal freight container",
-          "Detachable container equipment",
-          "Freight container identifier",
-          "Trailer and chassis identifier"
-        ],
+        options: ["Universal freight container", "Detachable container equipment", "Freight container identifier", "Trailer and chassis identifier"],
         answer: 2,
         explanation: "Corrected Answer: Under ISO 6346, the 4th capital letter designates category: 'U' = freight container, 'J' = detachable container equipment, and 'Z' = trailer/chassis."
       },
@@ -1511,12 +1493,7 @@
         moduleName: "Official Pre/Post Tests",
         type: "mcq",
         question: "[Depot Test] What is the specific role of the 1-digit Check Digit at the end of a container identification number?",
-        options: [
-          "To indicate maximum payload capacity",
-          "To verify the manufacturing year",
-          "To mathematically validate the number and catch typos or fraud",
-          "To encode origin port security clearance"
-        ],
+        options: ["To indicate maximum payload capacity", "To verify the manufacturing year", "To mathematically validate the number and catch typos or fraud", "To encode origin port security clearance"],
         answer: 2,
         explanation: "Corrected Answer: The check digit uses a modulo-11 mathematical algorithm to validate the prefix and serial numbers during electronic data entry to eliminate typos."
       },
@@ -1526,12 +1503,7 @@
         moduleName: "Official Pre/Post Tests",
         type: "mcq",
         question: "[Depot Test] Which safety plate attached to containers acts as its mandatory identity and safety certificate?",
-        options: [
-          "ISO 9001 Compliance Tag",
-          "CSC (Convention for Safe Containers) Approval Plate",
-          "BIC Registration Certificate",
-          "IMO Hazardous Goods Badge"
-        ],
+        options: ["ISO 9001 Compliance Tag", "CSC (Convention for Safe Containers) Approval Plate", "BIC Registration Certificate", "IMO Hazardous Goods Badge"],
         answer: 1,
         explanation: "Corrected Answer: The CSC (International Convention for Safe Containers) Approval Plate is legally mandated on container doors showing structural strength, gross mass, and inspection status."
       },
@@ -1541,12 +1513,7 @@
         moduleName: "Official Pre/Post Tests",
         type: "mcq",
         question: "[Depot Test] Which set of industry analogies best describes the core operational functions of a container depot?",
-        options: [
-          "Bank + Customs + Warehouse",
-          "Hotel + Hospital + Car Wash",
-          "Factory + Repair Shop + Fuel Station",
-          "Terminal + Parking Lot + Assembly Line"
-        ],
+        options: ["Bank + Customs + Warehouse", "Hotel + Hospital + Car Wash", "Factory + Repair Shop + Fuel Station", "Terminal + Parking Lot + Assembly Line"],
         answer: 1,
         explanation: "Verified Correct: Depots store empty containers (Hotel), perform maintenance and structural repairs (Hospital), and execute chemical/steam cleaning (Car Wash)."
       },
@@ -1566,12 +1533,7 @@
         moduleName: "Official Pre/Post Tests",
         type: "mcq",
         question: "[Depot Test] Which physical document is issued and printed at the Gate-Out checkpoint upon container movement?",
-        options: [
-          "CRO (Container Release Order)",
-          "D/O (Delivery Order)",
-          "EIR (Equipment Interchange Receipt)",
-          "EOR (Estimate of Repair)"
-        ],
+        options: ["CRO (Container Release Order)", "D/O (Delivery Order)", "EIR (Equipment Interchange Receipt)", "EOR (Estimate of Repair)"],
         answer: 2,
         explanation: "Verified Correct: The Equipment Interchange Receipt (EIR) is printed at gate-out/gate-in confirming container movement, driver details, and damage status."
       },
@@ -1585,8 +1547,6 @@
         answer: 1,
         explanation: "Verified Correct: The Shipping Line issues the original Delivery Order (D/O) to the cargo owner/consignee, authorizing depot release."
       },
-
-      // --- ESG Official Test (131-140) ---
       {
         id: 131,
         module: 7,
@@ -1600,7 +1560,7 @@
           "Pembangunan industri yang sepenuhnya menghentikan eksploitasi sumber daya alam"
         ],
         answer: 1,
-        explanation: "Verified Correct: The seminal Brundtland Report ('Our Common Future', 1987) defined sustainable development as meeting present needs without compromising the ability of future generations to meet theirs."
+        explanation: "Verified Correct: The seminal Brundtland Report ('Our Common Future', 1987) defined sustainable development as meeting present needs without compromising future generations."
       },
       {
         id: 132,
@@ -1645,7 +1605,7 @@
           "Salinitas air laut menahan laju penambahan volume air tawar"
         ],
         answer: 1,
-        explanation: "Verified Correct: Archimedes' Principle dictates floating ice already displaces a fluid volume equal to its mass; thus melting floating sea ice does not change sea levels (land-based ice melt does)."
+        explanation: "Verified Correct: Archimedes' Principle dictates floating ice already displaces a fluid volume equal to its mass; thus melting floating sea ice does not change sea levels."
       },
       {
         id: 135,
@@ -1655,7 +1615,7 @@
         question: "[ESG Test] Berapa perkiraan kontribusi sektor industri pelayaran (shipping industry) terhadap total emisi Gas Rumah Kaca (GRK) global saat ini?",
         options: ["Sekitar 3 persen", "Sekitar 10 persen", "Sekitar 18 persen", "Sekitar 25 persen"],
         answer: 0,
-        explanation: "Corrected Answer: Global international shipping accounts for approximately 2.89% (~3%) of overall anthropogenic GHG emissions according to IMO greenhouse gas studies."
+        explanation: "Corrected Answer: Global international shipping accounts for approximately 2.89% (~3%) of overall GHG emissions according to IMO greenhouse gas studies."
       },
       {
         id: 136,
@@ -1680,7 +1640,7 @@
           "CSR mengukur risiko non-finansial global, sedangkan ESG mengukur kegiatan filantropi lokal"
         ],
         answer: 1,
-        explanation: "Verified Correct: CSR represents an inside-out approach (philanthropic responsibility to society), whereas ESG represents an outside-in risk management framework assessing non-financial risks to enterprise financial performance."
+        explanation: "Verified Correct: CSR represents an inside-out approach (philanthropic responsibility), whereas ESG represents an outside-in risk management framework assessing non-financial risks to enterprise financial performance."
       },
       {
         id: 138,
@@ -1713,29 +1673,17 @@
         moduleName: "Official Pre/Post Tests",
         type: "mcq",
         question: "[ESG Test] Regulasi Otoritas Jasa Keuangan (OJK) yang mewajibkan penerapan prinsip keuangan berkelanjutan serta penyusunan Laporan Keberlanjutan bagi emiten di Indonesia adalah:",
-        options: [
-          "POJK Nomor 51/POJK.03/2017",
-          "POJK Nomor 12 Tahun 2019",
-          "SEOJK Nomor 04 Tahun 2020",
-          "POJK Nomor 28 Tahun 2022"
-        ],
+        options: ["POJK Nomor 51/POJK.03/2017", "POJK Nomor 12 Tahun 2019", "SEOJK Nomor 04 Tahun 2020", "POJK Nomor 28 Tahun 2022"],
         answer: 0,
-        explanation: "Verified Correct: POJK No. 51/POJK.03/2017 governs mandatory implementation of Sustainable Finance and Sustainability Reporting for financial institutions and public companies in Indonesia."
+        explanation: "Verified Correct: POJK No. 51/POJK.03/2017 governs mandatory implementation of Sustainable Finance and Sustainability Reporting in Indonesia."
       },
-
-      // --- Project Logistics Official Test (141-150) ---
       {
         id: 141,
         module: 7,
         moduleName: "Official Pre/Post Tests",
         type: "mcq",
         question: "[Project Logistics Test] Apa saja yang menjadi tolak ukur utama dalam survey project logistics?",
-        options: [
-          "Lokasi, Timeline, Metode",
-          "Jenis Armada, Lokasi, Waktu",
-          "Stakeholder, Lokasi, Metode",
-          "Lokasi, Timeline, Sosial Issue"
-        ],
+        options: ["Lokasi, Timeline, Metode", "Jenis Armada, Lokasi, Waktu", "Stakeholder, Lokasi, Metode", "Lokasi, Timeline, Sosial Issue"],
         answer: 0,
         explanation: "Verified Correct: Project logistics survey feasibility rests upon three primary pillars: Site Location, Execution Timeline, and Engineering Transport Method."
       },
@@ -1797,7 +1745,7 @@
         question: "[Project Logistics Test] Apa saja parameter atau tolak ukur engineering dalam survey heavy transport?",
         options: ["Maneuver", "Diagram kemiringan", "Daya Tarik", "Semua benar"],
         answer: 3,
-        explanation: "Verified Correct: Technical route verification requires analyzing turning maneuvers (Inner/Outer radius), road slope/stability angles, and pulling force traction (PFS vs PFD)."
+        explanation: "Verified Correct: Technical route verification requires analyzing turning maneuvers, road slope/stability angles, and pulling force traction (PFS vs PFD)."
       },
       {
         id: 148,
@@ -1829,8 +1777,6 @@
         answer: 0,
         explanation: "Corrected Answer: SPLS (Samudera Project Logistics System) is Samudera's proprietary internal system for feasibility calculations, pricing proposals, and execution tracking."
       },
-
-      // --- Warehouse & Distribution Official Test (151-160) ---
       {
         id: 151,
         module: 7,
@@ -1979,8 +1925,6 @@
         answer: 0,
         explanation: "Corrected Answer: Peraturan BPOM No. 6 Tahun 2024 mandates thermal mapping qualifications for drug cold rooms and reefer fleets across Indonesia."
       },
-
-      // --- Inland Transport Official Test (161-170) ---
       {
         id: 161,
         module: 7,
@@ -2084,7 +2028,767 @@
         question: "[Inland Transport Test] Dokumen apakah yang TIDAK WAJIB dimiliki terkait aktivitas trucking umum non-B3?",
         options: ["STNK", "KIR (Uji Berkala)", "Sertifikat B3", "SIM"],
         answer: 2,
-        explanation: "Verified Correct: Sertifikat/Izin B3 (KLHK/Kemenhub) is only required when transporting hazardous dangerous goods, not standard general freight."
+        explanation: "Verified Correct: Sertifikat/Izin B3 is only required when transporting hazardous dangerous goods, not standard general freight."
+      },
+
+      // =========================================================
+      // MODULE 8: TECHNICAL TRANSPORT, KAROSERI & EQUIPMENT SPECS (171-230)
+      // Special segment for Technical Specifications & Use Cases
+      // =========================================================
+
+      // --- Section A: Inland Vehicle Dimensions & Specifications ---
+      {
+        id: 171,
+        module: 8,
+        moduleName: "Technical Transport & Equipment",
+        type: "mcq",
+        question: "[Vehicle Spec] Which light inland transport vehicle has a standardized payload capacity of 7 CBM / 2 Tons with dimensions measuring 3m in length, 1.7m in width, and 1.5m in height?",
+        options: [
+          "Colt Diesel 4 Ban (CDE / Engkel)",
+          "Colt Diesel 6 Ban (CDD)",
+          "Fuso Box",
+          "Tronton Rigid"
+        ],
+        answer: 0,
+        explanation: "Exact Material Spec: Colt Diesel 4 Ban (CDE/Engkel Light Truck) has a capacity of 7 CBM / 2 Ton and box dimensions of L: 3m x W: 1.7m x H: 1.5m."
+      },
+      {
+        id: 172,
+        module: 8,
+        moduleName: "Technical Transport & Equipment",
+        type: "mcq",
+        question: "[Vehicle Spec] What standard inland truck configuration provides a payload capacity of 14 CBM / 4 Tons with cargo body dimensions of 4.2m length x 1.8m width x 1.75m height?",
+        options: [
+          "Colt Diesel 4 Ban (CDE)",
+          "Colt Diesel 6 Ban (CDD)",
+          "Fuso Medium Truck",
+          "Trailer 20FT Skeleton"
+        ],
+        answer: 1,
+        explanation: "Exact Material Spec: Colt Diesel 6 Ban (CDD) has a capacity of 14 CBM / 4 Ton with dimensions of L: 4.2m x W: 1.8m x H: 1.75m."
+      },
+      {
+        id: 173,
+        module: 8,
+        moduleName: "Technical Transport & Equipment",
+        type: "mcq",
+        question: "[Vehicle Spec] Which medium-class inland transport vehicle features a payload specification of 24 CBM / 7 Tons and physical dimensions of 5.8m length, 2.4m width, and 2.5m height?",
+        options: ["Colt Diesel CDD", "Fuso", "Tronton Wingbox", "Trailer 40FT"],
+        answer: 1,
+        explanation: "Exact Material Spec: Fuso medium truck features 24 CBM / 7 Ton capacity with box dimensions of L: 5.8m x W: 2.4m x H: 2.5m."
+      },
+      {
+        id: 174,
+        module: 8,
+        moduleName: "Technical Transport & Equipment",
+        type: "mcq",
+        question: "[Vehicle Spec] What heavy-duty rigid truck category provides 30 CBM volume capacity and 15 Tons payload with dimensions of 7.5m length x 2.4m width x 2.5m height?",
+        options: ["Tronton", "Trintin CBU", "Wing Box", "Trailer 20FT"],
+        answer: 0,
+        explanation: "Exact Material Spec: Tronton rigid truck (3 axles / 10 tires) is specified at 30 CBM / 15 Ton capacity measuring L: 7.5m x W: 2.4m x H: 2.5m."
+      },
+      {
+        id: 175,
+        module: 8,
+        moduleName: "Technical Transport & Equipment",
+        type: "mcq",
+        question: "[Vehicle Spec] Which heavy box superstructure offers 40 CBM volume capacity and 20 Tons payload rating with cargo area dimensions of 9m length, 2.4m width, and 2.5m height?",
+        options: ["Wing Box", "Tronton Bak Besi", "Trailer 20FT", "Engkel Double"],
+        answer: 0,
+        explanation: "Exact Material Spec: Wing Box features 40 CBM / 20 Ton capacity with dimensions of L: 9m x W: 2.4m x H: 2.5m."
+      },
+      {
+        id: 176,
+        module: 8,
+        moduleName: "Technical Transport & Equipment",
+        type: "mcq",
+        question: "[Vehicle Spec] A 20-foot container trailer combination (Trailer 20') has standard deck/cargo parameters of:",
+        options: [
+          "14 CBM / 4 Ton (L: 4.2m x W: 1.8m)",
+          "33 CBM / 25 Ton (L: 6m x W: 2.4m x H: 2.5m)",
+          "40 CBM / 20 Ton (L: 9m x W: 2.4m)",
+          "66 CBM / 30 Ton (L: 12m x W: 2.4m)"
+        ],
+        answer: 1,
+        explanation: "Exact Material Spec: Trailer 20FT configuration holds 33 CBM / 25 Ton payload with dimensions L: 6m x W: 2.4m x H: 2.5m."
+      },
+      {
+        id: 177,
+        module: 8,
+        moduleName: "Technical Transport & Equipment",
+        type: "mcq",
+        question: "[Vehicle Spec] What are the standard capacity and deck size specifications for a 40-foot container trailer (Trailer 40')?",
+        options: [
+          "30 CBM / 15 Ton (L: 7.5m)",
+          "40 CBM / 20 Ton (L: 9.0m)",
+          "66 CBM / 30 Ton (L: 12m x W: 2.4m x H: 2.5m)",
+          "86 CBM / 45 Ton (L: 13.7m)"
+        ],
+        answer: 2,
+        explanation: "Exact Material Spec: Trailer 40FT configuration holds 66 CBM / 30 Ton payload with dimensions L: 12m x W: 2.4m x H: 2.5m."
+      },
+      {
+        id: 178,
+        module: 8,
+        moduleName: "Technical Transport & Equipment",
+        type: "mcq",
+        question: "[Vehicle Spec] In Samudera's heavy prime mover fleet, what are the power and torque specifications for the MAN TGS 40.480 6x6 truck?",
+        options: [
+          "380 HP / 1,800 Nm Torque (GCW 100,000 kg)",
+          "480 HP / 2,300 Nm Torque (GCW 170,000 kg)",
+          "580 HP / 2,700 Nm Torque (GCW 160,000 kg)",
+          "680 HP / 3,200 Nm Torque (GCW 250,000 kg)"
+        ],
+        answer: 1,
+        explanation: "Exact Material Spec: MAN TGS 40.480 6x6 generates 480 HP with Max Torque of 2,300 Nm (1,050–1,400 rpm) and Gross Combination Weight (GCW) rating of 170,000 Kgs."
+      },
+      {
+        id: 179,
+        module: 8,
+        moduleName: "Technical Transport & Equipment",
+        type: "mcq",
+        question: "[Vehicle Spec] What engine and torque output powers the Scania R580 LA 6x4 heavy prime mover in Samudera's fleet?",
+        options: [
+          "6-Cylinder Turbo / 2,100 Nm Torque",
+          "8-Cylinder V-Diesel Turbo Engine / 580 HP / 2,700 Nm Torque",
+          "12-Cylinder Engine / 750 HP",
+          "Electric Motor 300 kW"
+        ],
+        answer: 1,
+        explanation: "Exact Material Spec: Scania R580 LA 6x4 features an 8-Cylinder V Diesel engine with Turbo Intercooler generating 580 HP, 2,700 Nm max torque, and GCW rating of 160,000 Kgs."
+      },
+      {
+        id: 180,
+        module: 8,
+        moduleName: "Technical Transport & Equipment",
+        type: "mcq",
+        question: "[Vehicle Spec] What axle configuration designates a 4-axle rigid heavy truck (12 tires total)?",
+        options: ["Trinton (4 sumbu, 12 ban)", "Tronton (3 sumbu, 10 ban)", "Trintin (3 sumbu, 8 ban)", "Tractor Head Tronton"],
+        answer: 0,
+        explanation: "Exact Material Spec: Trinton rigid trucks feature 4 axle lines with 12 tires (front dual steering axles + rear dual tandem drive axles)."
+      },
+      {
+        id: 181,
+        module: 8,
+        moduleName: "Technical Transport & Equipment",
+        type: "mcq",
+        question: "[Road Classification] Under Indonesian Law UU No. 22/2009, what is the maximum allowed vehicle length and Most Heavily Loaded Axle (MST) limit for Class I Arterial Roads?",
+        options: [
+          "Max Length 9m, MST 8 Ton",
+          "Max Length 12m, MST 8 Ton",
+          "Max Length 18m, Width 2.5m, Height 4.2m, MST 10 Ton",
+          "Max Length >18m, MST >10 Ton"
+        ],
+        answer: 2,
+        explanation: "Exact Material Spec: Class I Arterial/Collector Roads permit maximum dimensions of Width: 2.5m, Length: 18m, Height: 4.2m, and MST (Muatan Sumbu Terberat) of 10 Ton."
+      },
+      {
+        id: 182,
+        module: 8,
+        moduleName: "Technical Transport & Equipment",
+        type: "mcq",
+        question: "[Road Classification] What are the maximum dimension limits for Class III Roads under UU No. 22/2009?",
+        options: [
+          "Width 2.1m, Max Length 9m, Height 3.5m, MST 8 Ton",
+          "Width 2.5m, Max Length 12m, Height 4.2m, MST 8 Ton",
+          "Width 2.5m, Max Length 18m, Height 4.2m, MST 10 Ton",
+          "Width >2.5m, Max Length >18m, MST >10 Ton"
+        ],
+        answer: 0,
+        explanation: "Exact Material Spec: Class III local/environment roads restrict vehicle dimensions to Width: 2.1m, Length: 9m, Height: 3.5m, and MST: 8 Ton."
+      },
+
+      // --- Section B: Use Cases for Karoseri & Truck Selection ---
+      {
+        id: 183,
+        module: 8,
+        moduleName: "Technical Transport & Equipment",
+        type: "mcq",
+        question: "[Use Case - Pipe Haulage] A steel manufacturer needs to transport 9 joints of ASTM A252 Welded Spiral Pipes. Each pipe length is 12 meters with a total shipment weight of 37.6 Tons. Which truck/karoseri configuration must be selected?",
+        options: [
+          "Engkel Box (CDE)",
+          "40FT Flatbed / Los Bak Trailer drawn by a Tractor Head",
+          "Dump Truck 3-axle",
+          "Wing Box 9-meter"
+        ],
+        answer: 1,
+        explanation: "Use Case Solution: 12-meter long heavy steel pipes (>37 Tons total) exceed rigid box capacities and require a open 40FT Flatbed/Los Bak Trailer with lashing securing."
+      },
+      {
+        id: 184,
+        module: 8,
+        moduleName: "Technical Transport & Equipment",
+        type: "mcq",
+        question: "[Use Case - FMCG Distribution] An FMCG customer needs to transport 1,200 cartons of packaged snacks requiring maximum volume protection (up to 40 CBM) with rapid side-loading forklift access at multiple retail DCs. What is the optimal karoseri selection?",
+        options: ["Dump Truck", "Wing Box", "Self Loader", "Lory Tangki"],
+        answer: 1,
+        explanation: "Use Case Solution: Wing Box karoseri allows gullwing side panels to open completely, enabling rapid 40 CBM pallet forklift loading for FMCG products."
+      },
+      {
+        id: 185,
+        module: 8,
+        moduleName: "Technical Transport & Equipment",
+        type: "mcq",
+        question: "[Use Case - Liquid Bulk] A palm oil refinery needs to transport 25,000 Liters of bulk Crude Palm Oil (CPO) from a processing mill to a port terminal. What karoseri is specifically required?",
+        options: ["Dump Truck", "Self Loader", "Lory / Tangki Trailer", "Flatbed Trailer"],
+        answer: 2,
+        explanation: "Use Case Solution: Liquid bulk like CPO requires food-grade liquid Tanker (Lory/Tangki) trailers equipped with baffle plates and discharge pumps."
+      },
+      {
+        id: 186,
+        module: 8,
+        moduleName: "Technical Transport & Equipment",
+        type: "mcq",
+        question: "[Use Case - Solid Bulk] A mining company needs to haul 25 Tons of loose bulk coal from an open-pit mine to a river barge hopper. Which karoseri is designed for this task?",
+        options: ["Wing Box", "Dump Truck (Hydraulic Tipping)", "Flatbed Trailer", "Car Carrier"],
+        answer: 1,
+        explanation: "Use Case Solution: Solid mineral bulk (coal, sand, gravel) requires Dump Trucks with hydraulic tipping beds for rapid gravity unloading."
+      },
+      {
+        id: 187,
+        module: 8,
+        moduleName: "Technical Transport & Equipment",
+        type: "mcq",
+        question: "[Use Case - Construction Material] A ready-mix concrete supplier needs to deliver wet concrete to a high-rise foundation site while preventing premature setting during transit. Which specialized truck must be deployed?",
+        options: ["Mixer Truck (Molen)", "Hi-Blow Tanker", "Self Loader", "Dump Truck"],
+        answer: 0,
+        explanation: "Use Case Solution: Readymix wet concrete requires a Transit Mixer Truck with a revolving drum to keep the slurry agitated."
+      },
+      {
+        id: 188,
+        module: 8,
+        moduleName: "Technical Transport & Equipment",
+        type: "mcq",
+        question: "[Use Case - Powder Bulk] A cement manufacturer needs to transport fine dry cement powder in bulk to a concrete batching plant under pneumatic pressure discharge. Which karoseri is suitable?",
+        options: ["Hi-Blow / Dry Bulk Trailer", "Wing Box", "Dump Truck", "Flatbed Trailer"],
+        answer: 0,
+        explanation: "Use Case Solution: Fine dry powder bulk (cement, flour) uses pneumatic pressure discharge Hi-Blow dry bulk tankers."
+      },
+      {
+        id: 189,
+        module: 8,
+        moduleName: "Technical Transport & Equipment",
+        type: "mcq",
+        question: "[Use Case - Machinery Transport] A contractor needs to move a 20-ton tracked bulldozer to a road construction site. The vehicle can drive under its own power but requires a truck with integrated rear hydraulic ramps. Which karoseri should be selected?",
+        options: ["Self Loader", "Wing Box", "Full Box", "Lory Tangki"],
+        answer: 0,
+        explanation: "Use Case Solution: Self Loader trucks feature reinforced decks with rear hydraulic ramps and winches, allowing heavy construction tracked vehicles to drive straight on."
+      },
+      {
+        id: 190,
+        module: 8,
+        moduleName: "Technical Transport & Equipment",
+        type: "mcq",
+        question: "[Use Case - Automotive Logistics] An automotive manufacturer needs to transport 6 brand-new SUV passenger cars simultaneously from an assembly plant to regional showrooms. What karoseri is engineered for this?",
+        options: ["Car Carrier", "Flatbed Trailer", "Lowbed Trailer", "Wing Box"],
+        answer: 0,
+        explanation: "Use Case Solution: Multi-tier Car Carrier trailers feature double-deck hydraulic ramps specifically built for vehicle transport."
+      },
+      {
+        id: 191,
+        module: 8,
+        moduleName: "Technical Transport & Equipment",
+        type: "mcq",
+        question: "[Use Case - Ultra Heavy Project] An EPC contractor needs to transport a 180-ton power plant transformer unit over public roads. Which heavy transportation vehicle system is mandatory?",
+        options: [
+          "Standard Tronton 10-wheeler",
+          "Multi-axle Hydraulic Trailer (e.g., Goldhofer THP-SL) or SPMT",
+          "Wing Box 40 CBM",
+          "Lowbed 2-axle Trailer"
+        ],
+        answer: 1,
+        explanation: "Use Case Solution: Loads exceeding ~50 Tons exceed standard legal axle limits and mandate hydraulic Multi-axle trailers (Goldhofer) or SPMTs to distribute weight safely across multiple axle lines."
+      },
+      {
+        id: 192,
+        module: 8,
+        moduleName: "Technical Transport & Equipment",
+        type: "mcq",
+        question: "[Use Case - Over-Height Cargo] An industrial fabricator needs to transport a 3.8-meter tall boiler tank on public highways. Standard flatbed trailer height (1.5m) would exceed the legal 4.2m bridge clearance. What trailer karoseri must be selected?",
+        options: ["Lowbed / Lowboy Trailer", "Flatbed Trailer", "Skeleton Trailer", "Wing Box"],
+        answer: 0,
+        explanation: "Use Case Solution: Lowbed/Lowboy trailers feature a dropped deck height (60cm–100cm off ground) to keep tall cargo under maximum bridge clearances."
+      },
+      {
+        id: 193,
+        module: 8,
+        moduleName: "Technical Transport & Equipment",
+        type: "mcq",
+        question: "[Use Case - Precast Concrete] A civil engineering firm needs to transport 25 Tons of heavy precast bridge girders and 20FT ISO containers. Which open structural trailer karoseri is suitable?",
+        options: ["Flatbed / Los Bak Trailer", "Wing Box", "Full Box", "Mixer Truck"],
+        answer: 0,
+        explanation: "Use Case Solution: Flatbed/Los Bak trailers feature flat steel/timber decks with twist-locks, ideal for precast concrete, timber, and containers."
+      },
+      {
+        id: 194,
+        module: 8,
+        moduleName: "Technical Transport & Equipment",
+        type: "mcq",
+        question: "[Use Case - Urban Parcel Delivery] A logistics company needs to deliver e-commerce parcels into narrow urban residential lanes requiring ~14 CBM capacity and 4 Tons max payload. Which truck size fits this exact specification?",
+        options: ["Colt Diesel 6 Ban (CDD Box)", "Tronton Wingbox", "Trailer 40FT", "Fuso 24 CBM"],
+        answer: 0,
+        explanation: "Use Case Solution: Colt Diesel 6 Ban (CDD Box) provides 14 CBM volume and 4 Ton payload while remaining maneuverable in tight urban streets."
+      },
+      {
+        id: 195,
+        module: 8,
+        moduleName: "Technical Transport & Equipment",
+        type: "mcq",
+        question: "[Use Case - Gas Logistics] A utility company needs to move high-pressure Compressed Natural Gas (CNG) cylinders between regional filling stations. Which specialized module is used?",
+        options: ["Gas Transport Module (GTM)", "Lory CPO Tangki", "Dump Truck", "Self Loader"],
+        answer: 0,
+        explanation: "Use Case Solution: Gas Transport Modules (GTM) hold high-pressure gas cylinder banks mounted inside heavy structural trailer frames."
+      },
+      {
+        id: 196,
+        module: 8,
+        moduleName: "Technical Transport & Equipment",
+        type: "mcq",
+        question: "[Use Case - Heavy Container Transport] A shipping line needs to move a 30-ton laden 40FT High Cube container over long-haul toll roads. What tractor head drive configuration is legally required for pulling this semi-trailer?",
+        options: [
+          "Light Pick-up 4x2",
+          "Tractor Head Tronton 6x4 or 6x2 (Daya Total Min 332 HP / 247.5 kW)",
+          "Rigid Engkel 4x2",
+          "Forklift 10T"
+        ],
+        answer: 1,
+        explanation: "Use Case Solution: Keputusan Dirjen Hubdat KP-1762/2022 mandates 6x4 or 6x2 Tronton Tractor Heads with min 332 HP (247.5 kW) for pulling 40FT containers."
+      },
+      {
+        id: 197,
+        module: 8,
+        moduleName: "Technical Transport & Equipment",
+        type: "mcq",
+        question: "[Use Case - Remote Coastal Roll-Off] A mining project in a remote island lacking port jetties requires landing a 60-ton excavator directly onto an unprepared sandy beach. What maritime vessel type is engineered with a bow ramp for this roll-on/roll-off landing?",
+        options: ["Landing Craft Tank (LCT)", "Capesize Bulk Carrier", "Container Vessel", "Oil Tanker"],
+        answer: 0,
+        explanation: "Use Case Solution: Landing Craft Tank (LCT) shallow-draft vessels utilize hinged bow ramps to beach directly on shores and discharge heavy rolling stock."
+      },
+
+      // --- Section C: Container Specifications & Depot MHE ---
+      {
+        id: 198,
+        module: 8,
+        moduleName: "Technical Transport & Equipment",
+        type: "mcq",
+        question: "[Container Spec] What are the standard external length, gross weight, and internal volume specifications for a standard 20-foot General Purpose (20' GP) container?",
+        options: [
+          "Length: 6,058 mm | Gross Wt: 24,000 kg | Volume: 33.2 m3",
+          "Length: 12,192 mm | Gross Wt: 30,480 kg | Volume: 67.7 m3",
+          "Length: 12,192 mm | Gross Wt: 30,480 kg | Volume: 76.3 m3",
+          "Length: 13,716 mm | Gross Wt: 32,500 kg | Volume: 86.0 m3"
+        ],
+        answer: 0,
+        explanation: "Exact Material Spec: 20ft GP container = External Length: 6,058 mm, Max Gross Weight: 24,000 kg, Internal Volume: 33.2 m3."
+      },
+      {
+        id: 199,
+        module: 8,
+        moduleName: "Technical Transport & Equipment",
+        type: "mcq",
+        question: "[Container Spec] What are the standard external length, gross weight, and internal volume specifications for a 40-foot Standard Dry (40' GP) container?",
+        options: [
+          "Length: 6,058 mm | Volume: 33.2 m3",
+          "Length: 12,192 mm | Gross Wt: 30,480 kg | Volume: 67.7 m3",
+          "Length: 12,192 mm | Volume: 76.3 m3",
+          "Length: 13,716 mm | Volume: 86.0 m3"
+        ],
+        answer: 1,
+        explanation: "Exact Material Spec: 40ft GP container = External Length: 12,192 mm, Max Gross Weight: 30,480 kg, Internal Volume: 67.7 m3."
+      },
+      {
+        id: 200,
+        module: 8,
+        moduleName: "Technical Transport & Equipment",
+        type: "mcq",
+        question: "[Container Spec] What is the increased internal cargo volume capacity of a 40-foot High Cube (40' HC) container compared to a standard 40' GP box?",
+        options: [
+          "33.2 m3 (same as 20FT)",
+          "67.7 m3 (same as 40FT GP)",
+          "76.3 m3 (~8.6 m3 additional volume)",
+          "120.0 m3"
+        ],
+        answer: 2,
+        explanation: "Exact Material Spec: A 40ft High Cube container provides 76.3 m3 of cargo space compared to 67.7 m3 in a standard 40ft GP container."
+      },
+      {
+        id: 201,
+        module: 8,
+        moduleName: "Technical Transport & Equipment",
+        type: "mcq",
+        question: "[Container Spec] What are the external length and internal volume specifications for an extra-large 45-foot High Cube (45' HC) container?",
+        options: [
+          "Length: 12,192 mm | Volume: 67.7 m3",
+          "Length: 12,192 mm | Volume: 76.3 m3",
+          "Length: 13,716 mm | Gross Wt: 32,500 kg | Volume: 86.0 m3",
+          "Length: 15,000 mm | Volume: 100.0 m3"
+        ],
+        answer: 2,
+        explanation: "Exact Material Spec: 45ft HC container = External Length: 13,716 mm, Gross Weight: 32,500 kg, Internal Volume: 86.0 m3."
+      },
+      {
+        id: 202,
+        module: 8,
+        moduleName: "Technical Transport & Equipment",
+        type: "mcq",
+        question: "[Depot MHE Spec] Which heavy container handling equipment used in depots features a lifting capacity of 35-45 Tons and can stack both 20ft and 40ft laden containers up to 4 tiers high?",
+        options: ["Reach Stacker", "Top Loader", "Side Loader", "Forklift 10T"],
+        answer: 0,
+        explanation: "Exact Material Spec: Reach Stackers feature 35–45 Ton lifting capacity and can stack 20ft and 40ft containers up to 4 tiers high."
+      },
+      {
+        id: 203,
+        module: 8,
+        moduleName: "Technical Transport & Equipment",
+        type: "mcq",
+        question: "[Depot MHE Spec] What depot handling equipment provides a lifting capacity of 9 Tons and specializes in empty container handling up to 7 tiers high?",
+        options: ["Reach Stacker", "Top Loader", "Side Loader", "Crawler Crane"],
+        answer: 1,
+        explanation: "Exact Material Spec: Top Loaders feature a 9 Ton lifting capacity designed for empty 20ft and 40ft container stacking up to 7 tiers."
+      },
+      {
+        id: 204,
+        module: 8,
+        moduleName: "Technical Transport & Equipment",
+        type: "mcq",
+        question: "[Depot MHE Spec] Which specialized depot equipment offers a 10 Ton lifting capacity for single or double stack empty container handling up to 7 tiers high?",
+        options: ["Reach Stacker", "Top Loader", "Side Loader", "Forklift 3T"],
+        answer: 2,
+        explanation: "Exact Material Spec: Side Loaders feature 10 Ton lifting capacity and can single/double stack empty 20ft and 40ft containers up to 7 tiers high."
+      },
+      {
+        id: 205,
+        module: 8,
+        moduleName: "Technical Transport & Equipment",
+        type: "mcq",
+        question: "[Depot MHE Spec] What are the lifting capacity and stacking limitations for a heavy 10-Ton Forklift used in container depots?",
+        options: [
+          "Lifting Cap: 45 Ton | Max Tier: 5 Tiers | 40ft container only",
+          "Lifting Cap: 10 Ton | Max Tier: 3 Tiers | 20ft container only",
+          "Lifting Cap: 2 Ton | Max Tier: 10 Tiers | All containers",
+          "Lifting Cap: 9 Ton | Max Tier: 7 Tiers | 40ft container"
+        ],
+        answer: 1,
+        explanation: "Exact Material Spec: Heavy 10T Depot Forklifts have a Lifting Capacity of 10 Tons, Max Stacking height of 3 Tiers, and handle 20ft containers only."
+      },
+      {
+        id: 206,
+        module: 8,
+        moduleName: "Technical Transport & Equipment",
+        type: "mcq",
+        question: "[Container Use Case - Liquid Chemical] A chemical distributor needs to export hazardous liquid solvents in bulk inside an ISO-certified intermodal container frame. Which box type is designed for this?",
+        options: ["Tank Container (ISO Tank)", "Open Top Container", "Flat Rack Container", "Reefer Container"],
+        answer: 0,
+        explanation: "Container Selection: Tank Containers (ISO Tanks) consist of a cylindrical stainless steel pressure vessel mounted inside a standard intermodal frame for bulk liquid chemicals."
+      },
+      {
+        id: 207,
+        module: 8,
+        moduleName: "Technical Transport & Equipment",
+        type: "mcq",
+        question: "[Container Use Case - Top Loading] A manufacturing plant needs to load heavy machinery parts that cannot pass through end doors and must be lowered from above using an overhead gantry crane. Which container type is required?",
+        options: ["Open Top Container", "Dry General Purpose", "Reefer Container", "Tank Container"],
+        answer: 0,
+        explanation: "Container Selection: Open Top containers feature removable tarpaulin roofs specifically allowing overhead crane loading of tall or top-heavy cargo."
+      },
+      {
+        id: 208,
+        module: 8,
+        moduleName: "Technical Transport & Equipment",
+        type: "mcq",
+        question: "[Container Use Case - Over-Width Cargo] A customer needs to ship an oversized industrial generator engine that exceeds the width of standard container walls. Which container type with collapsible end-walls is selected?",
+        options: ["Flat Rack Container", "General Purpose 40FT", "Reefer Container", "Closed Box"],
+        answer: 0,
+        explanation: "Container Selection: Flat Rack containers feature open sides and structural bed platforms (with collapsible end walls) for over-width/over-weight breakbulk cargo."
+      },
+      {
+        id: 209,
+        module: 8,
+        moduleName: "Technical Transport & Equipment",
+        type: "mcq",
+        question: "[Container Use Case - Perishable Food] An exporter needs to ship 20 Tons of frozen seafood requiring continuous active temperature control at -20°C from Jakarta to Japan. Which container type is required?",
+        options: ["Reefer Container", "Open Top Container", "Flat Rack Container", "Dry Box 40FT"],
+        answer: 0,
+        explanation: "Container Selection: Refrigerated (Reefer) containers feature integrated electric cooling/heating machinery to maintain exact setpoint temperatures during ocean transit."
+      },
+
+      // --- Section D: Warehouse Racking, MHE & Cold Chain Specs ---
+      {
+        id: 210,
+        module: 8,
+        moduleName: "Technical Transport & Equipment",
+        type: "mcq",
+        question: "[Warehouse Spec] What conventional pallet racking system requires aisle widths of 2.4 to 3.2 meters and provides 100% direct accessibility to every pallet using standard Reach Trucks?",
+        options: [
+          "Single Deep Pallet Racking",
+          "Double Deep Pallet Racking",
+          "Very Narrow Aisle (VNA)",
+          "Pallet Shuttle ASRS"
+        ],
+        answer: 0,
+        explanation: "Exact Material Spec: Single Deep Pallet Racking uses aisle widths of 2.4 to 3.2m and allows 100% selective access via Reach Truck or Articulated Forklift."
+      },
+      {
+        id: 211,
+        module: 8,
+        moduleName: "Technical Transport & Equipment",
+        type: "mcq",
+        question: "[Warehouse Spec] What racking layout stores pallets 2-deep to increase storage density by +30% to 35%, but requires a specialized reach truck with an extended pantograph mechanism?",
+        options: [
+          "Single Deep Pallet Racking",
+          "Double Deep Pallet Racking",
+          "Drive-In Racking",
+          "AutoStore"
+        ],
+        answer: 1,
+        explanation: "Exact Material Spec: Double Deep Pallet Racking stores pallets two rows deep, boosting storage density by 30%–35% while requiring extended reach pantograph forklifts."
+      },
+      {
+        id: 212,
+        module: 8,
+        moduleName: "Technical Transport & Equipment",
+        type: "mcq",
+        question: "[Warehouse Spec] Which high-density pallet racking system reduces aisle width down to ~1.8 meters and requires wire-guided or rail-guided specialized mobile equipment?",
+        options: [
+          "Very Narrow Aisle (VNA)",
+          "Single Deep Pallet Racking",
+          "Pallet Flow Storage",
+          "Drive-In Racking"
+        ],
+        answer: 0,
+        explanation: "Exact Material Spec: Very Narrow Aisle (VNA) racking operates in ~1.8m aisles utilizing wire-guided turret trucks to maximize vertical storage space."
+      },
+      {
+        id: 213,
+        module: 8,
+        moduleName: "Technical Transport & Equipment",
+        type: "mcq",
+        question: "[Warehouse Spec] What multi-deep storage system requires forklift trucks to drive directly inside the rack structure to deposit pallets, restricting every location in a bay to holding the exact same SKU?",
+        options: ["Drive-In Racking", "Pallet Shuttle ASRS", "VNA Racking", "AutoStore"],
+        answer: 0,
+        explanation: "Exact Material Spec: Drive-In Racking requires forklifts to physically enter racking channels; every location within a given bay channel must hold the same product/SKU."
+      },
+      {
+        id: 214,
+        module: 8,
+        moduleName: "Technical Transport & Equipment",
+        type: "mcq",
+        question: "[Warehouse Spec] Which automated racking solution utilizes battery-powered robotic shuttles inside multi-deep channels to reduce floor footprint by 50%-60% while allowing different SKUs on different tier levels?",
+        options: [
+          "Pallet Shuttle ASRS",
+          "Drive-In Racking",
+          "Single Deep Racking",
+          "Manual Shelving"
+        ],
+        answer: 0,
+        explanation: "Exact Material Spec: Pallet Shuttle ASRS uses motorized shuttles to move pallets inside channels, cutting required footprint by 50%–60% and enabling different SKUs per channel level."
+      },
+      {
+        id: 215,
+        module: 8,
+        moduleName: "Technical Transport & Equipment",
+        type: "mcq",
+        question: "[Warehouse Automation] What high-density robotic goods-to-person storage and picking system utilizes autonomous robots driving on top of a 3D aluminum grid structure to deliver bins to picking ports?",
+        options: ["AutoStore", "Conveyor Belt", "Drive-In Racking", "Manual Reach Truck"],
+        answer: 0,
+        explanation: "Exact Material Spec: AutoStore is an ultra-dense robotic goods-to-person grid system where top-mounted robots retrieve bins and deliver them to operator picking ports."
+      },
+      {
+        id: 216,
+        module: 8,
+        moduleName: "Technical Cold Chain] What specialized Material Handling Equipment (MHE) configuration is required to operate safely inside deep-freeze (-20°C to -25°C) cold storage chambers?",
+        options: [
+          "Standard LPG Forklift without cabin",
+          "Freezer-rated Reach Truck with heated cabin & low-temperature battery protection",
+          "Diesel Truck with open canopy",
+          "Manual Hand Pallet Jack only"
+        ],
+        answer: 1,
+        explanation: "Exact Material Spec: Deep-freeze chambers (-20°C) require specialized Freezer-rated Reach Trucks equipped with heated operator cabs and cold-conditioned hydraulic/battery systems."
+      },
+      {
+        id: 217,
+        module: 8,
+        moduleName: "Technical Cold Chain] What passive temperature preservation equipment is used during pallet staging and transport loading to shield temperature-sensitive goods from ambient heat spikes?",
+        options: [
+          "Thermal Blankets / Pallet Covers",
+          "Wooden Pallets",
+          "Cardboard Dividers",
+          "Plastic Shrink Wrap only"
+        ],
+        answer: 0,
+        explanation: "Exact Material Spec: Cold chain operations deploy insulated Thermal Blankets and Pallet Covers to prevent temperature fluctuations during staging and cross-docking."
+      },
+      {
+        id: 218,
+        module: 8,
+        moduleName: "Technical Cold Chain] What mandatory Personal Protective Equipment (PPE) combination is required for warehouse operators working inside cold chain freezer zones (-20°C)?",
+        options: [
+          "Standard cotton shirt and safety glasses",
+          "Thick insulated parka jacket, thermal pants, cold/water resistant gloves, anti-slip insulated safety boots, and helmet with warm liner",
+          "Short sleeve uniform and rubber boots",
+          "Disposable paper suit"
+        ],
+        answer: 1,
+        explanation: "Exact Material Spec: Cold Chain PPE mandates thick insulated parka jackets, thermal pants, cold/waterproof gloves, insulated anti-slip safety boots, and warm-lined helmets."
+      },
+      {
+        id: 219,
+        module: 8,
+        moduleName: "Technical Use Case - Pharma Cold Chain] A pharmaceutical client needs to store 10,000 pallets of biological vaccines at +2°C to +8°C with strict FEFO batch tracking, automated 24/7 IoT sensors, and full BPOM compliance. What system stack and certification are mandatory?",
+        options: [
+          "Paper logbooks and manual ambient storage",
+          "Infor WMS + BPOM CDOB qualification under PerBPOM No. 6/2024 & WHO TRS 961 Annex 9",
+          "Excel spreadsheets and non-refrigerated warehouse",
+          "AutoStore ambient grid"
+        ],
+        answer: 1,
+        explanation: "Use Case Solution: Vaccine cold storage (+2°C to +8°C) mandates CPOB/CDOB compliance (PerBPOM No. 6/2024, WHO TRS 961 Annex 9) paired with Infor WMS for digital FEFO batch tracking."
+      },
+      {
+        id: 220,
+        module: 8,
+        moduleName: "Technical Use Case - High SKU Retail] A retail client (e.g. MAP) operates a distribution center with 90,000 bin locations handling thousands of individual footwear/apparel SKUs. Which picking automation technology directs pickers to exact locations via illuminated LED displays?",
+        options: ["Pick-to-Light", "Manual Paper Lists", "Drive-In Racking", "LIFO Stacking"],
+        answer: 0,
+        explanation: "Use Case Solution: High-SKU retail fulfillment centers (like SLS managing MAP with 90k bins) utilize Pick-to-Light visual LED rack indicators for error-free picking."
+      },
+
+      // --- Section E: Heavy Project Logistics & Marine Specs ---
+      {
+        id: 221,
+        module: 8,
+        moduleName: "Technical Transport & Equipment",
+        type: "mcq",
+        question: "[Marine Spec - Barge 230 FT] What are the principal dimensions and deck capacity parameters for a standard 230-foot Deck Barge (Barge 230 FT)?",
+        options: [
+          "Length 45.7m | Breadth 15.2m | Capacity 1,000 tons",
+          "Length 70.1m | Breadth 18.3m | Depth 4.3m | Capacity 2,500 m3 / 4,000 tons",
+          "Length 82.3m | Breadth 21.3m | Capacity 6,000 tons",
+          "Length 91.4m | Breadth 27.4m | Capacity 8,000 tons"
+        ],
+        answer: 1,
+        explanation: "Exact Material Spec: Barge 230 FT = Length: 70.1m, Breadth: 18.3m, Depth: 4.3m, Deck Space: 65m x 16.5m, Capacity: 2,500 m3 / 4,000 tons."
+      },
+      {
+        id: 222,
+        module: 8,
+        moduleName: "Technical Transport & Equipment",
+        type: "mcq",
+        question: "[Marine Spec - Barge 270 FT] What are the principal dimensions and deck capacity parameters for a 270-foot Deck Barge (Barge 270 FT)?",
+        options: [
+          "Length 70.1m | Capacity 4,000 tons",
+          "Length 82.3m | Breadth 21.3m | Depth 4.9m | Capacity 3,600 m3 / 6,000 tons",
+          "Length 91.4m | Capacity 8,000 tons",
+          "Length 100m | Capacity 10,000 tons"
+        ],
+        answer: 1,
+        explanation: "Exact Material Spec: Barge 270 FT = Length: 82.3m, Breadth: 21.3m, Depth: 4.9m, Deck Space: 78m x 19m, Capacity: 3,600 m3 / 6,000 tons."
+      },
+      {
+        id: 223,
+        module: 8,
+        moduleName: "Technical Transport & Equipment",
+        type: "mcq",
+        question: "[Marine Spec - Barge 300 FT] What are the specifications for a large 300-foot Deck Barge (Barge 300 FT)?",
+        options: [
+          "Length 70.1m | Breadth 18.3m | Capacity 4,000 tons",
+          "Length 82.3m | Breadth 21.3m | Capacity 6,000 tons",
+          "Length 91.4m | Breadth 27.4m | Depth 6.1m | Capacity 5,000 m3 / 8,000 tons",
+          "Length 120m | Capacity 15,000 tons"
+        ],
+        answer: 2,
+        explanation: "Exact Material Spec: Barge 300 FT = Length: 91.4m, Breadth: 27.4m, Depth: 6.1m, Deck Space: 87m x 25.5m, Capacity: 5,000 m3 / 8,000 tons."
+      },
+      {
+        id: 224,
+        module: 8,
+        moduleName: "Technical Transport & Equipment",
+        type: "mcq",
+        question: "[Heavy Module Spec] What are the rated payload capacity, tire inflation pressure, and hydraulic stroke specs for Goldhofer THP-SL modular heavy trailers?",
+        options: [
+          "Capacity: 10 Ton/axle | Stroke: +/- 100 mm",
+          "Capacity: 25 Ton / Axle Line | Tire Pressure: 10.5 bar | Hydraulic Stroke: +/- 300 mm",
+          "Capacity: 50 Ton/axle | Tire Pressure: 5.0 bar",
+          "Capacity: 100 Ton/axle | Mechanical Spring Suspension"
+        ],
+        answer: 1,
+        explanation: "Exact Material Spec: Goldhofer THP-SL = Rated Capacity: 25 Ton per Axle Line, Max Speed: 10 km/h, Width: 3,000 mm, Tire Pressure: 10.5 bar, Hydraulic Axle Stroke: +/- 300 mm (8 tires/axle)."
+      },
+      {
+        id: 225,
+        module: 8,
+        moduleName: "Technical Transport & Equipment",
+        type: "mcq",
+        question: "[Heavy Module Spec] A 6-axle line Self-Propelled Modular Transporter (SPMT) module (9m x 3m) powered by a Cummins Powerpack features what total load capacity and engine rating?",
+        options: [
+          "Capacity: 50 Tons | Engine: 50 HP",
+          "Capacity: 180 Tons | Powerpack: 194 kW / 260 PS",
+          "Capacity: 300 Tons | Engine: 500 HP",
+          "Capacity: 500 Tons | Engine: 1,000 HP"
+        ],
+        answer: 1,
+        explanation: "Exact Material Spec: SPMT 6-Axle module (9m x 3m x 1.175m) has a payload capacity of 180 Tons and is driven by a 194 kW / 260 PS Powerpack."
+      },
+      {
+        id: 226,
+        module: 8,
+        moduleName: "Technical Transport & Equipment",
+        type: "mcq",
+        question: "[Heavy Crane Spec] What are the rated lifting capacity, main boom length, and jib length for the All-Terrain Crane Sumitomo SA 1700 in Samudera's fleet?",
+        options: [
+          "Capacity: 50 Tons | Boom: 20m",
+          "Capacity: 100 Tons | Boom: 35m",
+          "Capacity: 170 Tons | Boom Length: 50m | Jib Length: 24m",
+          "Capacity: 500 Tons | Boom: 100m"
+        ],
+        answer: 2,
+        explanation: "Exact Material Spec: Sumitomo SA 1700 All Terrain Crane = Capacity: 170 Tons, Main Boom Length: 50 meters, Jib Length: 24 meters."
+      },
+      {
+        id: 227,
+        module: 8,
+        moduleName: "Technical Transport & Equipment",
+        type: "mcq",
+        question: "[Engineering Calculation] A heavy project operation transports a 580-ton gas turbine using 16 axle lines of Goldhofer multi-axle trailers in Full Parallel configuration. The trailer tare weight is 112 tons and support beams weigh 20 tons. What is the calculated load per axle line?",
+        options: ["25.0 Tons", "35.5 Tons", "44.5 Tons / Axle Line", "60.0 Tons"],
+        answer: 2,
+        explanation: "Exact Engineering Math: Total Weight = Cargo (580T) + Trailer (112T) + Beam (20T) = 712 Tons. Total Load / 16 Axle lines = 44.50 Tons per Axle Line."
+      },
+      {
+        id: 228,
+        module: 8,
+        moduleName: "Technical Transport & Equipment",
+        type: "mcq",
+        question: "[Engineering Analysis] During a heavy haulage route survey, engineers evaluate a road section with an 8-degree slope incline. To guarantee that 3 Prime Movers plus 1 Powerpack can climb the hill safely without rolling back, what mathematical condition must be proven in the transport plan?",
+        options: [
+          "Pulling Forces Demand (PFD) > Pulling Forces Supply (PFS)",
+          "Pulling Forces Supply (PFS) > Pulling Forces Demand (PFD)",
+          "Engine Torque = Zero",
+          "Trailer weight must be zero"
+        ],
+        answer: 1,
+        explanation: "Exact Engineering Analysis: For safe hill climbing, Tractive Power Supply (PFS) must exceed total Grade & Rolling Resistance Demand (PFD) (PFS > PFD)."
+      },
+      {
+        id: 229,
+        module: 8,
+        moduleName: "Technical Transport & Equipment",
+        type: "mcq",
+        question: "[Lashing Calculation] When performing lashing and securing engineering calculations for a 156-ton deisobutanizer column resting on heavy multi-axle decks, what friction coefficient (\u03bc) is standard for a Steel-on-Rubber interface?",
+        options: ["\u03bc = 0.1", "\u03bc = 0.3", "\u03bc = 0.7", "\u03bc = 1.0"],
+        answer: 1,
+        explanation: "Exact Material Spec: In lashing calculations, friction coefficient \u03bc = 0.3 is standard for steel cargo resting on heavy rubber friction sheets."
+      },
+      {
+        id: 230,
+        module: 8,
+        moduleName: "Technical Transport & Equipment",
+        type: "mcq",
+        question: "[Marine Engineering] During Ship-to-Barge (STS) heavy crane transfer operations, as a 200-ton cargo module is lowered off-center onto the barge deck, what system must be actively operated to adjust water levels in side compartments and keep the barge deck stable and level?",
+        options: ["Pontoon Ballast System", "Anchor Winch only", "Engine Turbocharger", "Hydraulic Steering"],
+        answer: 0,
+        explanation: "Exact Engineering Analysis: Pontoon Ballast Systems actively pump water between ballast tanks during heavy STS transfers to compensate for weight shifts and maintain barge deck stability."
       }
     ];
 
@@ -2095,14 +2799,15 @@
     let userAnswers = {}; // { questionId: { value, isCorrect } }
 
     const modules = [
-      { id: 'all', name: 'All 170 Questions', desc: 'Complete masterclass curriculum + official exam question bank.' },
+      { id: 'all', name: 'All 230 Questions', desc: 'Complete masterclass curriculum + official tests + technical specs.' },
       { id: 1, name: '1. Supply Chain & 5.0', desc: 'Foundations, 3 Flows, 7 Rs, 1PL-5PL, Incoterms, Logistics 5.0.' },
       { id: 2, name: '2. ESG & Brand Guidelines', desc: 'Corporate Identity, Brundtland, Double Materiality, IMO strategy, GRI codes.' },
       { id: 3, name: '3. Container Depot Ops', desc: 'Corten steel, ISO 6346, Check digit calculations, Yard ops, Equipment.' },
       { id: 4, name: '4. Project Logistics', desc: 'Heavy haulage, SPMT, Goldhofer, Ballast systems, Feasibility analysis.' },
       { id: 5, name: '5. Inland Transport & HSSE', desc: '4 HSSE Pillars, SIM rules, B3 Regulations, Halal Logistics, ODOL.' },
       { id: 6, name: '6. Warehousing & Cold Chain', desc: 'Inbound to Dispatch, ASRS, BPOM Mapping, Halal Integrity, Certifications.' },
-      { id: 7, name: '7. Official Pre/Post Tests', desc: '50 Audited and Corrected questions directly from Samudera exam sheets.' }
+      { id: 7, name: '7. Official Pre/Post Tests', desc: '50 Audited and Corrected questions directly from Samudera exam sheets.' },
+      { id: 8, name: '8. Technical Transport & Equipment', desc: '60 Specific Technical Specs: CDE/CDD/Tronton/Wingbox, Karoseri Use Cases, Container Types, MHE, Racking & Barges.' }
     ];
 
     // -------------------------------------------------------------
@@ -2169,7 +2874,7 @@
             
             <!-- Header Badge -->
             <div class="flex items-center justify-between text-xs text-slate-400">
-              <span class="bg-slate-700/80 px-2.5 py-1 rounded font-mono text-blue-300">Question ${q.id} of 170</span>
+              <span class="bg-slate-700/80 px-2.5 py-1 rounded font-mono text-blue-300">Question ${q.id} of 230</span>
               <span class="text-slate-400 font-medium">${q.moduleName}</span>
             </div>
 
@@ -2201,7 +2906,7 @@
 
             <!-- Explanation Box -->
             <div id="exp-${q.id}" class="${answered ? '' : 'hidden'} bg-slate-900/80 p-3.5 rounded-lg border border-slate-700 text-xs space-y-1">
-              <span class="font-bold text-slate-300 block">Explanation & Operational Context:</span>
+              <span class="font-bold text-slate-300 block">Technical Insight & Material Reference:</span>
               <p class="text-slate-300 leading-normal">${q.explanation}</p>
             </div>
 
