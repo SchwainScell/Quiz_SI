@@ -452,7 +452,7 @@
         return;
       }
 
-      simQuestions = sampled;
+      simQuestions = sampled.map(shuffleOptions);
       simUserAnswers = {};
       simTimeRemaining = simDurationMins * 60;
       simStartTime = Date.now();
@@ -4878,6 +4878,23 @@ quizData.push(...section4Questions);
 ];
 
 quizData.push(...section5Questions);
+  </script>
+
+  <!-- Randomize answer option order so the correct answer is not always first -->
+  <script>
+    function shuffleOptions(q) {
+      const idx = q.options.map((_, i) => i);
+      for (let i = idx.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [idx[i], idx[j]] = [idx[j], idx[i]];
+      }
+      return Object.assign({}, q, {
+        options: idx.map(i => q.options[i]),
+        answer: idx.indexOf(q.answer)
+      });
+    }
+    // Shuffle once at page load (practice mode)
+    for (let i = 0; i < quizData.length; i++) quizData[i] = shuffleOptions(quizData[i]);
   </script>
 </body>
 </html>
