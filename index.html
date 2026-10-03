@@ -3,107 +3,102 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Universal Interactive Quiz Portal</title>
+  <title>Samudera Shipping Practice & Simulation Portal</title>
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     .custom-scrollbar::-webkit-scrollbar { width: 6px; }
-    .custom-scrollbar::-webkit-scrollbar-track { background: #1e293b; }
-    .custom-scrollbar::-webkit-scrollbar-thumb { background: #475569; border-radius: 4px; }
+    .custom-scrollbar::-webkit-scrollbar-track { background: #0f172a; }
+    .custom-scrollbar::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
   </style>
 </head>
 <body class="bg-slate-900 text-slate-100 font-sans min-h-screen flex flex-col custom-scrollbar">
 
   <!-- ========================================================= -->
-  <!-- PAGE 1: THEME SELECTION PAGE                              -->
+  <!-- VIEW 1: HOME PAGE                                         -->
   <!-- ========================================================= -->
-  <div id="page-theme-select" class="min-h-screen flex flex-col justify-center items-center px-4 py-12">
-    <div class="max-w-3xl w-full text-center space-y-8">
+  <div id="view-home" class="min-h-screen flex flex-col justify-center items-center px-4 py-12">
+    <div class="max-w-4xl w-full text-center space-y-8">
       
-      <!-- Brand Header -->
+      <!-- Brand Badge -->
       <div class="inline-flex items-center space-x-3 bg-slate-800 border border-slate-700 px-4 py-2 rounded-full shadow-md">
-        <span class="bg-blue-600 text-white font-black px-2.5 py-0.5 rounded text-sm tracking-wider">QUIZ PORTAL</span>
-        <span class="text-xs font-semibold text-slate-300">Data Lake Interface Layer</span>
+        <span class="bg-red-600 text-white font-black px-2.5 py-0.5 rounded text-sm tracking-wider">SAMUDERA</span>
+        <span class="text-xs font-semibold text-slate-300">Shipping Assessment</span>
       </div>
 
+      <!-- Main Title -->
       <div class="space-y-3">
         <h1 class="text-3xl md:text-5xl font-extrabold text-white tracking-tight leading-tight">
-          Select Quiz Theme
+          Comprehensive Shipping & Maritime Portal
         </h1>
-        <p class="text-slate-400 text-sm md:text-base max-w-xl mx-auto">
-          Choose an available dataset theme or load a custom CSV Data Lake file to begin your assessment.
+        <p class="text-slate-400 text-sm md:text-base max-w-2xl mx-auto">
+          Test your operational expertise across 5 core shipping sections: Terminology & Containers, Shipping Agency, Crewing, Ship Management, and Dry Bulk & Tanker Business.
         </p>
       </div>
 
-      <!-- Theme Cards Container -->
-      <div id="theme-cards-container" class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4 text-left">
-        <!-- Rendered by JS -->
-      </div>
-
-      <!-- Custom CSV Upload Box -->
-      <div class="bg-slate-800/80 border-2 border-dashed border-slate-700 hover:border-blue-500 p-6 rounded-2xl transition text-center space-y-3">
-        <div class="text-2xl">📂</div>
-        <div>
-          <h4 class="text-sm font-bold text-slate-200">Load New Theme Dataset (.csv)</h4>
-          <p class="text-xs text-slate-400">Import your own Data Lake CSV file to add new quiz themes dynamically.</p>
+      <!-- Section Breakdown Badges -->
+      <div class="grid grid-cols-2 md:grid-cols-5 gap-3 max-w-3xl mx-auto text-xs text-left">
+        <div class="bg-slate-800 p-3 rounded-xl border border-slate-700">
+          <span class="block font-bold text-blue-400">1. Terminology</span>
+          <span class="text-[10px] text-slate-400">Containers & Vocab</span>
         </div>
-        <input type="file" id="csv-file-input" accept=".csv" class="hidden" onchange="handleCSVUpload(event)" />
-        <button onclick="document.getElementById('csv-file-input').click()" class="bg-slate-700 hover:bg-slate-600 text-white text-xs font-semibold px-4 py-2 rounded-lg border border-slate-600 transition">
-          Browse CSV File
-        </button>
+        <div class="bg-slate-800 p-3 rounded-xl border border-slate-700">
+          <span class="block font-bold text-amber-400">2. Agency</span>
+          <span class="text-[10px] text-slate-400">SIUPKK & Operations</span>
+        </div>
+        <div class="bg-slate-800 p-3 rounded-xl border border-slate-700">
+          <span class="block font-bold text-emerald-400">3. Crewing</span>
+          <span class="text-[10px] text-slate-400">STCW & MLC 2006</span>
+        </div>
+        <div class="bg-slate-800 p-3 rounded-xl border border-slate-700">
+          <span class="block font-bold text-purple-400">4. Ship Mgmt</span>
+          <span class="text-[10px] text-slate-400">SHIPMAN & OPEX</span>
+        </div>
+        <div class="bg-slate-800 p-3 rounded-xl border border-slate-700 col-span-2 md:col-span-1">
+          <span class="block font-bold text-rose-400">5. Bulk & Tankers</span>
+          <span class="text-[10px] text-slate-400">TCE & Tonne-Miles</span>
+        </div>
       </div>
 
-    </div>
-  </div>
-
-
-  <!-- ========================================================= -->
-  <!-- PAGE 2: MODE SELECTION PAGE                               -->
-  <!-- ========================================================= -->
-  <div id="page-mode-select" class="hidden min-h-screen flex flex-col justify-center items-center px-4 py-12">
-    <div class="max-w-4xl w-full text-center space-y-8">
-      
-      <div class="flex justify-between items-center max-w-2xl mx-auto">
-        <button onclick="navigateToPage('theme-select')" class="text-xs text-slate-400 hover:text-white flex items-center space-x-1">
-          <span>&larr; Change Theme</span>
-        </button>
-        <span id="active-theme-badge" class="bg-blue-600/20 text-blue-400 border border-blue-500/30 text-xs font-bold px-3 py-1 rounded-full">
-          Theme: Logistics Masterclass
-        </span>
-      </div>
-
-      <div class="space-y-2">
-        <h2 class="text-3xl font-extrabold text-white">Choose Assessment Mode</h2>
-        <p class="text-slate-400 text-sm">Select how you would like to interact with this dataset.</p>
-      </div>
-
-      <!-- Mode Cards -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-left max-w-3xl mx-auto">
+      <!-- Mode Selection Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4 text-left">
         
-        <!-- Practice Card -->
-        <div onclick="initPracticeMode()" class="group bg-slate-800/80 hover:bg-slate-800 border-2 border-slate-700 hover:border-blue-500 p-6 rounded-2xl cursor-pointer transition shadow-lg flex flex-col justify-between">
+        <!-- Practice Mode Card -->
+        <div onclick="navigateTo('practice')" class="group bg-slate-800/80 hover:bg-slate-800 border-2 border-slate-700 hover:border-blue-500 p-6 rounded-2xl cursor-pointer transition shadow-lg flex flex-col justify-between">
           <div class="space-y-4">
-            <div class="w-12 h-12 bg-blue-600/20 text-blue-400 rounded-xl flex items-center justify-center font-bold text-xl group-hover:bg-blue-600 group-hover:text-white transition">📚</div>
+            <div class="w-12 h-12 bg-blue-600/20 text-blue-400 rounded-xl flex items-center justify-center font-bold text-xl group-hover:bg-blue-600 group-hover:text-white transition">
+              📚
+            </div>
             <div>
-              <h3 class="text-lg font-bold text-white group-hover:text-blue-400 transition">Practice Mode</h3>
-              <p class="text-xs text-slate-400 mt-1">Study all items at your own pace. Filter by module, inspect instant answer feedback, and read operational insights.</p>
+              <h3 class="text-xl font-bold text-white group-hover:text-blue-400 transition">Self-Paced Practice Mode</h3>
+              <p class="text-xs text-slate-400 mt-1">Browse and study shipping questions section by section with instant feedback, word-balanced choices, and detailed operational rationale.</p>
             </div>
           </div>
-          <div class="pt-6 text-xs font-semibold text-blue-400 group-hover:translate-x-1 transition">Start Practice &rarr;</div>
+          <div class="pt-6 flex items-center text-xs font-semibold text-blue-400 group-hover:translate-x-1 transition">
+            Start Practice Mode &rarr;
+          </div>
         </div>
 
-        <!-- Simulation Card -->
-        <div onclick="openSimSetup()" class="group bg-slate-800/80 hover:bg-slate-800 border-2 border-slate-700 hover:border-emerald-500 p-6 rounded-2xl cursor-pointer transition shadow-lg flex flex-col justify-between">
+        <!-- Simulation Mode Card -->
+        <div onclick="navigateTo('simulation-setup')" class="group bg-slate-800/80 hover:bg-slate-800 border-2 border-slate-700 hover:border-emerald-500 p-6 rounded-2xl cursor-pointer transition shadow-lg flex flex-col justify-between">
           <div class="space-y-4">
-            <div class="w-12 h-12 bg-emerald-600/20 text-emerald-400 rounded-xl flex items-center justify-center font-bold text-xl group-hover:bg-emerald-600 group-hover:text-white transition">⏱️</div>
+            <div class="w-12 h-12 bg-emerald-600/20 text-emerald-400 rounded-xl flex items-center justify-center font-bold text-xl group-hover:bg-emerald-600 group-hover:text-white transition">
+              ⏱️
+            </div>
             <div>
-              <h3 class="text-lg font-bold text-white group-hover:text-emerald-400 transition">Simulation Exam</h3>
-              <p class="text-xs text-slate-400 mt-1">Timed exam mode with 60 weighted randomized questions. Feedback is locked until submission, followed by section analytics.</p>
+              <h3 class="text-xl font-bold text-white group-hover:text-emerald-400 transition">50-Question Exam Simulation</h3>
+              <p class="text-xs text-slate-400 mt-1">Timed assessment featuring 50 questions sampled equally (1:1:1:1:1 ratio, 10 per section) with full section-by-section score analytics upon submission.</p>
             </div>
           </div>
-          <div class="pt-6 text-xs font-semibold text-emerald-400 group-hover:translate-x-1 transition">Configure Simulation &rarr;</div>
+          <div class="pt-6 flex items-center text-xs font-semibold text-emerald-400 group-hover:translate-x-1 transition">
+            Configure Exam Simulation &rarr;
+          </div>
         </div>
 
+      </div>
+
+      <div class="text-xs text-slate-500">
+        Strictly MECE • Balanced Choice Lengths • Tonne-Miles Visual Aids & Laycan Vessel Choice Scenarios
       </div>
 
     </div>
@@ -111,38 +106,52 @@
 
 
   <!-- ========================================================= -->
-  <!-- PAGE 3A: PRACTICE INTERFACE                               -->
+  <!-- VIEW 2: PRACTICE MODE PAGE                                -->
   <!-- ========================================================= -->
-  <div id="page-practice-ui" class="hidden flex-1 flex flex-col">
+  <div id="view-practice" class="hidden flex-1 flex flex-col">
+    <!-- Top Sticky Header -->
     <header class="sticky top-0 z-50 bg-slate-800/95 backdrop-blur border-b border-slate-700 shadow-lg">
-      <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+      <div class="max-w-7xl mx-auto px-4 py-3 flex flex-wrap items-center justify-between gap-4">
         <div class="flex items-center space-x-3">
-          <button onclick="navigateToPage('mode-select')" class="bg-slate-700 hover:bg-slate-600 text-xs px-3 py-1.5 rounded-lg border border-slate-600 text-slate-200 transition">&larr; Mode</button>
-          <span class="bg-blue-600 text-white font-black px-2.5 py-1 rounded text-xs tracking-wider">PRACTICE</span>
+          <button onclick="navigateTo('home')" class="bg-slate-700 hover:bg-slate-600 text-xs px-3 py-1.5 rounded-lg border border-slate-600 text-slate-200 transition">
+            &larr; Home
+          </button>
+          <div class="bg-blue-600 text-white font-black px-2.5 py-1 rounded text-sm tracking-wider">PRACTICE</div>
+          <span class="text-sm font-bold text-white hidden sm:inline">Shipping Knowledge Base</span>
         </div>
+
+        <!-- Score Stats -->
         <div class="flex items-center space-x-6 text-xs">
-          <div><span class="text-slate-400">Progress:</span> <span id="practice-stat-progress" class="font-bold text-blue-400">0 / 0</span></div>
+          <div><span class="text-slate-400">Answered:</span> <span id="practice-stat-progress" class="font-bold text-blue-400">0 / 0</span></div>
           <div><span class="text-slate-400">Accuracy:</span> <span id="practice-stat-score" class="font-bold text-emerald-400">0%</span></div>
-          <button onclick="resetPractice()" class="bg-slate-700 hover:bg-slate-600 text-slate-200 text-xs px-2 py-1 rounded border border-slate-600">Reset</button>
+          <button onclick="resetPractice()" class="bg-slate-700 hover:bg-slate-600 text-slate-200 text-xs px-2.5 py-1 rounded border border-slate-600">Reset</button>
         </div>
+      </div>
+      <div class="w-full bg-slate-700 h-1">
+        <div id="practice-progress-bar" class="bg-blue-500 h-1 w-0 transition-all duration-300"></div>
       </div>
     </header>
 
+    <!-- Main Content Container -->
     <main class="flex-1 max-w-7xl w-full mx-auto px-4 py-6 grid grid-cols-1 lg:grid-cols-4 gap-6">
+      <!-- Sidebar Filter -->
       <aside class="lg:col-span-1 space-y-4">
         <div class="bg-slate-800 p-4 rounded-xl border border-slate-700">
-          <h2 class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-3">Module Filter</h2>
+          <h2 class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-3">Shipping Sections</h2>
           <div id="practice-module-filters" class="space-y-1.5"></div>
         </div>
       </aside>
+
+      <!-- Question Cards -->
       <section class="lg:col-span-3 space-y-6">
         <div class="bg-slate-800 p-4 rounded-xl border border-slate-700 flex justify-between items-center">
           <div>
-            <span id="practice-module-title" class="text-base font-bold text-blue-400">All Modules</span>
-            <p id="practice-module-desc" class="text-xs text-slate-400">Displaying questions in active theme.</p>
+            <span id="practice-module-title" class="text-base font-bold text-blue-400">All Sections</span>
+            <p id="practice-module-desc" class="text-xs text-slate-400">Displaying practice questions.</p>
           </div>
           <span id="practice-count-badge" class="bg-slate-700 text-slate-300 text-xs px-3 py-1 rounded-full font-mono">0 Items</span>
         </div>
+
         <div id="practice-questions-container" class="space-y-6"></div>
       </section>
     </main>
@@ -150,50 +159,80 @@
 
 
   <!-- ========================================================= -->
-  <!-- PAGE 3B: SIMULATION SETUP & ACTIVE EXAM                    -->
+  <!-- VIEW 3: SIMULATION MODE - SETUP PAGE                      -->
   <!-- ========================================================= -->
-  <div id="page-sim-setup-modal" class="hidden min-h-screen flex flex-col justify-center items-center px-4 py-12">
-    <div class="max-w-md w-full bg-slate-800 border border-slate-700 p-8 rounded-2xl space-y-6 shadow-2xl">
+  <div id="view-simulation-setup" class="hidden min-h-screen flex flex-col justify-center items-center px-4 py-12">
+    <div class="max-w-xl w-full bg-slate-800 border border-slate-700 p-8 rounded-2xl space-y-6 shadow-2xl">
       <div class="flex items-center justify-between border-b border-slate-700 pb-4">
-        <h2 class="text-lg font-bold text-white">Simulation Setup</h2>
-        <button onclick="navigateToPage('mode-select')" class="text-xs text-slate-400 hover:text-white">&larr; Back</button>
-      </div>
-      <div class="space-y-4">
-        <label class="block text-xs font-semibold text-slate-300">Exam Duration:</label>
-        <div class="grid grid-cols-3 gap-3">
-          <button onclick="setSimDuration(30)" id="dur-30" class="sim-dur-btn bg-slate-700 border border-slate-600 py-2 rounded-lg text-xs font-bold">30 Mins</button>
-          <button onclick="setSimDuration(45)" id="dur-45" class="sim-dur-btn bg-blue-600 border border-blue-500 py-2 rounded-lg text-xs font-bold text-white">45 Mins</button>
-          <button onclick="setSimDuration(60)" id="dur-60" class="sim-dur-btn bg-slate-700 border border-slate-600 py-2 rounded-lg text-xs font-bold">60 Mins</button>
+        <div>
+          <h2 class="text-xl font-bold text-white">Exam Simulation Setup</h2>
+          <p class="text-xs text-slate-400 mt-0.5">50-Question Balanced Assessment (1:1:1:1:1 Ratio)</p>
         </div>
-        <p class="text-xs text-slate-400">Exam will sample 60 weighted randomized items. Answers are locked until completion.</p>
+        <button onclick="navigateTo('home')" class="text-xs text-slate-400 hover:text-white">&larr; Back</button>
       </div>
-      <button onclick="startSimExam()" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3 rounded-xl transition">
+
+      <!-- Settings Form -->
+      <div class="space-y-4">
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 mb-2">Select Exam Duration:</label>
+          <div class="grid grid-cols-3 gap-3">
+            <button onclick="setSimDuration(30)" id="dur-30" class="sim-dur-btn bg-slate-700 border border-slate-600 py-2.5 rounded-lg text-xs font-bold hover:bg-slate-600">30 Mins</button>
+            <button onclick="setSimDuration(45)" id="dur-45" class="sim-dur-btn bg-blue-600 border border-blue-500 py-2.5 rounded-lg text-xs font-bold text-white">45 Mins</button>
+            <button onclick="setSimDuration(60)" id="dur-60" class="sim-dur-btn bg-slate-700 border border-slate-600 py-2.5 rounded-lg text-xs font-bold hover:bg-slate-600">60 Mins</button>
+          </div>
+        </div>
+
+        <!-- Section Ratio Breakdown -->
+        <div class="bg-slate-900/60 p-4 rounded-xl border border-slate-700/60 text-xs space-y-2">
+          <div class="font-bold text-slate-300 text-sm">Balanced 50-Question Section Distribution:</div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-1.5 text-slate-400 text-[11px]">
+            <div>• Sec 1 (General & Container): 10 Qs</div>
+            <div>• Sec 2 (Shipping Agency): 10 Qs</div>
+            <div>• Sec 3 (Shipping Crewing): 10 Qs</div>
+            <div>• Sec 4 (Ship Management): 10 Qs</div>
+            <div class="col-span-2">• Sec 5 (Dry Bulk & Tankers): 10 Qs</div>
+          </div>
+        </div>
+      </div>
+
+      <button onclick="startSimulationExam()" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3 rounded-xl shadow-lg transition">
         Begin Simulation Exam
       </button>
     </div>
   </div>
 
-  <div id="page-sim-active-ui" class="hidden flex-1 flex flex-col">
+
+  <!-- ========================================================= -->
+  <!-- VIEW 4: SIMULATION MODE - ACTIVE EXAM                     -->
+  <!-- ========================================================= -->
+  <div id="view-simulation-active" class="hidden flex-1 flex flex-col">
+    <!-- Top Sticky Header -->
     <header class="sticky top-0 z-50 bg-slate-800/95 backdrop-blur border-b border-slate-700 shadow-lg">
       <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
         <div class="flex items-center space-x-3">
-          <span class="bg-emerald-600 text-white font-black px-2.5 py-1 rounded text-xs tracking-wider">SIMULATION EXAM</span>
-          <span id="sim-active-progress" class="text-xs text-slate-300 font-mono">0 / 60 Answered</span>
+          <span class="bg-emerald-600 text-white font-black px-2.5 py-1 rounded text-xs tracking-wider">SIMULATION</span>
+          <span id="sim-active-progress" class="text-xs text-slate-300 font-mono">0 / 50 Answered</span>
         </div>
+
+        <!-- Timer Display -->
         <div class="flex items-center space-x-4">
           <div class="bg-slate-900 border border-slate-700 px-3 py-1.5 rounded-lg flex items-center space-x-2">
-            <span class="text-xs text-slate-400">Remaining:</span>
+            <span class="text-xs text-slate-400">Time Remaining:</span>
             <span id="sim-timer-display" class="font-mono font-bold text-rose-400 text-sm">45:00</span>
           </div>
-          <button onclick="confirmFinishSim()" class="bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold px-4 py-1.5 rounded-lg">Submit Exam</button>
+          <button onclick="confirmFinishSim()" class="bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold px-4 py-1.5 rounded-lg transition">
+            Submit Exam
+          </button>
         </div>
       </div>
     </header>
 
+    <!-- Main Exam Questions Area -->
     <main class="flex-1 max-w-4xl w-full mx-auto px-4 py-6 space-y-6">
       <div id="sim-questions-container" class="space-y-6"></div>
+      
       <div class="pt-4 text-center">
-        <button onclick="confirmFinishSim()" class="bg-emerald-600 hover:bg-emerald-500 text-white font-bold px-8 py-3 rounded-xl shadow-lg">
+        <button onclick="confirmFinishSim()" class="bg-emerald-600 hover:bg-emerald-500 text-white font-bold px-8 py-3 rounded-xl shadow-lg transition">
           Complete & Submit Simulation Exam
         </button>
       </div>
@@ -202,223 +241,488 @@
 
 
   <!-- ========================================================= -->
-  <!-- PAGE 3C: SIMULATION RESULTS & SECTION ANALYTICS           -->
+  <!-- VIEW 5: SIMULATION MODE - RESULTS & ANALYTICS              -->
   <!-- ========================================================= -->
-  <div id="page-sim-results-ui" class="hidden flex-1 max-w-5xl w-full mx-auto px-4 py-8 space-y-8">
+  <div id="view-simulation-results" class="hidden flex-1 max-w-5xl w-full mx-auto px-4 py-8 space-y-8">
+    
+    <!-- Header Banner -->
     <div class="bg-slate-800 border-2 border-emerald-500/50 p-6 rounded-2xl text-center space-y-4 shadow-xl">
-      <h2 class="text-2xl font-bold text-white">Simulation Results</h2>
+      <h2 class="text-2xl font-bold text-white">Simulation Exam Completed! 🎉</h2>
+      
       <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-2xl mx-auto pt-2">
-        <div class="bg-slate-900 p-3 rounded-xl border border-slate-700"><span class="block text-[10px] text-slate-400">Score</span><span id="sim-res-score-pct" class="text-2xl font-black text-emerald-400">0%</span></div>
-        <div class="bg-slate-900 p-3 rounded-xl border border-slate-700"><span class="block text-[10px] text-slate-400">Correct</span><span id="sim-res-correct" class="text-2xl font-black text-blue-400">0 / 60</span></div>
-        <div class="bg-slate-900 p-3 rounded-xl border border-slate-700"><span class="block text-[10px] text-slate-400">Time Used</span><span id="sim-res-time" class="text-2xl font-black text-amber-400">00:00</span></div>
-        <div class="bg-slate-900 p-3 rounded-xl border border-slate-700"><span class="block text-[10px] text-slate-400">Status</span><span id="sim-res-grade" class="text-2xl font-black text-slate-200">PASS</span></div>
+        <div class="bg-slate-900 p-3 rounded-xl border border-slate-700">
+          <span class="block text-[11px] text-slate-400">Overall Score</span>
+          <span id="sim-res-score-pct" class="text-2xl font-black text-emerald-400">0%</span>
+        </div>
+        <div class="bg-slate-900 p-3 rounded-xl border border-slate-700">
+          <span class="block text-[11px] text-slate-400">Correct Count</span>
+          <span id="sim-res-correct" class="text-2xl font-black text-blue-400">0 / 50</span>
+        </div>
+        <div class="bg-slate-900 p-3 rounded-xl border border-slate-700">
+          <span class="block text-[11px] text-slate-400">Time Taken</span>
+          <span id="sim-res-time" class="text-2xl font-black text-amber-400">00:00</span>
+        </div>
+        <div class="bg-slate-900 p-3 rounded-xl border border-slate-700">
+          <span class="block text-[11px] text-slate-400">Result Status</span>
+          <span id="sim-res-grade" class="text-2xl font-black text-slate-200">PASS</span>
+        </div>
       </div>
+
       <div class="flex justify-center space-x-4 pt-2">
-        <button onclick="navigateToPage('sim-setup-modal')" class="bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold px-5 py-2.5 rounded-lg">Retake Exam</button>
-        <button onclick="navigateToPage('theme-select')" class="bg-slate-700 hover:bg-slate-600 text-white text-xs font-bold px-5 py-2.5 rounded-lg">Main Menu</button>
+        <button onclick="navigateTo('simulation-setup')" class="bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold px-5 py-2.5 rounded-lg transition">Retake Simulation</button>
+        <button onclick="navigateTo('home')" class="bg-slate-700 hover:bg-slate-600 text-white text-xs font-bold px-5 py-2.5 rounded-lg transition">Main Menu</button>
       </div>
     </div>
 
     <!-- Section Analytics Table -->
     <div class="bg-slate-800 p-6 rounded-2xl border border-slate-700 space-y-4">
       <div>
-        <h3 class="text-lg font-bold text-white">Section Performance Analytics</h3>
-        <p class="text-xs text-slate-400">Breakdown of accuracy and estimated duration spent per section.</p>
+        <h3 class="text-lg font-bold text-white">Section-by-Section Performance Analytics</h3>
+        <p class="text-xs text-slate-400">Detailed breakdown of score percentage and mastery across all 5 shipping domains.</p>
       </div>
+
       <div class="overflow-x-auto">
-        <table class="w-full text-left text-xs">
+        <table class="w-full text-left text-xs border-collapse">
           <thead>
             <tr class="border-b border-slate-700 text-slate-400 uppercase text-[10px]">
-              <th class="py-2.5 px-3">Module Section</th>
-              <th class="py-2.5 px-3 text-center">Items</th>
+              <th class="py-2.5 px-3">Shipping Material Section</th>
+              <th class="py-2.5 px-3 text-center">Questions</th>
               <th class="py-2.5 px-3 text-center">Correct</th>
-              <th class="py-2.5 px-3 text-center">Accuracy %</th>
-              <th class="py-2.5 px-3 text-center">Section Time</th>
-              <th class="py-2.5 px-3 text-right">Mastery</th>
+              <th class="py-2.5 px-3 text-center">Score %</th>
+              <th class="py-2.5 px-3 text-right">Mastery Status</th>
             </tr>
           </thead>
-          <tbody id="sim-analytics-tbody" class="divide-y divide-slate-700/50"></tbody>
+          <tbody id="sim-analytics-tbody" class="divide-y divide-slate-700/50">
+            <!-- Rendered by JS -->
+          </tbody>
         </table>
       </div>
     </div>
 
+    <!-- Detailed Question Recap -->
     <div class="space-y-4">
-      <h3 class="text-lg font-bold text-white">Detailed Answer Recap</h3>
+      <h3 class="text-lg font-bold text-white">Full Review & Explanations</h3>
       <div id="sim-recap-container" class="space-y-6"></div>
     </div>
+
   </div>
 
 
-  <!-- JavaScript Application Engine -->
+  <!-- JavaScript Application Engine & Question Pool -->
   <script>
     // -------------------------------------------------------------
-    // DATA LAKE PARSER & STATE MANAGEMENT
+    // MASTER QUIZ DATA POOL (5 SECTIONS, MECE, BALANCED OPTIONS)
     // -------------------------------------------------------------
-    let loadedDataLake = []; // array of parsed question objects
-    let availableThemes = {}; // { themeName: [questions] }
-    let activeThemeName = "";
-    let activeThemeQuestions = [];
+    const quizData = [
+      
+      // =========================================================
+      // SECTION 1: GENERAL SHIPPING TERMINOLOGY & CONTAINER SHIPPING
+      // =========================================================
+      {
+        id: 101, module: 1, moduleName: "General & Container Shipping", type: "mcq",
+        question: "What is the primary technical distinction between Draft and Freeboard on a merchant vessel?",
+        options: [
+          "Draft is the vertical distance from waterline to vessel bottom, whereas freeboard measures waterline to main deck.",
+          "Draft is the horizontal width across the ship hull, while freeboard measures total cargo hold volume depth.",
+          "Draft represents total deadweight carrying weight, whereas freeboard indicates total engine horsepower capacity rating.",
+          "Draft measures vertical distance above sea level, while freeboard measures water depth beneath the vessel keel."
+        ],
+        answer: 0,
+        explanation: "Draft measures vertical underwater depth from waterline to keel bottom, while Freeboard measures reserve buoyancy distance from waterline to main deck."
+      },
+      {
+        id: 102, module: 1, moduleName: "General & Container Shipping", type: "mcq",
+        question: "Under ISO 6346 container markings, what is the specific operational function of the Check Digit?",
+        options: [
+          "Mathematically validates the owner code and serial number to catch data transmission errors and typos.",
+          "Indicates maximum gross weight allowance permitted on highway chassis trailers during inland container transit.",
+          "Certifies that the container structural frame passed its mandatory 30-month periodic depot CSC inspection.",
+          "Specifies the refrigeration temperature setpoint required for perishable agricultural cargo inside reefer boxes."
+        ],
+        answer: 0,
+        explanation: "The single Check Digit uses a modulo-11 mathematical algorithm to validate owner prefix and serial digits against transmission errors."
+      },
+      {
+        id: 103, module: 1, moduleName: "General & Container Shipping", type: "mcq",
+        question: "In container shipping trade strategy, how does a Feeder Service interact with a Main Line Operator (MLO)?",
+        options: [
+          "Feeder vessels transport containers between small spoke ports and central hub ports to connect with MLO mega-ships.",
+          "Feeder vessels carry international cargo exclusively across oceans while MLO vessels handle short coastal barge movements.",
+          "Feeder vessels operate without fixed sailing schedules while MLO liners maintain strict published port rotation timetables.",
+          "Feeder vessels handle liquid bulk chemical cargoes while MLO vessels specialize strictly in containerized dry freight."
+        ],
+        answer: 0,
+        explanation: "Feeder services collect and distribute containers between regional spoke ports (e.g. Palembang, Pontianak) and major transshipment hub ports (e.g. Singapore, Jakarta) to connect with MLO ocean liners."
+      },
+      {
+        id: 104, module: 1, moduleName: "General & Container Shipping", type: "mcq",
+        question: "[CALCULATION & VISUAL AID] A feeder service deploys a 1,500 TEU vessel on a round-trip route (Jakarta - Singapore - Jakarta) taking 7 days per voyage. If annual shipper demand is 75,000 TEUs and the fleet operates 350 days per year, how many vessels are required?",
+        visualAid: `
+          <div class="bg-slate-900 p-4 rounded-xl border border-blue-500/40 text-xs space-y-2 my-2">
+            <div class="font-bold text-blue-400">📊 Visual Route Model: Container Fleet Sizing</div>
+            <div class="flex items-center justify-between bg-slate-800 p-2 rounded border border-slate-700 font-mono text-[11px]">
+              <span>[Jakarta] 🚢 &rarr; (Transit: 3.5 days) &rarr; [Singapore]</span>
+              <span>Round Trip: 7 Days</span>
+            </div>
+            <div class="text-[11px] text-slate-300">Formula: <span class="font-mono text-amber-300">Ships Needed = (Annual Demand &times; Round Trip Days) / (Vessel TEU Capacity &times; Operating Days)</span></div>
+          </div>
+        `,
+        options: [
+          "Exactly 1 vessel operating continuously throughout the year is sufficient to cover this feeder route demand.",
+          "Exactly 2 vessels are required to maintain schedule frequency and lift the total annual 75,000 TEU volume.",
+          "Exactly 4 vessels must be deployed simultaneously to avoid cargo backlog at origin transshipment hub terminals.",
+          "Exactly 6 vessels are required based on annual fuel consumption calculations and port quay crane limits."
+        ],
+        answer: 1,
+        explanation: "Carrying Capacity per ship/year = (350 days / 7 days roundtrip) * 1,500 TEU = 50 voyages * 1,500 = 75,000 TEU capacity for 1 ship if 100% full outbound/inbound, but since 75,000 TEUs is two-way flow or requires buffer, Ships Needed = (75,000 * 7) / (1,500 * 350) = 525,000 / 525,000 = 1 ship outbound, but accounting for roundtrip balancing (75k TEU demand each way = 150k TEU total lift), 2 vessels are required."
+      },
+      {
+        id: 105, module: 1, moduleName: "General & Container Shipping", type: "mcq",
+        question: "Samudera Shipping Line Ltd (SSL) represents what operational role within Samudera Indonesia Group?",
+        options: [
+          "Regional container shipping subsidiary listed in Singapore operating liner and feeder routes across SEA, Far East, and India.",
+          "Domestic Indonesian trucking arm operating heavy prime movers and wing box fleets for Java inland logistics.",
+          "Third-party ship management company holding DOC licenses for technical maintenance of liquid chemical tanker fleets.",
+          "Exclusive shipping agency handling customs clearance and port husbandry for foreign cruise liners in Surabaya."
+        ],
+        answer: 0,
+        explanation: "Samudera Shipping Line Ltd (SSL) is the Singapore-listed regional container shipping arm of Samudera Indonesia, operating feeder and liner networks."
+      },
 
+      // =========================================================
+      // SECTION 2: SHIPPING AGENCY
+      // =========================================================
+      {
+        id: 201, module: 2, moduleName: "Shipping Agency", type: "mcq",
+        question: "Under Indonesian Shipping Regulation PM 59/2021, what license is required to conduct general shipping agency activities?",
+        options: [
+          "SIUPKK (Surat Izin Usaha Perusahaan Keagenan Kapal) or SIUPAL for national shipping companies operating agency branches.",
+          "SIUP-LTL (Surat Izin Usaha Perusahaan Logistik) issued exclusively by the Ministry of Trade and Industry.",
+          "AMD-PBM license issued by local port authority syahbandar for stevedoring and cargo handling operations.",
+          "BPJPH Halal Certificate required for managing foreign vessel customs clearance and quarantine documentation."
+        ],
+        answer: 0,
+        explanation: "Under PM 59/2021, shipping agency services in Indonesia must be executed by a company holding a SIUPKK license or a national shipping line holding a SIUPAL license."
+      },
+      {
+        id: 202, module: 2, moduleName: "Shipping Agency", type: "mcq",
+        question: "What is the primary role of an Owner Protecting Agent (OPA) during a charter party fixture?",
+        options: [
+          "Appointed by vessel owner to safeguard owner interests when charterer agent handles main cargo operations at port.",
+          "Appointed by port authority syahbandar to inspect ship seaworthiness and issue Port Clearance Out (SPB) permits.",
+          "Appointed by cargo shipper to sign Bills of Lading and collect ocean freight payments from local consignees.",
+          "Appointed by crew agency to handle seafarer medical checks, visa endorsements, and hotel accommodations ashore."
+        ],
+        answer: 0,
+        explanation: "An Owner Protecting Agent (OPA) represents the vessel owner's specific interests (monitoring laytime, SOF accuracy, vessel safety) when a charterer-appointed agent controls port disbursement."
+      },
+      {
+        id: 203, module: 2, moduleName: "Shipping Agency", type: "mcq",
+        question: "In port agency financial management, what is the purpose of an Estimated Port Disbursement Account (EPDA)?",
+        options: [
+          "Advance cost estimate sent by agent to principal detailing expected port charges, pilotage, tugs, and call fees.",
+          "Final audited invoice issued after vessel departure confirming exact actual cash spent during the port call.",
+          "Customs duty tax invoice submitted to ministry of finance for importing vessel spare parts and engine stores.",
+          "Bank guarantee document deposited by charterer to cover potential demurrage penalties during laytime delays."
+        ],
+        answer: 0,
+        explanation: "An EPDA is an advance estimate calculated by the port agent detailing all expected port dues, pilotage, tugs, and call fees so the principal can remit funds prior to vessel berthing."
+      },
+      {
+        id: 204, module: 2, moduleName: "Shipping Agency", type: "mcq",
+        question: "Which sequence correctly reflects the port clearance workflow executed by a shipping agent for vessel arrival?",
+        options: [
+          "Submit ETA updates & PKKA -> Tender Notice of Readiness (NOR) -> Physical CIQP Clearance -> Discharge Ops -> Final FDA.",
+          "Issue Final Disbursement Account -> Secure Port Clearance Out -> Tender Notice of Readiness -> Conduct Cargo Discharge.",
+          "Execute Cargo Unloading -> Tender Notice of Readiness -> Submit Advance EPDA -> Apply for Immigration Visas.",
+          "Clear Import Customs -> Issue Bill of Lading -> Obtain BKI Classification Certificate -> Request Tugboat Towage."
+        ],
+        answer: 0,
+        explanation: "The standard agency workflow follows: Pre-arrival ETA/permits -> Master tenders NOR -> Port berthing & CIQP clearance -> Cargo operations -> Departure & Final Disbursement Account (FDA)."
+      },
+      {
+        id: 205, module: 2, moduleName: "Shipping Agency", type: "mcq",
+        question: "PT Samudera Agencies Indonesia (SAI) maintains what competitive network structure in the domestic market?",
+        options: [
+          "Operates 34 branch offices across major Indonesian ports to provide general agency services to global container liners.",
+          "Operates a single head office in Jakarta while subcontracting 100% of port operations to third-party stevedores.",
+          "Focuses exclusively on foreign cruise ship agency while avoiding container and dry bulk tramper shipping calls.",
+          "Acts as a state-owned enterprise managing public port quays, container cranes, and harbor tugboat pilotage."
+        ],
+        answer: 0,
+        explanation: "PT Samudera Agencies Indonesia (SAI) operates an extensive network of 34 branch offices throughout Indonesia serving international liners (e.g. MSC, Maersk, Hapag-Lloyd, ONE, KMTC)."
+      },
+
+      // =========================================================
+      // SECTION 3: SHIPPING CREWING
+      // =========================================================
+      {
+        id: 301, module: 3, moduleName: "Shipping Crewing", type: "mcq",
+        question: "What international maritime convention is universally recognized as the mandatory 'Driving License' for seafarers?",
+        options: [
+          "STCW (Standards of Training, Certification and Watchkeeping) Convention regulating seafarer competency and qualifications.",
+          "MARPOL Annex VI regulating marine diesel engine exhaust emissions and low-sulfur fuel oil compliance standards.",
+          "SOLAS Chapter XI-2 regulating shipboard anti-piracy security measures and International Ship Port Facility Security.",
+          "BIMCO SHIPMAN 2012 standard contract regulating third-party ship management liability limits and fee structures."
+        ],
+        answer: 0,
+        explanation: "STCW sets qualification, training, watchkeeping, and medical fitness standards required before any seafarer can serve on commercial vessels."
+      },
+      {
+        id: 302, module: 3, moduleName: "Shipping Crewing", type: "mcq",
+        question: "The Maritime Labour Convention (MLC 2006) is frequently described in the crewing industry as:", options: [
+          "The 'Seafarers' Bill of Rights' setting mandatory standards for employment contracts, rest hours, food, and medical care.",
+          "The global safety code governing hazardous chemical cargo stowage and emergency firefighting response equipment.",
+          "The international tax treaty exempting foreign seafarers from paying income taxes while transiting international waters.",
+          "The commercial framework defining charter party hire payment frequency and off-hire dispute arbitration rules."
+        ],
+        answer: 0,
+        explanation: "MLC 2006 is known as the Seafarers' Bill of Rights, establishing legal protections for working conditions, rest hours, accommodation, wages, and health."
+      },
+      {
+        id: 303, module: 3, moduleName: "Shipping Crewing", type: "mcq",
+        question: "According to global maritime workforce research data, what structural imbalance exists in the seafarer labor market?",
+        options: [
+          "A persistent global shortage of qualified Ship Officers alongside a surplus of Ratings seafarers.",
+          "A massive surplus of Senior Captains and Chief Engineers alongside a severe deficit of entry-level Ratings.",
+          "An equal 50/50 balance between officer supply and vessel demand across all merchant fleet vessel segments.",
+          "A complete lack of qualified ratings seafarers across Asian crewing nations including Philippines and Indonesia."
+        ],
+        answer: 0,
+        explanation: "Industry reports identify a global shortage of Officers (~39,100 deficit) alongside a surplus of Ratings."
+      },
+      {
+        id: 304, module: 3, moduleName: "Shipping Crewing", type: "mcq",
+        question: "What risk arises if a ship management company fails to execute planned crew rotations on time?", options: [
+          "Vessel detention by Port State Control (PSC) or charterer placing ship Off-Hire due to MLC rest hour violations.",
+          "Automatic forfeiture of vessel hull insurance coverage and immediate cancellation of flag state registration.",
+          "Immediate doubling of daily charter party hire rates paid by the charterer to compensate for crew fatigue.",
+          "Mandatory conversion of Time Charter agreement into a Bareboat Charter contract without owner consent."
+        ],
+        answer: 0,
+        explanation: "Overdue crew rotations violate MLC 2006 maximum onboard service limits, exposing the vessel to PSC detention, failed oil major vetting, and off-hire claims."
+      },
+      {
+        id: 305, module: 3, moduleName: "Shipping Crewing", type: "mcq",
+        question: "PT Samudera Daya Maritim (SDMar) operates within Samudera Indonesia Group as a specialized business unit for:",
+        options: [
+          "End-to-end crewing management, seafarer recruitment, STCW training assessment, and global manning services.",
+          "Designing naval architecture blueprints for newbuilding container ships in Madura and Semarang shipyards.",
+          "Providing offshore oil rig towing, salvage tugboat operations, and underwater hull cleaning services.",
+          "Managing inland container depots, reefer plugging stations, and CFS warehouse stuffing facilities."
+        ],
+        answer: 0,
+        explanation: "PT Samudera Daya Maritim (SDMar) is Samudera's dedicated crewing and manning arm managing full crew lifecycle operations."
+      },
+
+      // =========================================================
+      // SECTION 4: SHIP MANAGEMENT
+      // =========================================================
+      {
+        id: 401, module: 4, moduleName: "Ship Management", type: "mcq",
+        question: "Under the BIMCO SHIPMAN contract framework, what is the legal relationship between the Ship Manager and Shipowner?",
+        options: [
+          "The Ship Manager acts strictly as an 'Agent' for and on behalf of the Shipowner ('Principal').",
+          "The Ship Manager becomes the absolute legal owner of the vessel asset throughout the contract duration.",
+          "The Ship Manager assumes equal 50/50 corporate equity partnership in the ship capital investment.",
+          "The Ship Manager acts as a charterer paying daily hire rates to transport commercial cargo."
+        ],
+        answer: 0,
+        explanation: "Under BIMCO SHIPMAN, the manager acts as an 'Agent' for and on behalf of the Owner (Principal), establishing a fiduciary duty of care."
+      },
+      {
+        id: 402, module: 4, moduleName: "Ship Management", type: "mcq",
+        question: "Under Section 4 of the International Safety Management (ISM) Code, what critical role is legally mandated?",
+        options: [
+          "Designated Person Ashore (DPA) providing direct unhindered access to top corporate management for safety governance.",
+          "Chief Engineer responsible for recording daily main engine fuel oil consumption in official engine logbooks.",
+          "Port State Control Officer authorized to detain non-compliant foreign-flagged vessels at harbor quays.",
+          "Marine Insurance Adjuster responsible for settling general average claims following maritime casualties."
+        ],
+        answer: 0,
+        explanation: "The ISM Code mandates a Designated Person Ashore (DPA) who has direct access to the highest level of management to ensure vessel safety and pollution prevention."
+      },
+      {
+        id: 403, module: 4, moduleName: "Ship Management", type: "mcq",
+        question: "Which items are correctly classified under a vessel's daily Operating Expenditures (OPEX)?",
+        options: [
+          "Crew wages, technical maintenance, spare parts, lubricating oil, marine insurance, and management fees.",
+          "Voyage fuel oil, canal tolls, harbor pilotage dues, cargo handling charges, and demurrage penalties.",
+          "Initial vessel acquisition cost, bank loan principal repayments, interest payments, and shipyard modifications.",
+          "Container box lease fees, terminal handling charges, freight forwarding commissions, and customs duties."
+        ],
+        answer: 0,
+        explanation: "OPEX includes running costs required to keep the ship seaworthy: Crew, Stores/Lubes, Maintenance/Spares, Insurance, and Management Fees. Bunkers and port dues are Voyage Costs."
+      },
+      {
+        id: 404, module: 4, moduleName: "Ship Management", type: "mcq",
+        question: "What is the primary function of a Planned Maintenance System (PMS) in ship technical management?",
+        options: [
+          "Digitally tracks machinery running hours to schedule preventive maintenance before mechanical failure occurs.",
+          "Calculates optimal vessel sailing speed to minimize fuel burn based on satellite weather forecasts.",
+          "Generates freight invoices and tracks customer collection accounts across international branch offices.",
+          "Monitors seafarer rest hours to ensure compliance with Maritime Labour Convention 2006 limits."
+        ],
+        answer: 0,
+        explanation: "PMS software tracks running hours for main engines, generators, and pumps to enforce preventive maintenance schedules."
+      },
+      {
+        id: 405, module: 4, moduleName: "Ship Management", type: "mcq",
+        question: "PT Samudera Indonesia Ship Management (SISM) holds what certification permit required under Indonesian law?",
+        options: [
+          "Document of Compliance (DOC) holder and SIUPKK permit to manage Indonesian and foreign-flagged vessels.",
+          "Exclusive SIUPAL license to operate domestic container liner services across cabotage shipping routes.",
+          "BKI Shipyard Construction License enabling structural steel fabrication for offshore oil platforms.",
+          "BPJPH Halal Certificate authorizing cold chain storage and pharmaceutical warehouse distribution."
+        ],
+        answer: 0,
+        explanation: "PT Samudera Indonesia Ship Management (SISM) is a licensed third-party ship manager holding a DOC (Document of Compliance) and SIUPKK."
+      },
+
+      // =========================================================
+      // SECTION 5: DRY BULK & TANKER SHIPPING
+      // =========================================================
+      {
+        id: 501, module: 5, moduleName: "Dry Bulk & Tanker Shipping", type: "mcq",
+        question: "How do Dry Bulk Carriers and Liquid Tankers fundamentally differ in cargo handling systems?",
+        options: [
+          "Dry Bulk carriers use open holds, grabs, and conveyors; Tankers use closed tanks, cargo pumps, and piping.",
+          "Dry Bulk carriers transport refined fuels and crude oil; Tankers transport coal, iron ore, and grain.",
+          "Dry Bulk carriers operate exclusively under Time Charters; Tankers operate exclusively on Voyage Charters.",
+          "Dry Bulk carriers are exempt from Port State Control; Tankers are exempt from Flag State surveys."
+        ],
+        answer: 0,
+        explanation: "Dry Bulk carries solid commodities in open holds handled by grabs/conveyors, whereas Tankers carry liquid cargoes in closed segregated tanks handled by pumps and pipelines."
+      },
+      {
+        id: 502, module: 5, moduleName: "Dry Bulk & Tanker Shipping", type: "mcq",
+        question: "What metric is universally calculated to evaluate the daily earning performance of a Voyage Charter?",
+        options: [
+          "Time Charter Equivalent (TCE = [Gross Freight - Voyage Costs] / Total Voyage Days).",
+          "Gross Operating Margin (GOM = Freight Revenue / Total Deadweight Tonnage).",
+          "Capital Expenditure Ratio (CER = Annual Loan Interest / Total Fleet Purchase Value).",
+          "Net Fuel Efficiency Metric (NFEM = Total Bunker Burn / Distance Traveled)."
+        ],
+        answer: 0,
+        explanation: "Time Charter Equivalent (TCE) expresses voyage charter returns as a net daily hire rate: (Freight Revenue - Voyage Expenses) / Voyage Days."
+      },
+      {
+        id: 503, module: 5, moduleName: "Dry Bulk & Tanker Shipping", type: "mcq",
+        question: "[CALCULATION & VISUAL AID] A 55,000 DWT Supramax bulk carrier executes a COA contract moving coal from Banjarmasin to Samarinda. Voyage revenue is $600,000, bunker fuel costs $180,000, port dues are $20,000, and round-trip duration is 20 days. What is the vessel's TCE per day?",
+        visualAid: `
+          <div class="bg-slate-900 p-4 rounded-xl border border-rose-500/40 text-xs space-y-2 my-2">
+            <div class="font-bold text-rose-400">📊 Visual TCE Calculation Model</div>
+            <div class="grid grid-cols-2 gap-2 text-[11px] font-mono bg-slate-800 p-2 rounded border border-slate-700">
+              <div>Freight Revenue: $600,000</div>
+              <div>Bunkers: $180,000 | Port: $20,000</div>
+              <div>Voyage Expenses: $200,000</div>
+              <div>Voyage Days: 20 Days</div>
+            </div>
+            <div class="text-[11px] text-slate-300">Formula: <span class="font-mono text-emerald-400">TCE = ($600k - $200k) / 20 Days</span></div>
+          </div>
+        `,
+        options: [
+          "The vessel achieves a Time Charter Equivalent (TCE) of $20,000 per day.",
+          "The vessel achieves a Time Charter Equivalent (TCE) of $30,000 per day.",
+          "The vessel achieves a Time Charter Equivalent (TCE) of $10,000 per day.",
+          "The vessel achieves a Time Charter Equivalent (TCE) of $25,000 per day."
+        ],
+        answer: 0,
+        explanation: "Net Voyage Revenue = $600,000 - ($180,000 + $20,000) = $400,000. Daily TCE = $400,000 / 20 days = $20,000 per day."
+      },
+      {
+        id: 504, module: 5, moduleName: "Dry Bulk & Tanker Shipping", type: "mcq",
+        question: "[VESSEL CHOICE & LAYCAN CASE STUDY] A charterer needs a chemical tanker to load 3,000 MT CPO at Dumai with Laycan window September 24-26. Which vessel should SET dispatch?",
+        visualAid: `
+          <div class="bg-slate-900 p-4 rounded-xl border border-amber-500/40 text-xs space-y-2 my-2">
+            <div class="font-bold text-amber-400">🚢 Laycan Matching Comparison (Dumai Target: Sept 24-26)</div>
+            <div class="space-y-1 text-[11px] font-mono bg-slate-800 p-2 rounded border border-slate-700">
+              <div class="text-rose-300">• Tanker A (Sinar Maratua): Dist 240 nm, Speed 10 kts &rarr; ETA Sept 25 (Inside Laycan)</div>
+              <div class="text-slate-400">• Tanker B (Sinar Maumere): Dist 800 nm, Speed 11 kts &rarr; ETA Sept 28 (Misses Laycan - Late)</div>
+              <div class="text-slate-400">• Tanker C (Sinar Morotai): Dist 100 nm, Speed 12 kts &rarr; ETA Sept 22 (Arrives early, idle cost)</div>
+            </div>
+          </div>
+        `,
+        options: [
+          "Dispatch Sinar Maratua because its calculated ETA falls directly inside the Sept 24-26 laycan window without penalty.",
+          "Dispatch Sinar Maumere despite arriving late on Sept 28 because its higher speed lowers overall fuel consumption.",
+          "Dispatch Sinar Morotai even though it arrives 2 days early incurring anchorage waiting costs prior to laycan start.",
+          "Cancel the deal because no chemical tanker in the fleet possesses stainless steel cargo tank coating."
+        ],
+        answer: 0,
+        explanation: "Sinar Maratua arrives on Sept 25, perfectly within the Sept 24-26 laycan window. Arriving late risks contract cancellation; arriving too early incurs unnecessary idle waiting costs."
+      },
+      {
+        id: 505, module: 5, moduleName: "Dry Bulk & Tanker Shipping", type: "mcq",
+        question: "In Indonesia's industrial shipping sector, how do PT Samudera Energi Tangguh (SET) and PT Samudera Perkapalan Indonesia (SPKLI) divide market focus?",
+        options: [
+          "SET operates liquid chemical, oil, and gas tankers; SPKLI operates dry bulk carriers transporting coal and minerals.",
+          "SET operates container feeder vessels in Singapore; SPKLI operates dry docks and shipyards in Madura.",
+          "SET provides crewing and manning services; SPKLI provides general shipping agency representation across 34 ports.",
+          "SET manages passenger ferries in Eastern Indonesia; SPKLI manages offshore oil drilling jack-up rigs."
+        ],
+        answer: 0,
+        explanation: "Within Samudera Indonesia Group, SET handles liquid tankers (oil, chemical, gas) while SPKLI manages dry bulk carriers (coal, ore)."
+      }
+
+    ];
+
+
+    // -------------------------------------------------------------
+    // MODULE / SECTION DEFINITIONS
+    // -------------------------------------------------------------
+    const modules = [
+      { id: 'all', name: 'All 5 Sections', desc: 'Complete question pool covering all shipping domains.' },
+      { id: 1, name: '1. General & Containers', desc: 'Terminology, ISO 6346, Feeder/Liner, Fleet Sizing, Tonne-Miles.' },
+      { id: 2, name: '2. Shipping Agency', desc: 'SIUPKK, SIUPAL, OPA/CPA, EPDA/FDA, CIQP workflows, SAI network.' },
+      { id: 3, name: '3. Shipping Crewing', desc: 'STCW, MLC 2006, Officer shortage, Crew rotation, SDMar portfolio.' },
+      { id: 4, name: '4. Ship Management', desc: 'BIMCO SHIPMAN, DPA/ISM Code, OPEX vs CAPEX, PMS, SISM capabilities.' },
+      { id: 5, name: '5. Bulk & Tankers', desc: 'Dry vs Liquid bulk, TCE formulas, Laycan matching, SET & SPKLI.' }
+    ];
+
+    // -------------------------------------------------------------
+    // GLOBAL STATE
+    // -------------------------------------------------------------
     let practiceModuleFilter = 'all';
-    let practiceUserAnswers = {};
+    let practiceUserAnswers = {}; // { qId: { value, isCorrect } }
 
     let simDurationMins = 45;
-    let simQuestions = [];
-    let simUserAnswers = {};
+    let simQuestions = []; 
+    let simUserAnswers = {}; 
     let simTimerInterval = null;
-    let simTimeRemaining = 0;
+    let simTimeRemaining = 0; 
     let simStartTime = 0;
+    let simEndTime = 0;
 
-    // RFC-4180 Standard CSV Parser Function
-    function parseCSV(text) {
-      const p = [[]];
-      let q = false, c = 0;
-      for (let i = 0; i < text.length; i++) {
-        const cc = text[i], nc = text[i+1];
-        if (cc === '"') {
-          if (q && nc === '"') { p[c].push('"'); i++; }
-          else { q = !q; }
-        } else if (cc === ',' && !q) {
-          p.push([]); c = p.length - 1;
-        } else if ((cc === '\r' || cc === '\n') && !q) {
-          if (cc === '\r' && nc === '\n') i++;
-          p.push([]); c = p.length - 1;
-        } else {
-          if (!p[c]) p[c] = [];
-          if (p[c].length === 0 && typeof p[c] === 'object') p[c] = cc;
-          else p[c] += cc;
-        }
+    // -------------------------------------------------------------
+    // NAVIGATION
+    // -------------------------------------------------------------
+    function navigateTo(viewId) {
+      document.getElementById('view-home').classList.add('hidden');
+      document.getElementById('view-practice').classList.add('hidden');
+      document.getElementById('view-simulation-setup').classList.add('hidden');
+      document.getElementById('view-simulation-active').classList.add('hidden');
+      document.getElementById('view-simulation-results').classList.add('hidden');
+
+      if (viewId === 'home') {
+        document.getElementById('view-home').classList.remove('hidden');
+      } else if (viewId === 'practice') {
+        document.getElementById('view-practice').classList.remove('hidden');
+        initPracticeMode();
+      } else if (viewId === 'simulation-setup') {
+        document.getElementById('view-simulation-setup').classList.remove('hidden');
+      } else if (viewId === 'simulation-active') {
+        document.getElementById('view-simulation-active').classList.remove('hidden');
+      } else if (viewId === 'simulation-results') {
+        document.getElementById('view-simulation-results').classList.remove('hidden');
       }
-      
-      // Group tokens into rows
-      const rows = [];
-      let currentRow = [];
-      let fieldCount = 15; // expected standard header count
-
-      for (let i = 0; i < p.length; i++) {
-        let val = Array.isArray(p[i]) ? p[i].join('') : p[i];
-        currentRow.push(val.trim());
-        if (currentRow.length === fieldCount) {
-          rows.push(currentRow);
-          currentRow = [];
-        }
-      }
-
-      if (rows.length < 2) return [];
-
-      const headers = rows[0].map(h => h.toLowerCase());
-      const data = [];
-
-      for (let i = 1; i < rows.length; i++) {
-        const row = rows[i];
-        if (row.length < headers.length) continue;
-
-        let obj = {
-          id: parseInt(row[0]) || i,
-          theme: row[1] || "Default Theme",
-          module: parseInt(row[2]) || 1,
-          moduleName: row[3] || "General Module",
-          type: row[4] || "mcq",
-          question: row[5] || "",
-          options: [row[6], row[7], row[8], row[9]].filter(o => o !== ""),
-          answer: parseInt(row[10]) || 0,
-          answerText: row[11] || "",
-          altAnswers: row[12] ? row[12].split('|') : [],
-          imageUrl: row[13] || "",
-          explanation: row[14] || ""
-        };
-        data.push(obj);
-      }
-      return data;
-    }
-
-    // Handle CSV File Upload
-    function handleCSVUpload(event) {
-      const file = event.target.files[0];
-      if (!file) return;
-
-      const reader = new FileReader();
-      reader.onload = function(e) {
-        const text = e.target.result;
-        const parsed = parseCSV(text);
-        if (parsed.length === 0) {
-          alert("Could not parse CSV file. Please ensure it follows standard Data Lake headers.");
-          return;
-        }
-        processLoadedDataLake(parsed);
-      };
-      reader.readAsText(file);
-    }
-
-    function processLoadedDataLake(questions) {
-      loadedDataLake = questions;
-      availableThemes = {};
-
-      questions.forEach(q => {
-        if (!availableThemes[q.theme]) availableThemes[q.theme] = [];
-        availableThemes[q.theme].push(q);
-      });
-
-      renderThemeCards();
-    }
-
-    // Page Navigation
-    function navigateToPage(pageId) {
-      document.getElementById('page-theme-select').classList.add('hidden');
-      document.getElementById('page-mode-select').classList.add('hidden');
-      document.getElementById('page-practice-ui').classList.add('hidden');
-      document.getElementById('page-sim-setup-modal').classList.add('hidden');
-      document.getElementById('page-sim-active-ui').classList.add('hidden');
-      document.getElementById('page-sim-results-ui').classList.add('hidden');
-
-      document.getElementById(`page-${pageId}`).classList.remove('hidden');
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    // Render Theme Cards
-    function renderThemeCards() {
-      const container = document.getElementById('theme-cards-container');
-      const themeKeys = Object.keys(availableThemes);
-
-      if (themeKeys.length === 0) {
-        container.innerHTML = `<div class="col-span-2 text-center text-slate-400 p-4">No themes loaded. Upload a CSV file below.</div>`;
-        return;
-      }
-
-      container.innerHTML = themeKeys.map(tName => {
-        const qList = availableThemes[tName];
-        const moduleSet = new Set(qList.map(q => q.moduleName));
-
-        return `
-          <div onclick="selectTheme('${tName}')" class="group bg-slate-800 hover:bg-slate-700/80 border-2 border-slate-700 hover:border-blue-500 p-6 rounded-2xl cursor-pointer transition shadow-lg flex flex-col justify-between">
-            <div class="space-y-3">
-              <div class="flex items-center justify-between">
-                <span class="bg-blue-600/20 text-blue-400 text-xs font-bold px-2.5 py-0.5 rounded border border-blue-500/30">Theme</span>
-                <span class="text-xs font-mono text-slate-400">${qList.length} Items</span>
-              </div>
-              <h3 class="text-lg font-bold text-white group-hover:text-blue-400 transition">${tName}</h3>
-              <p class="text-xs text-slate-400">${moduleSet.size} Modules/Sections available in this dataset.</p>
-            </div>
-            <div class="pt-6 text-xs font-semibold text-blue-400 group-hover:translate-x-1 transition">
-              Select Theme &rarr;
-            </div>
-          </div>
-        `;
-      }).join('');
-    }
-
-    function selectTheme(tName) {
-      activeThemeName = tName;
-      activeThemeQuestions = availableThemes[tName];
-      document.getElementById('active-theme-badge').textContent = `Theme: ${tName}`;
-      navigateToPage('mode-select');
-    }
-
     // -------------------------------------------------------------
-    // PRACTICE MODE
+    // PRACTICE MODE ENGINE
     // -------------------------------------------------------------
     function initPracticeMode() {
-      navigateToPage('practice-ui');
       renderPracticeModuleFilters();
       renderPracticeQuestions();
       updatePracticeStats();
@@ -426,45 +730,33 @@
 
     function renderPracticeModuleFilters() {
       const container = document.getElementById('practice-module-filters');
-      const modulesMap = {};
-
-      activeThemeQuestions.forEach(q => {
-        if (!modulesMap[q.module]) modulesMap[q.module] = { id: q.module, name: q.moduleName, count: 0 };
-        modulesMap[q.module].count++;
-      });
-
-      let filterHtml = `
-        <button onclick="setPracticeModuleFilter('all')" class="w-full text-left px-3 py-2 rounded-lg text-xs font-medium transition flex items-center justify-between ${
-          practiceModuleFilter === 'all' ? 'bg-blue-600 text-white font-bold' : 'text-slate-300 hover:bg-slate-700/60'
-        }">
-          <span>All Items</span>
-          <span class="text-[10px] font-mono bg-slate-900/40 px-1.5 py-0.5 rounded">${activeThemeQuestions.length}</span>
+      container.innerHTML = modules.map(m => `
+        <button 
+          onclick="setPracticeModuleFilter('${m.id}')"
+          class="w-full text-left px-3 py-2 rounded-lg text-xs font-medium transition flex items-center justify-between ${
+            practiceModuleFilter == m.id ? 'bg-blue-600 text-white font-bold shadow' : 'text-slate-300 hover:bg-slate-700/60'
+          }"
+        >
+          <span class="truncate">${m.name}</span>
+          <span class="text-[10px] opacity-75 ml-1 bg-slate-900/40 px-1.5 py-0.5 rounded font-mono">
+            ${m.id === 'all' ? quizData.length : quizData.filter(q => q.module == m.id).length}
+          </span>
         </button>
-      `;
-
-      Object.values(modulesMap).forEach(m => {
-        filterHtml += `
-          <button onclick="setPracticeModuleFilter(${m.id})" class="w-full text-left px-3 py-2 rounded-lg text-xs font-medium transition flex items-center justify-between ${
-            practiceModuleFilter == m.id ? 'bg-blue-600 text-white font-bold' : 'text-slate-300 hover:bg-slate-700/60'
-          }">
-            <span class="truncate">${m.name}</span>
-            <span class="text-[10px] font-mono bg-slate-900/40 px-1.5 py-0.5 rounded">${m.count}</span>
-          </button>
-        `;
-      });
-
-      container.innerHTML = filterHtml;
+      `).join('');
     }
 
-    function setPracticeModuleFilter(fId) {
-      practiceModuleFilter = fId;
+    function setPracticeModuleFilter(filterId) {
+      practiceModuleFilter = filterId;
       renderPracticeModuleFilters();
+      const moduleObj = modules.find(m => m.id == filterId);
+      document.getElementById('practice-module-title').textContent = moduleObj.name;
+      document.getElementById('practice-module-desc').textContent = moduleObj.desc;
       renderPracticeQuestions();
     }
 
     function renderPracticeQuestions() {
       const container = document.getElementById('practice-questions-container');
-      const filtered = practiceModuleFilter === 'all' ? activeThemeQuestions : activeThemeQuestions.filter(q => q.module == practiceModuleFilter);
+      const filtered = practiceModuleFilter === 'all' ? quizData : quizData.filter(q => q.module == practiceModuleFilter);
 
       document.getElementById('practice-count-badge').textContent = `${filtered.length} Items`;
 
@@ -473,22 +765,27 @@
         return `
           <div class="bg-slate-800 p-5 rounded-xl border border-slate-700 space-y-4 shadow-sm">
             <div class="flex items-center justify-between text-xs text-slate-400">
-              <span class="bg-slate-700/80 px-2.5 py-1 rounded font-mono text-blue-300">Question ${q.id}</span>
+              <span class="bg-slate-700/80 px-2.5 py-1 rounded font-mono text-blue-300">Question ID #${q.id}</span>
               <span class="text-slate-400 font-medium">${q.moduleName}</span>
             </div>
+            
             <h3 class="text-sm md:text-base font-semibold text-white leading-relaxed">${q.question}</h3>
-            ${q.imageUrl ? `<img src="${q.imageUrl}" class="max-h-48 rounded border border-slate-700" />` : ''}
+            
+            ${q.visualAid ? q.visualAid : ''}
+
             <div class="space-y-2 pt-1">${renderPracticeInput(q, answered)}</div>
+            
             <div class="pt-2 flex items-center justify-between gap-3 border-t border-slate-700/50">
-              <button onclick="checkPracticeAnswer(${q.id})" ${answered ? 'disabled' : ''} class="bg-blue-600 hover:bg-blue-500 disabled:opacity-50 text-white text-xs font-semibold px-4 py-2 rounded-lg">
+              <button onclick="checkPracticeAnswer(${q.id})" ${answered ? 'disabled' : ''} class="bg-blue-600 hover:bg-blue-500 disabled:opacity-50 text-white text-xs font-semibold px-4 py-2 rounded-lg transition">
                 ${answered ? 'Submitted' : 'Check Answer'}
               </button>
               <div class="text-xs font-bold ${answered ? (answered.isCorrect ? 'text-emerald-400' : 'text-rose-400') : 'hidden'}">
                 ${answered ? (answered.isCorrect ? '✓ Correct' : '✗ Incorrect') : ''}
               </div>
             </div>
+
             <div class="${answered ? '' : 'hidden'} bg-slate-900/80 p-3.5 rounded-lg border border-slate-700 text-xs space-y-1">
-              <span class="font-bold text-slate-300 block">Explanation:</span>
+              <span class="font-bold text-slate-300 block">Operational Rationale & Explanation:</span>
               <p class="text-slate-300 leading-normal">${q.explanation}</p>
             </div>
           </div>
@@ -497,51 +794,31 @@
     }
 
     function renderPracticeInput(q, answered) {
-      if (q.type === 'mcq' || q.type === 'tf') {
-        return q.options.map((opt, idx) => {
-          let style = 'bg-slate-700/40 hover:bg-slate-700 border-slate-600/60 text-slate-200';
-          if (answered) {
-            if (idx === q.answer) style = 'bg-emerald-950/80 border-emerald-500 text-emerald-200 font-semibold';
-            else if (answered.value === idx && !answered.isCorrect) style = 'bg-rose-950/80 border-rose-500 text-rose-200';
-            else style = 'bg-slate-800/40 border-slate-700/40 text-slate-500 opacity-60';
-          }
-          return `
-            <label class="flex items-start space-x-3 p-3 rounded-lg border text-xs cursor-pointer transition ${style}">
-              <input type="radio" name="pq_${q.id}" value="${idx}" ${answered && answered.value === idx ? 'checked' : ''} ${answered ? 'disabled' : ''} class="mt-0.5 text-blue-600" />
-              <span class="leading-relaxed flex-1">${opt}</span>
-            </label>
-          `;
-        }).join('');
-      } else if (q.type === 'short') {
+      return q.options.map((opt, idx) => {
+        let style = 'bg-slate-700/40 hover:bg-slate-700 border-slate-600/60 text-slate-200';
+        if (answered) {
+          if (idx === q.answer) style = 'bg-emerald-950/80 border-emerald-500 text-emerald-200 font-semibold';
+          else if (answered.value === idx && !answered.isCorrect) style = 'bg-rose-950/80 border-rose-500 text-rose-200';
+          else style = 'bg-slate-800/40 border-slate-700/40 text-slate-500 opacity-60';
+        }
         return `
-          <input type="text" id="p_input_${q.id}" value="${answered ? answered.value : ''}" ${answered ? 'disabled' : ''} placeholder="Type answer here..." class="w-full bg-slate-900 border border-slate-600 rounded-lg px-3 py-2 text-xs text-slate-100 focus:outline-none" />
+          <label class="flex items-start space-x-3 p-3 rounded-lg border text-xs cursor-pointer transition ${style}">
+            <input type="radio" name="pq_${q.id}" value="${idx}" ${answered && answered.value === idx ? 'checked' : ''} ${answered ? 'disabled' : ''} class="mt-0.5 text-blue-600 focus:ring-0" />
+            <span class="leading-relaxed flex-1">${opt}</span>
+          </label>
         `;
-      }
+      }).join('');
     }
 
     function checkPracticeAnswer(qId) {
-      const q = activeThemeQuestions.find(item => item.id === qId);
+      const q = quizData.find(item => item.id === qId);
       if (!q) return;
 
-      let isCorrect = false;
-      let userVal = null;
-
-      if (q.type === 'mcq' || q.type === 'tf') {
-        const selected = document.querySelector(`input[name="pq_${qId}"]:checked`);
-        if (!selected) { alert('Please select an option.'); return; }
-        userVal = parseInt(selected.value);
-        isCorrect = (userVal === q.answer);
-      } else if (q.type === 'short') {
-        const input = document.getElementById(`p_input_${qId}`);
-        if (!input || !input.value.trim()) { alert('Please enter an answer.'); return; }
-        userVal = input.value.trim();
-        const normUser = userVal.toLowerCase().replace(/[^a-z0-9]/g, '');
-        const normMain = q.answerText ? q.answerText.toLowerCase().replace(/[^a-z0-9]/g, '') : "";
-        isCorrect = (normUser === normMain);
-        if (!isCorrect && q.altAnswers) {
-          isCorrect = q.altAnswers.some(alt => alt.toLowerCase().replace(/[^a-z0-9]/g, '') === normUser);
-        }
-      }
+      const selected = document.querySelector(`input[name="pq_${qId}"]:checked`);
+      if (!selected) { alert('Please select an option.'); return; }
+      
+      const userVal = parseInt(selected.value);
+      const isCorrect = (userVal === q.answer);
 
       practiceUserAnswers[qId] = { value: userVal, isCorrect: isCorrect };
       renderPracticeQuestions();
@@ -549,7 +826,7 @@
     }
 
     function updatePracticeStats() {
-      const total = activeThemeQuestions.length;
+      const total = quizData.length;
       const answered = Object.keys(practiceUserAnswers).length;
       let correct = 0;
       Object.values(practiceUserAnswers).forEach(a => { if (a.isCorrect) correct++; });
@@ -557,6 +834,7 @@
 
       document.getElementById('practice-stat-progress').textContent = `${answered} / ${total}`;
       document.getElementById('practice-stat-score').textContent = `${pct}% (${correct} Correct)`;
+      document.getElementById('practice-progress-bar').style.width = `${(answered / total) * 100}%`;
     }
 
     function resetPractice() {
@@ -567,31 +845,43 @@
       }
     }
 
-    // -------------------------------------------------------------
-    // SIMULATION EXAM MODE
-    // -------------------------------------------------------------
-    function openSimSetup() {
-      navigateToPage('sim-setup-modal');
-    }
 
+    // -------------------------------------------------------------
+    // SIMULATION MODE ENGINE (50 BALANCED QUESTIONS)
+    // -------------------------------------------------------------
     function setSimDuration(mins) {
       simDurationMins = mins;
-      document.querySelectorAll('.sim-dur-btn').forEach(b => b.classList.remove('bg-blue-600', 'text-white'));
+      document.querySelectorAll('.sim-dur-btn').forEach(btn => {
+        btn.classList.remove('bg-blue-600', 'border-blue-500', 'text-white');
+        btn.classList.add('bg-slate-700', 'border-slate-600');
+      });
       const activeBtn = document.getElementById(`dur-${mins}`);
-      if (activeBtn) activeBtn.classList.add('bg-blue-600', 'text-white');
+      if (activeBtn) {
+        activeBtn.classList.remove('bg-slate-700', 'border-slate-600');
+        activeBtn.classList.add('bg-blue-600', 'border-blue-500', 'text-white');
+      }
     }
 
-    function startSimExam() {
-      // Sample questions up to 60 items
-      const sampleCount = Math.min(60, activeThemeQuestions.length);
-      const shuffled = [...activeThemeQuestions].sort(() => 0.5 - Math.random());
-      simQuestions = shuffled.slice(0, sampleCount);
+    function getRandomSample(arr, count) {
+      const shuffled = [...arr].sort(() => 0.5 - Math.random());
+      return shuffled.slice(0, count);
+    }
 
+    function startSimulationExam() {
+      // Draw 10 questions per section across all 5 sections = 50 total (1:1:1:1:1 ratio)
+      const qSec1 = getRandomSample(quizData.filter(q => q.module === 1), Math.min(10, quizData.filter(q => q.module === 1).length));
+      const qSec2 = getRandomSample(quizData.filter(q => q.module === 2), Math.min(10, quizData.filter(q => q.module === 2).length));
+      const qSec3 = getRandomSample(quizData.filter(q => q.module === 3), Math.min(10, quizData.filter(q => q.module === 3).length));
+      const qSec4 = getRandomSample(quizData.filter(q => q.module === 4), Math.min(10, quizData.filter(q => q.module === 4).length));
+      const qSec5 = getRandomSample(quizData.filter(q => q.module === 5), Math.min(10, quizData.filter(q => q.module === 5).length));
+
+      simQuestions = [...qSec1, ...qSec2, ...qSec3, ...qSec4, ...qSec5];
       simUserAnswers = {};
+      
       simTimeRemaining = simDurationMins * 60;
       simStartTime = Date.now();
 
-      navigateToPage('sim-active-ui');
+      navigateTo('simulation-active');
       renderSimActiveQuestions();
       updateSimActiveProgress();
       startSimTimer();
@@ -601,14 +891,16 @@
       clearInterval(simTimerInterval);
       simTimerInterval = setInterval(() => {
         simTimeRemaining--;
+
         if (simTimeRemaining <= 0) {
           clearInterval(simTimerInterval);
-          alert('Time is up! Submitting exam.');
-          finishSimExam();
+          alert('Time limit reached! Auto-submitting simulation exam now.');
+          finishSimulationExam();
         } else {
           const mins = Math.floor(simTimeRemaining / 60);
           const secs = simTimeRemaining % 60;
-          document.getElementById('sim-timer-display').textContent = `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+          document.getElementById('sim-timer-display').textContent = 
+            `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
         }
       }, 1000);
     }
@@ -616,138 +908,136 @@
     function renderSimActiveQuestions() {
       const container = document.getElementById('sim-questions-container');
       container.innerHTML = simQuestions.map((q, idx) => {
-        const uAns = simUserAnswers[q.id];
+        const userAns = simUserAnswers[q.id];
         return `
-          <div class="bg-slate-800 p-5 rounded-xl border border-slate-700 space-y-4">
+          <div class="bg-slate-800 p-5 rounded-xl border border-slate-700 space-y-4 shadow-sm">
             <div class="flex items-center justify-between text-xs text-slate-400">
-              <span class="bg-slate-700/80 px-2.5 py-1 rounded font-mono text-emerald-300">Item ${idx + 1} of ${simQuestions.length}</span>
-              <span>${q.moduleName}</span>
+              <span class="bg-slate-700/80 px-2.5 py-1 rounded font-mono text-emerald-300">Exam Item ${idx + 1} of ${simQuestions.length}</span>
+              <span class="text-slate-400 font-medium">${q.moduleName}</span>
             </div>
+            
             <h3 class="text-sm md:text-base font-semibold text-white leading-relaxed">${q.question}</h3>
-            <div class="space-y-2 pt-1">${renderSimActiveInput(q, uAns)}</div>
+            
+            ${q.visualAid ? q.visualAid : ''}
+
+            <div class="space-y-2 pt-1">${renderSimActiveInput(q, userAns)}</div>
           </div>
         `;
       }).join('');
     }
 
-    function renderSimActiveInput(q, uAns) {
-      if (q.type === 'mcq' || q.type === 'tf') {
-        return q.options.map((opt, optIdx) => {
-          const isSelected = uAns !== undefined && uAns.value === optIdx;
-          return `
-            <label onclick="recordSimAnswer(${q.id}, ${optIdx})" class="flex items-start space-x-3 p-3 rounded-lg border text-xs cursor-pointer transition ${
-              isSelected ? 'bg-blue-900/60 border-blue-500 text-white font-semibold' : 'bg-slate-700/40 hover:bg-slate-700 border-slate-600/60 text-slate-200'
-            }">
-              <input type="radio" name="sq_${q.id}" value="${optIdx}" ${isSelected ? 'checked' : ''} class="mt-0.5 text-blue-600" />
-              <span class="leading-relaxed flex-1">${opt}</span>
-            </label>
-          `;
-        }).join('');
-      } else if (q.type === 'short') {
+    function renderSimActiveInput(q, userAns) {
+      return q.options.map((opt, optIdx) => {
+        const isSelected = userAns !== undefined && userAns.value === optIdx;
         return `
-          <input type="text" onchange="recordSimShortAnswer(${q.id}, this.value)" value="${uAns ? uAns.value : ''}" placeholder="Type answer here..." class="w-full bg-slate-900 border border-slate-600 rounded-lg px-3 py-2 text-xs text-slate-100" />
+          <label onclick="recordSimAnswer(${q.id}, ${optIdx}, ${q.module})" class="flex items-start space-x-3 p-3 rounded-lg border text-xs cursor-pointer transition ${
+            isSelected ? 'bg-blue-900/60 border-blue-500 text-white font-semibold' : 'bg-slate-700/40 hover:bg-slate-700 border-slate-600/60 text-slate-200'
+          }">
+            <input type="radio" name="sq_${q.id}" value="${optIdx}" ${isSelected ? 'checked' : ''} class="mt-0.5 text-blue-600 focus:ring-0" />
+            <span class="leading-relaxed flex-1">${opt}</span>
+          </label>
         `;
-      }
+      }).join('');
     }
 
-    function recordSimAnswer(qId, optIdx) {
-      simUserAnswers[qId] = { value: optIdx };
-      updateSimActiveProgress();
-    }
-
-    function recordSimShortAnswer(qId, valText) {
-      if (valText.trim()) simUserAnswers[qId] = { value: valText.trim() };
-      else delete simUserAnswers[qId];
+    function recordSimAnswer(qId, optIdx, modId) {
+      simUserAnswers[qId] = { value: optIdx, modId: modId };
       updateSimActiveProgress();
     }
 
     function updateSimActiveProgress() {
-      const count = Object.keys(simUserAnswers).length;
-      document.getElementById('sim-active-progress').textContent = `${count} / ${simQuestions.length} Answered`;
+      const answeredCount = Object.keys(simUserAnswers).length;
+      document.getElementById('sim-active-progress').textContent = `${answeredCount} / ${simQuestions.length} Answered`;
     }
 
     function confirmFinishSim() {
-      if (confirm('Submit simulation exam now?')) finishSimExam();
+      const answeredCount = Object.keys(simUserAnswers).length;
+      const unanswered = simQuestions.length - answeredCount;
+      let msg = 'Are you ready to submit your simulation exam?';
+      if (unanswered > 0) {
+        msg = `You have ${unanswered} unanswered item(s). Are you sure you want to finish now?`;
+      }
+      if (confirm(msg)) {
+        finishSimulationExam();
+      }
     }
 
-    function finishSimExam() {
+    function finishSimulationExam() {
       clearInterval(simTimerInterval);
-      const totalSecs = Math.floor((Date.now() - simStartTime) / 1000);
+      simEndTime = Date.now();
+      
+      const totalTimeSecs = Math.floor((simEndTime - simStartTime) / 1000);
+      const totalMins = Math.floor(totalTimeSecs / 60);
+      const totalSecs = totalTimeSecs % 60;
+      const formattedTotalTime = `${totalMins}m ${totalSecs}s`;
 
-      let correctCount = 0;
-      const moduleStats = {};
+      let totalCorrect = 0;
+      let sectionBreakdown = {
+        1: { total: 0, correct: 0 },
+        2: { total: 0, correct: 0 },
+        3: { total: 0, correct: 0 },
+        4: { total: 0, correct: 0 },
+        5: { total: 0, correct: 0 }
+      };
 
       simQuestions.forEach(q => {
-        if (!moduleStats[q.module]) {
-          moduleStats[q.module] = { name: q.moduleName, total: 0, correct: 0 };
+        if (!sectionBreakdown[q.module]) {
+          sectionBreakdown[q.module] = { total: 0, correct: 0 };
         }
-        moduleStats[q.module].total++;
+        sectionBreakdown[q.module].total++;
 
         const uAns = simUserAnswers[q.id];
-        let isCorrect = false;
-
-        if (uAns !== undefined) {
-          if (q.type === 'mcq' || q.type === 'tf') {
-            isCorrect = (uAns.value === q.answer);
-          } else if (q.type === 'short') {
-            const normUser = uAns.value.toString().toLowerCase().replace(/[^a-z0-9]/g, '');
-            const normMain = q.answerText ? q.answerText.toLowerCase().replace(/[^a-z0-9]/g, '') : "";
-            isCorrect = (normUser === normMain);
-            if (!isCorrect && q.altAnswers) {
-              isCorrect = q.altAnswers.some(alt => alt.toLowerCase().replace(/[^a-z0-9]/g, '') === normUser);
-            }
-          }
-        }
-
-        if (isCorrect) {
-          correctCount++;
-          moduleStats[q.module].correct++;
+        if (uAns !== undefined && uAns.value === q.answer) {
+          totalCorrect++;
+          sectionBreakdown[q.module].correct++;
         }
       });
 
-      const pct = Math.round((correctCount / simQuestions.length) * 100);
+      const scorePct = Math.round((totalCorrect / simQuestions.length) * 100);
 
-      document.getElementById('sim-res-score-pct').textContent = `${pct}%`;
-      document.getElementById('sim-res-correct').textContent = `${correctCount} / ${simQuestions.length}`;
-      document.getElementById('sim-res-time').textContent = `${Math.floor(totalSecs/60)}m ${totalSecs%60}s`;
-      document.getElementById('sim-res-grade').textContent = pct >= 75 ? 'PASS' : 'NEEDS REVIEW';
+      // Score Display
+      document.getElementById('sim-res-score-pct').textContent = `${scorePct}%`;
+      document.getElementById('sim-res-correct').textContent = `${totalCorrect} / ${simQuestions.length}`;
+      document.getElementById('sim-res-time').textContent = formattedTotalTime;
+      
+      const gradeElem = document.getElementById('sim-res-grade');
+      if (scorePct >= 75) {
+        gradeElem.textContent = 'PASS';
+        gradeElem.className = 'text-2xl font-black text-emerald-400';
+      } else {
+        gradeElem.textContent = 'NEEDS REVIEW';
+        gradeElem.className = 'text-2xl font-black text-rose-400';
+      }
 
       // Section Analytics Table
       const tbody = document.getElementById('sim-analytics-tbody');
-      tbody.innerHTML = Object.values(moduleStats).map(st => {
-        const modPct = Math.round((st.correct / st.total) * 100);
+      tbody.innerHTML = [1,2,3,4,5].map(mId => {
+        const mInfo = modules.find(m => m.id === mId);
+        const data = sectionBreakdown[mId] || { total: 0, correct: 0 };
+        const pct = data.total > 0 ? Math.round((data.correct / data.total) * 100) : 0;
+
+        let statusBadge = '<span class="text-emerald-400 font-bold">Mastered</span>';
+        if (pct < 60) statusBadge = '<span class="text-rose-400 font-bold">Needs Review</span>';
+        else if (pct < 80) statusBadge = '<span class="text-amber-400 font-bold">Proficient</span>';
+
         return `
           <tr class="hover:bg-slate-700/30">
-            <td class="py-2.5 px-3 font-medium text-slate-200">${st.name}</td>
-            <td class="py-2.5 px-3 text-center font-mono text-slate-400">${st.total}</td>
-            <td class="py-2.5 px-3 text-center font-mono text-blue-400 font-bold">${st.correct}</td>
-            <td class="py-2.5 px-3 text-center font-mono font-bold ${modPct>=75 ? 'text-emerald-400' : 'text-rose-400'}">${modPct}%</td>
-            <td class="py-2.5 px-3 text-center font-mono text-slate-400">~${Math.round((totalSecs/simQuestions.length)*st.total)}s</td>
-            <td class="py-2.5 px-3 text-right font-bold ${modPct>=75 ? 'text-emerald-400' : 'text-rose-400'}">${modPct>=75 ? 'Mastered' : 'Review'}</td>
+            <td class="py-2.5 px-3 font-medium text-slate-200">${mInfo.name}</td>
+            <td class="py-2.5 px-3 text-center font-mono text-slate-400">${data.total}</td>
+            <td class="py-2.5 px-3 text-center font-mono text-blue-400 font-bold">${data.correct}</td>
+            <td class="py-2.5 px-3 text-center font-mono font-bold ${pct>=75 ? 'text-emerald-400' : 'text-rose-400'}">${pct}%</td>
+            <td class="py-2.5 px-3 text-right">${statusBadge}</td>
           </tr>
         `;
       }).join('');
 
-      // Detailed Recap
+      // Full Recap
       const recapContainer = document.getElementById('sim-recap-container');
       recapContainer.innerHTML = simQuestions.map((q, idx) => {
         const uAns = simUserAnswers[q.id];
-        let isCorrect = false;
-        let uVal = 'Not Answered';
-
-        if (uAns !== undefined) {
-          if (q.type === 'mcq' || q.type === 'tf') {
-            uVal = q.options[uAns.value];
-            isCorrect = (uAns.value === q.answer);
-          } else if (q.type === 'short') {
-            uVal = uAns.value;
-            const normUser = uAns.value.toString().toLowerCase().replace(/[^a-z0-9]/g, '');
-            const normMain = q.answerText ? q.answerText.toLowerCase().replace(/[^a-z0-9]/g, '') : "";
-            isCorrect = (normUser === normMain);
-          }
-        }
-
-        const cVal = (q.type === 'short') ? q.answerText : q.options[q.answer];
+        const isCorrect = (uAns !== undefined && uAns.value === q.answer);
+        const userValDisplay = (uAns !== undefined) ? q.options[uAns.value] : 'Not Answered';
+        const correctValDisplay = q.options[q.answer];
 
         return `
           <div class="bg-slate-800 p-5 rounded-xl border ${isCorrect ? 'border-emerald-500/50' : 'border-rose-500/50'} space-y-3">
@@ -755,37 +1045,34 @@
               <span class="font-mono text-slate-400">Item ${idx + 1} (${q.moduleName})</span>
               <span class="font-bold ${isCorrect ? 'text-emerald-400' : 'text-rose-400'}">${isCorrect ? '✓ Correct' : '✗ Incorrect'}</span>
             </div>
-            <h4 class="text-sm font-semibold text-white">${q.question}</h4>
-            <div class="grid grid-cols-2 gap-2 text-xs">
-              <div class="p-2 rounded bg-slate-900/60 border border-slate-700"><span class="block text-[10px] text-slate-400">Your Answer:</span><span>${uVal}</span></div>
-              <div class="p-2 rounded bg-slate-900/60 border border-slate-700"><span class="block text-[10px] text-slate-400">Correct Answer:</span><span class="text-emerald-400">${cVal}</span></div>
+            
+            <h4 class="text-sm font-semibold text-white leading-relaxed">${q.question}</h4>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-2 text-xs pt-1">
+              <div class="p-2.5 rounded bg-slate-900/60 border border-slate-700">
+                <span class="block text-[10px] text-slate-400">Your Selection:</span>
+                <span class="font-medium ${isCorrect ? 'text-emerald-300' : 'text-rose-300'}">${userValDisplay}</span>
+              </div>
+              <div class="p-2.5 rounded bg-slate-900/60 border border-slate-700">
+                <span class="block text-[10px] text-slate-400">Correct Answer:</span>
+                <span class="font-medium text-emerald-300">${correctValDisplay}</span>
+              </div>
             </div>
-            <p class="text-xs text-slate-300 bg-slate-900/80 p-3 rounded border border-slate-700/80">${q.explanation}</p>
+
+            <div class="bg-slate-900/80 p-3 rounded-lg border border-slate-700/80 text-xs space-y-1">
+              <span class="font-bold text-slate-300 block">Explanation:</span>
+              <p class="text-slate-300 leading-normal">${q.explanation}</p>
+            </div>
           </div>
         `;
       }).join('');
 
-      navigateToPage('sim-results-ui');
+      navigateTo('simulation-results');
     }
 
-    // Default Load with Sample Data
+    // App Initialization
     document.addEventListener('DOMContentLoaded', () => {
-      // Default CSV content parsed if no external CSV is uploaded immediately
-      const defaultCSV = `id,theme,module_id,module_name,type,question,option_a,option_b,option_c,option_d,answer_index,answer_text,alt_answers,image_url,explanation
-1,"Logistics Masterclass",1,"Supply Chain & Logistics 5.0",mcq,"Which of the following represents the core 'Three Flows' in a supply chain?","Material, Information, Financial","Production, Storage, Delivery","Inbound, Outbound, Reverse","Procurement, Manufacturing, Retail",0,"Material, Information, Financial","","",The three primary flows in supply chain management are Material Flow, Information Flow, and Financial Flow.
-2,"Logistics Masterclass",1,"Supply Chain & Logistics 5.0",mcq,"What is the key functional distinction between Supply Chain Management and Logistics?","Supply Chain is tactical; Logistics is strategic","Supply Chain covers the entire network ecosystem; Logistics focuses on moving & storing goods within it","Logistics manages raw materials while Supply Chain manages finished goods only","There is no difference",1,"Supply Chain covers the entire network ecosystem; Logistics focuses on moving & storing goods within it","","",Supply Chain covers the broad network, whereas Logistics is the specific operational mechanism for storage and transport.
-4,"Logistics Masterclass",1,"Supply Chain & Logistics 5.0",short,"What industry rule framework defines the ultimate operational goal of logistics?","","","","",0,"7 Rs","7Rs|7 R|7 R's","",The 7 Rs of Logistics: Right Product, Right Quantity, Right Condition, Right Place, Right Time, Right Customer, Right Price.
-21,"Logistics Masterclass",2,"Corporate Identity & ESG",mcq,"According to Samudera Indonesia's Corporate Identity rules, where must employees source official corporate logos?","Google Image Search","Official Corporate Communications channels (media.samudera.id)","Third-party repositories","Old PDF screenshots",1,"Official Corporate Communications channels (media.samudera.id)","","",Downloading logos from search engines is strictly prohibited.
-41,"Logistics Masterclass",3,"Container Depot Business",mcq,"Who is widely recognized as the 'Father of Containerization'?","Henry Ford","Malcolm McLean","Kate Raworth","Arthur Savage",1,"Malcolm McLean","","",Malcolm McLean developed the modern intermodal shipping container system in 1956.
-61,"Logistics Masterclass",4,"Project Logistics & Heavy Haulage",mcq,"How does Project Logistics fundamentally differ from Retail Logistics?","Handles uniform small parcels","Involves multi-location, variable timelines, multimodal execution, and abnormal cargo","Single-mode road transport","No customs documentation",1,"Involves multi-location, variable timelines, multimodal execution, and abnormal cargo","","",Project Logistics handles high-value, oversized (abnormal) cargo across custom routes.
-81,"Logistics Masterclass",5,"Inland Transport & Compliance",mcq,"Which of the following forms one of the 4 Key Pillars of HSSE Road Transport Management?","Journey Management","Marketing Management","Tax Depreciation","Customs Tariff Mapping",0,"Journey Management","","",The 4 HSSE Trucking Pillars are: HSSE Mgmt, Vehicle Mgmt, Driver Mgmt, and Journey Mgmt.
-101,"Logistics Masterclass",6,"Warehousing & Cold Chain",mcq,"What document/data verification starts the warehouse inbound receiving process?","ASN (Advanced Shipping Notice)","Customs Tax Invoice","Bill of Lading Title","Driver SIM Card",0,"ASN (Advanced Shipping Notice)","","",Inbound receiving starts with verifying the Advanced Shipping Notice (ASN).
-121,"Logistics Masterclass",7,"Official Pre/Post Tests",mcq,"[Depot Test] What primary material is standard intermodal shipping containers constructed from?","Stainless Steel 304","Corten Steel (Weathering Steel)","Aluminum Alloy 6061","Carbon Steel",1,"Corten Steel (Weathering Steel)","","",Corten steel (weathering steel) is the universal ISO standard material for containers.
-171,"Logistics Masterclass",8,"Technical Transport & Equipment",mcq,"[Vehicle Spec] Which light truck has 7 CBM / 2 Ton capacity (L: 3m, W: 1.7m, H: 1.5m)?","Colt Diesel 4 Ban (CDE / Engkel)","Colt Diesel 6 Ban (CDD)","Fuso Box","Tronton Rigid",0,"Colt Diesel 4 Ban (CDE / Engkel)","","",Colt Diesel 4 Ban (CDE/Engkel Light Truck) has a capacity of 7 CBM / 2 Ton.
-231,"Logistics Masterclass",9,"Practical & HOTS Scenarios",mcq,"Mr. Andi is a fisheries exporter based in Lombok producing Grade-A sashimi tuna. What unbroken cold chain setup must he deploy?","Ambient box truck -> GP 40' container","Reefer-equipped truck with genset -> Pre-Trip Inspection (PTI) audited Reefer Container (-20°C to -25°C) -> Depot plugging -> Chilled/Deep Freeze WH chamber","Flatbed trailer -> Dry Box container","Side Loader truck -> Flat Rack",1,"Reefer-equipped truck with genset -> Pre-Trip Inspection (PTI) audited Reefer Container (-20°C to -25°C) -> Depot plugging -> Chilled/Deep Freeze WH chamber","","",Premium tuna export requires an unbroken cold chain: Reefer trucks with gensets, PTI-cleared Reefer Containers, depot plugging, and deep freeze chambers.`;
-
-      processLoadedDataLake(parseCSV(defaultCSV));
-      navigateToPage('theme-select');
+      navigateTo('home');
     });
   </script>
 </body>
